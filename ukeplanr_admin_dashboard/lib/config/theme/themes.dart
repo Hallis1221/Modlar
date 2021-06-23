@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Themes {
-  final ThemeData _defaultTheme = ThemeData();
+class ThemeConfig {
+  final ThemeData _defaultTheme = ThemeData(backgroundColor: Colors.red);
 
   ThemeData get getDefaultTheme => _defaultTheme;
 }

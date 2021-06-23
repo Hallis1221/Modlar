@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 class ThemeConfig {
-  final ThemeData defaultTheme;
+  final ThemeData? defaultTheme;
 
-  ThemeData get getDefaultTheme => defaultTheme;
-  ThemeData get getTheme => _findTheme();
+  ThemeData? get getDefaultTheme => defaultTheme;
+  ThemeData? get getTheme => _findTheme();
 
-  ThemeData _findTheme() {
+  ThemeData? _findTheme() {
     return this.getDefaultTheme;
   }
 

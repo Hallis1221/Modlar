@@ -9,11 +9,11 @@ Future<void> main() async {
 }
 
 class DashboardApp extends StatelessWidget {
-  const DashboardApp({Key key}) : super(key: key);
+  const DashboardApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = GetIt.instance<ThemeConfig>().getTheme;
+    final ThemeData? theme = GetIt.instance<ThemeConfig>().getTheme;
     return MaterialApp(
       theme: theme,
     );

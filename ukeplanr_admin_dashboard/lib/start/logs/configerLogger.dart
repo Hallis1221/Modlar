@@ -9,10 +9,10 @@ void configureLogger() {
   // Init the flutter logger package to be able to show logs on screen
   LogConsole.init();
   // Set logger level based on log level
-  Logger.level = LoggerConfig().getLogLevel;
+  Logger.level = Logs().getLogLevel;
   GetIt.instance.registerSingleton<LogsConfig>(
     LogsConfig(
-      logger: LoggerConfig().getLogger,
+      logger: Logs().getLogger,
     ),
   );
   final Function log = GetIt.instance.get<LogsConfig>().logger.log;
@@ -24,4 +24,5 @@ void configureLogger() {
       The following information was given: ${error.exception}. 
       """,
       );
+  log(Level.info, "Configured Logs!");
 }

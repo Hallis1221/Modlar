@@ -2,12 +2,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-class LogsConfig {
+class ThemeConfig {
   final ThemeData defaultTheme;
 
   ThemeData get getDefaultTheme => defaultTheme;
+  ThemeData get getTheme => _findTheme();
 
-  LogsConfig({
+  ThemeData _findTheme() {
+    return this.getDefaultTheme;
+  }
+
+  ThemeConfig({
     @required this.defaultTheme,
   });
 }

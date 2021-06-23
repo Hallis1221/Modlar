@@ -13,9 +13,23 @@ class DashboardApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData? theme = GetIt.instance<ThemeConfig>().getTheme;
+    final ThemeData? theme = GetIt.instance<Themes>().getTheme;
     return MaterialApp(
       theme: theme,
+      home: PlaceholderWidget(),
+    );
+  }
+}
+
+class PlaceholderWidget extends StatelessWidget {
+  const PlaceholderWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Theme.of(context).backgroundColor,
     );
   }
 }

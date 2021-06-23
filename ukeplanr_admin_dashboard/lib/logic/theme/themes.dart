@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-class ThemeConfig {
+class Themes {
   final ThemeData? defaultTheme;
 
   ThemeData? get getDefaultTheme => defaultTheme;
@@ -12,7 +12,7 @@ class ThemeConfig {
     return this.getDefaultTheme;
   }
 
-  ThemeConfig({
+  Themes({
     @required this.defaultTheme,
   });
 }

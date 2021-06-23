@@ -7,13 +7,13 @@ import 'package:ukeplanr_admin_dashboard/logic/logs/logService.dart';
 void configureLogger() {
   // Init the flutter logger package to be able to show logs on screen
   // Set logger level based on log level
-  Logger.level = Logs().getLogLevel;
-  GetIt.instance.registerSingleton<LogsConfig>(
-    LogsConfig(
-      logger: Logs().getLogger,
+  Logger.level = LogsConfig().getLogLevel;
+  GetIt.instance.registerSingleton<Logs>(
+    Logs(
+      logger: LogsConfig().getLogger,
     ),
   );
-  final Function log = GetIt.instance.get<LogsConfig>().logger!.log;
+  final Function log = GetIt.instance.get<Logs>().logger!.log;
   FlutterError.onError = (FlutterErrorDetails error) => log(
         Level.error,
         """

@@ -12,6 +12,8 @@ void configureThemes() {
       defaultTheme: ThemeConfig().getDefaultTheme,
     ),
   );
-  final Function log = GetIt.instance.get<Logs>().logger!.log;
-  log(Level.info, "Configured Themes!");
+  try {
+    final Function? log = GetIt.instance.get<Logs>().logger!.log;
+    log!(Level.info, "Configured Themes!");
+  } catch (e) {}
 }

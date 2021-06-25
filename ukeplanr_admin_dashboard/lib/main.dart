@@ -3,8 +3,8 @@ import 'package:get_it/get_it.dart';
 import 'package:ukeplanr_admin_dashboard/logic/theme/themes.dart';
 import 'package:ukeplanr_admin_dashboard/start/configureApp.dart';
 
-Future<void> main() async {
-  await configureApp();
+main() {
+  configureApp();
   runApp(DashboardApp());
 }
 

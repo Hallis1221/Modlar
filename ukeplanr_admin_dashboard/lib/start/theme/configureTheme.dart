@@ -7,13 +7,21 @@ import 'package:ukeplanr_admin_dashboard/logic/logs/logService.dart';
 import 'package:ukeplanr_admin_dashboard/logic/theme/themes.dart';
 
 void configureThemes() {
-  GetIt.instance.registerSingleton<Themes>(
-    Themes(
-      defaultTheme: ThemeConfig().getDefaultTheme,
-    ),
-  );
   try {
-    final Function? log = GetIt.instance.get<Logs>().logger!.log;
-    log!(Level.info, "Configured Themes!");
-  } catch (e) {}
+    GetIt.instance.registerSingleton<Themes>(
+      Themes(
+        defaultTheme: ThemeConfig().getDefaultTheme,
+      ),
+    );
+    try {
+      final Function? log = GetIt.instance.get<Logs>().logger!.log;
+      log!(Level.info, "Configured Themes!");
+    } catch (e) {}
+  } catch (e) {
+    try {
+      final Function? log = GetIt.instance.get<Logs>().logger!.log;
+      log!(Level.info,
+          "Failed to configure Themes! The following information was given: $e");
+    } catch (e) {}
+  }
 }

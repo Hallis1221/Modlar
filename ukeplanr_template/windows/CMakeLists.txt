@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(ukeplanr_admin_dashboard LANGUAGES CXX)
+project(ukeplanr_template LANGUAGES CXX)
 
-set(BINARY_NAME "ukeplanr_admin_dashboard")
+set(BINARY_NAME "ukeplanr_template")
 
 cmake_policy(SET CMP0063 NEW)
 

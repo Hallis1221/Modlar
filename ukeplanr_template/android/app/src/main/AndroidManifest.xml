@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="no.vusion.ukeplanr_admin_dashboard">
+    package="no.vusion.ukeplanr_template">
    <application
-        android:label="ukeplanr_admin_dashboard"
+        android:label="ukeplanr_template"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

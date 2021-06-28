@@ -1,6 +1,6 @@
 {
-    "name": "ukeplanr_admin_dashboard",
-    "short_name": "ukeplanr_admin_dashboard",
+    "name": "ukeplanr_template",
+    "short_name": "ukeplanr_template",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

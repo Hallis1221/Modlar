@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:ukeplanr_admin_dashboard/logic/theme/themes.dart';
-import 'package:ukeplanr_admin_dashboard/start/configureApp.dart';
+import 'package:ukeplanr_template/logic/theme/themes.dart';
+import 'package:ukeplanr_template/start/configureApp.dart';
 
 main() {
   configureApp();

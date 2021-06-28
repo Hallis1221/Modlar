@@ -1,4 +1,4 @@
-package no.vusion.ukeplanr_admin_dashboard
+package no.vusion.ukeplanr_template
 
 import io.flutter.embedding.android.FlutterActivity
 

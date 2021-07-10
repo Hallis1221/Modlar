@@ -1,3 +1,4 @@
+import 'package:ukeplanr_template/components/testing/placeholder/placeHolder.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:ukeplanr_template/start/configureApp.dart';
 
@@ -28,19 +29,6 @@ class MyApp extends StatelessWidget {
       // Same principle as with the theme. Passes it directly as it isent too
       // long nor complicated.
       home: PlaceholderWidget(),
-    );
-  }
-}
-
-class PlaceholderWidget extends StatelessWidget {
-  const PlaceholderWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).backgroundColor,
     );
   }
 }

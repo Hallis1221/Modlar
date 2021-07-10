@@ -1,10 +1,9 @@
-import 'package:flutter/foundation.dart';
-import 'package:get_it/get_it.dart';
-import 'package:logger/logger.dart';
-import 'package:ukeplanr_template/config/logs/logger.dart';
 import 'package:ukeplanr_template/config/theme/themes.dart';
 import 'package:ukeplanr_template/logic/logs/logService.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
+
+import 'package:get_it/get_it.dart';
+import 'package:logger/logger.dart';
 
 void configureThemes() {
   try {

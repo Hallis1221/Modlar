@@ -1,15 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:ukeplanr_template/start/configureApp.dart';
 
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+
 main() {
+  // Call configure app to setup/start all the required services before starting
+  //to paint on the screen.
   configureApp();
-  runApp(DashboardApp());
+  runApp(MyApp());
 }
 
-class DashboardApp extends StatelessWidget {
-  const DashboardApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

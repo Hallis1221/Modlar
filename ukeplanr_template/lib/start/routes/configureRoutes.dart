@@ -1,7 +1,7 @@
 import 'package:ukeplanr_template/config/routes/routes.dart';
 
 import 'package:ukeplanr_template/logic/logs/logService.dart';
-import 'package:ukeplanr_template/logic/routes/routes.dart';
+import 'package:ukeplanr_template/logic/nav/routes.dart';
 
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';

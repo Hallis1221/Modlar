@@ -1,5 +1,8 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:ukeplanr_template/logic/routes/mapping/findWidget.dart';
 
 Route generateRoute(settings) {
-  throw "";
+  return MaterialPageRoute(
+    builder: (context) => findWidgetFromRoute(settings: settings),
+  );
 }

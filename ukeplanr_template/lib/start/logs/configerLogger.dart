@@ -10,16 +10,16 @@ void configureLogger() {
   // Set logger level based on log level
   Logger.level = LogsConfig().getLogLevel;
   try {
-    GetIt.instance.registerSingleton<Logs>(
-      Logs(
+    GetIt.instance.registerSingleton<LogsService>(
+      LogsService(
         logger: LogsConfig().getLogger,
       ),
     );
   } catch (error) {
-    GetIt.instance.get<Logs>().logger!.log(Level.warning,
+    GetIt.instance.get<LogsService>().logger!.log(Level.warning,
         "Encountered a error while registering logger. The following information was given: $error.");
   }
-  final Function? log = GetIt.instance.get<Logs>().logger!.log;
+  final Function? log = GetIt.instance.get<LogsService>().logger!.log;
   FlutterError.onError = (FlutterErrorDetails? error) => log!(
         Level.error,
         """

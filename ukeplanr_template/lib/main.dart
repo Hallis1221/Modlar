@@ -6,7 +6,7 @@ import 'package:get_it/get_it.dart';
 
 main() {
   // Call configure app to setup/start all the required services before starting
-  //to paint on the screen.
+  //to paint on the screen. configureApp() is imported from start/configureApp.dart
   configureApp();
   runApp(MyApp());
 }
@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData? theme = GetIt.instance<Themes>().getTheme;
+    // Get theme from the themes service
+    final ThemeData? theme = GetIt.instance<ThemesService>().getTheme;
     return MaterialApp(
       theme: theme,
       home: PlaceholderWidget(),

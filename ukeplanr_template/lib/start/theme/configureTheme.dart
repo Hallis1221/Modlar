@@ -7,18 +7,18 @@ import 'package:logger/logger.dart';
 
 void configureThemes() {
   try {
-    GetIt.instance.registerSingleton<Themes>(
-      Themes(
+    GetIt.instance.registerSingleton<ThemesService>(
+      ThemesService(
         defaultTheme: ThemeConfig().getDefaultTheme,
       ),
     );
     try {
-      final Function? log = GetIt.instance.get<Logs>().logger!.log;
+      final Function? log = GetIt.instance.get<LogsService>().logger!.log;
       log!(Level.info, "Configured Themes!");
     } catch (e) {}
   } catch (e) {
     try {
-      final Function? log = GetIt.instance.get<Logs>().logger!.log;
+      final Function? log = GetIt.instance.get<LogsService>().logger!.log;
       log!(Level.info,
           "Failed to configure Themes! The following information was given: $e");
     } catch (e) {}

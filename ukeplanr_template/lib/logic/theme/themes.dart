@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Themes {
+class ThemesService {
   final ThemeData? defaultTheme;
 
   ThemeData? get getDefaultTheme => defaultTheme;
@@ -10,7 +10,7 @@ class Themes {
     return this.getDefaultTheme;
   }
 
-  Themes({
+  ThemesService({
     @required this.defaultTheme,
   });
 }

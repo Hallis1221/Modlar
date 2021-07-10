@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: GetIt.instance<ThemesService>().getTheme,
       // Same principle as with the theme. Passes it directly as it isent too
       // long nor complicated.
-      home: PlaceholderWidget(),
+      initialRoute: "/",
       onGenerateRoute: (settings) => generateRoute(settings),
     );
   }

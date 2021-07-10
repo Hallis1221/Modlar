@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 
-class Logs {
+class LogsService {
   final Logger? logger;
 
   Logger? get getLogger => logger;
 
-  Logs({
+  LogsService({
     @required this.logger,
   });
 }

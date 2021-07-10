@@ -1,4 +1,4 @@
-import 'package:ukeplanr_template/logic/nav/gen/generateRoute.dart';
+import 'package:ukeplanr_template/logic/navigation/gen/generateRoute.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:ukeplanr_template/start/configureApp.dart';
 

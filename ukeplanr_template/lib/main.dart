@@ -1,5 +1,5 @@
 import 'package:ukeplanr_template/components/testing/placeholder/placeHolder.dart';
-import 'package:ukeplanr_template/logic/routes/generateRoute.dart';
+import 'package:ukeplanr_template/logic/routes/gen/generateRoute.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:ukeplanr_template/start/configureApp.dart';
 

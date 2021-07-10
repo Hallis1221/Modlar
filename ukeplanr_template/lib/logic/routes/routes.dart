@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ThemesService {
-  final Map<String, Widget>? defaultTheme;
+class RoutesService {
+  final Map<String, Widget>? routes;
 
-  Map<String, Widget>? get getDefaultTheme => defaultTheme;
-  Map<String, Widget>? get getTheme => _findTheme();
+  Map<String, Widget>? get getRoutes => routes;
 
-  Map<String, Widget>? _findTheme() {
-    return this.getDefaultTheme;
-  }
-
-  ThemesService({
-    @required this.defaultTheme,
+  RoutesService({
+    @required this.routes,
   });
 }

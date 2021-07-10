@@ -1,4 +1,5 @@
 import 'package:ukeplanr_template/logic/navigation/gen/generateRoute.dart';
+import 'package:ukeplanr_template/logic/navigation/observers/navigationWatcher.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:ukeplanr_template/start/configureApp.dart';
 
@@ -29,7 +30,9 @@ class MyApp extends StatelessWidget {
       // Same principle as with the theme. Passes it directly as it isent too
       // long nor complicated.
       initialRoute: "/",
-      navigatorObservers: [],
+      navigatorObservers: [
+        NavigationWatcher(),
+      ],
       onGenerateRoute: (settings) => generateRoute(settings),
     );
   }

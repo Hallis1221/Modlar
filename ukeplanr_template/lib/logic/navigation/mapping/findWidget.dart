@@ -1,5 +1,5 @@
 import 'package:ukeplanr_template/components/temp/errors/404.dart';
-import 'package:ukeplanr_template/logic/nav/routes.dart';
+import 'package:ukeplanr_template/logic/navigation/routes/routes.dart';
 
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';

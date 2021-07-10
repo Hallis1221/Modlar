@@ -7,5 +7,10 @@ void configureInitialization() {
   final Function? log = GetIt.instance.get<LogsService>().logger!.log;
   try {
     WidgetsFlutterBinding.ensureInitialized();
-  } catch (e) {}
+  } catch (error) {
+    log!("""
+        Caught an error during initialization. 
+        The following information was given: $error
+        """);
+  }
 }

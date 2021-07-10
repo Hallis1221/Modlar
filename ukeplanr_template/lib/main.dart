@@ -16,10 +16,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Get theme from the themes service
-    final ThemeData? theme = GetIt.instance<ThemesService>().getTheme;
     return MaterialApp(
-      theme: theme,
+      // Get theme from the themes service. ThemesService.getTheme give us
+      // whatever theme is compatible with its criterias (which could include
+      // stuff like system preference, settings, etc). Calls it directly
+      // in the argument to avoid having logic code in the build method/avoid
+      // storing variables in the buld method. We want to avoid this beacuse build
+      // is primarily a painting function, and the code looks *cleaner* when not
+      // storing stuff inside of it.
+      theme: GetIt.instance<ThemesService>().getTheme,
+      // Same principle as with the theme. Passes it directly as it isent too
+      // long nor complicated.
       home: PlaceholderWidget(),
     );
   }

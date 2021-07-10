@@ -5,9 +5,6 @@ class RoutesService {
 
   Map<String, Widget>? get getRoutes => routes;
 
-  RouteSettings getCurrentString(BuildContext context) =>
-      ModalRoute.of(context)!.settings;
-
   RoutesService({
     @required this.routes,
   });

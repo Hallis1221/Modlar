@@ -1,4 +1,5 @@
 import 'package:ukeplanr_template/components/testing/placeholder/placeHolder.dart';
+import 'package:ukeplanr_template/logic/routes/generateRoute.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:ukeplanr_template/start/configureApp.dart';
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       // Same principle as with the theme. Passes it directly as it isent too
       // long nor complicated.
       home: PlaceholderWidget(),
+      onGenerateRoute: (settings) => generateRoute(settings),
     );
   }
 }

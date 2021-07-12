@@ -13,4 +13,6 @@ class NavigationWatcher extends NavigatorObserver {
   List<Map<String?, RouteSettings>> get getRouteHistory => _routeHistory;
   void registerRoute(RouteSettings settings) =>
       _routeHistory.add({settings.name: settings});
+
+  NavigationWatcher();
 }

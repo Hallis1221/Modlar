@@ -27,11 +27,12 @@ class MyApp extends StatelessWidget {
       // is primarily a painting function, and the code looks *cleaner* when not
       // storing stuff inside of it.
       theme: GetIt.instance<ThemesService>().getTheme,
+
+      initialRoute: "/",
       // Same principle as with the theme. Passes it directly as it isent too
       // long nor complicated.
-      initialRoute: "/",
       navigatorObservers: [
-        NavigationWatcher(),
+        GetIt.instance<NavigationWatcher>(),
       ],
       onGenerateRoute: (settings) => generateRoute(settings),
     );

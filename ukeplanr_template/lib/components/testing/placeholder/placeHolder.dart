@@ -11,7 +11,7 @@ class PlaceholderWidget extends StatelessWidget {
     return Container(
       color: Theme.of(context).backgroundColor,
       child: Center(
-        child: Text(
+        child: SelectableText(
           AppLocalizations.of(context)!.helloWorld,
         ),
       ),

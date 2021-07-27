@@ -3,6 +3,7 @@ import 'package:ukeplanr_template/logic/navigation/observers/navigationWatcher.d
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:ukeplanr_template/start/configureApp.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -33,6 +34,15 @@ class MyApp extends StatelessWidget {
       // long nor complicated.
       navigatorObservers: [
         GetIt.instance<NavigationWatcher>(),
+      ],
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en', ''),
+        Locale('no', 'nb'),
       ],
       onGenerateRoute: (settings) => generateRoute(settings),
     );

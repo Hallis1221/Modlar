@@ -1,3 +1,4 @@
+import 'package:ukeplanr_template/logic/Localization/app_localizations.dart';
 import 'package:ukeplanr_template/logic/navigation/gen/generateRoute.dart';
 import 'package:ukeplanr_template/logic/navigation/observers/navigationWatcher.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
@@ -35,14 +36,10 @@ class MyApp extends StatelessWidget {
       navigatorObservers: [
         GetIt.instance<NavigationWatcher>(),
       ],
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: [
         Locale('en', ''),
-        Locale('no', 'nb'),
+        Locale('no', 'NB'),
       ],
       onGenerateRoute: (settings) => generateRoute(settings),
     );

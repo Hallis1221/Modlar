@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ukeplanr_template/logic/Localization/app_localizations.dart';
 
 class PlaceholderWidget extends StatelessWidget {
   const PlaceholderWidget({
@@ -9,6 +10,11 @@ class PlaceholderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).backgroundColor,
+      child: Center(
+        child: Text(
+          AppLocalizations.of(context)!.helloWorld,
+        ),
+      ),
     );
   }
 }

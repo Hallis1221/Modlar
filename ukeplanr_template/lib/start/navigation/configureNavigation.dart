@@ -1,6 +1,7 @@
 import 'package:ukeplanr_template/logic/navigation/observers/navigationWatcher.dart';
 import 'package:ukeplanr_template/logic/logs/logService.dart';
 
+import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 
@@ -19,6 +20,9 @@ void configureNavigationWatcher() {
       log!(Level.error, """
           Failed to configure navigation watcher! The following information was given: $e
           """);
-    } catch (e) {}
+    } catch (e) {
+      throw FlutterError(
+          "Failed to configure themes and failed to log the exception! The error was: $e");
+    }
   }
 }

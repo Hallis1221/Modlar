@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:ukeplanr_template/config/theme/themes.dart';
 
 import 'package:ukeplanr_template/logic/logs/logService.dart';
@@ -28,6 +29,9 @@ void configureThemes() {
     try {
       log!(Level.info,
           """Failed to configure Themes! The following information was given: $e""");
-    } catch (e) {}
+    } catch (e) {
+      throw FlutterError(
+          "Failed to configure themes and failed to log the exception! The error was: $e");
+    }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:ukeplanr_template/logic/Localization/app_localizations.dart';
 import 'package:ukeplanr_template/logic/navigation/observers/navigationWatcher.dart';
 
 class PageNotFound extends StatelessWidget {
@@ -13,7 +14,7 @@ class PageNotFound extends StatelessWidget {
           onPressed: () =>
               print(GetIt.instance<NavigationWatcher>().getRouteHistory),
           child: Text(
-            "Page not found",
+            AppLocalizations.of(context)!.pageNotFound,
           ),
         ),
       ),

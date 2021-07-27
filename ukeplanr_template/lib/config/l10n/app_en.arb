@@ -4,5 +4,10 @@
   "helloWorld": "Hello World!",
   "@helloWorld": {
     "description": "The conventional newborn programmer greeting"
+  },
+
+  "pageNotFound": "Page not found!",
+  "@pageNotFound": {
+    "description": "The error when getting a 404 page not found error."
   }
 }

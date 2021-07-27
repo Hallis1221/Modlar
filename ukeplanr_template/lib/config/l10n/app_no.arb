@@ -1,6 +1,4 @@
 {
   "helloWorld": "Hei verden!",
-  "@helloWorld": {
-    "description": "Standard hilsenen for programmerere!"
-  }
+  "pageNotFound": "Denne siden finnes ikke!"
 }

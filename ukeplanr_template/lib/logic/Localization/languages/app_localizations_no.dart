@@ -10,4 +10,7 @@ class AppLocalizationsNo extends AppLocalizations {
 
   @override
   String get helloWorld => 'Hei verden!';
+
+  @override
+  String get pageNotFound => 'Denne siden finnes ikke!';
 }

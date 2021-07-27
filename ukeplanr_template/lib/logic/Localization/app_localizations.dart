@@ -103,6 +103,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hello World!'**
   String get helloWorld;
+
+  /// The error when getting a 404 page not found error.
+  ///
+  /// In en, this message translates to:
+  /// **'Page not found!'**
+  String get pageNotFound;
 }
 
 class _AppLocalizationsDelegate

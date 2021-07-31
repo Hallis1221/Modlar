@@ -41,7 +41,7 @@ class PlaceholderWidget extends StatelessWidget {
                     .get<LogsService>()
                     .getSession
                     .getSessionLog
-                    .RawString(),
+                    .toRawString(),
               );
             },
           ),

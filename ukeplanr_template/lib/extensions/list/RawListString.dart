@@ -1,5 +1,5 @@
 extension RawListString on List {
-  String RawString() {
+  String toRawString() {
     String rawString = "";
     for (var object in this) {
       rawString += "$object \n";

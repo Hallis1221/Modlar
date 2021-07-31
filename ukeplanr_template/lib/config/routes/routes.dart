@@ -1,4 +1,4 @@
-import 'package:ukeplanr_template/components/testing/placeholder/placeHolder.dart';
+import 'package:ukeplanr_template/components/testing/placeholder/helloWorld.dart';
 
 import 'package:flutter/widgets.dart';
 

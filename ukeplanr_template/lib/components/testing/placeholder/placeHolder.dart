@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:logger/logger.dart';
 import 'package:ukeplanr_template/logic/Localization/app_localizations.dart';
+import 'package:ukeplanr_template/logic/localization/state/locale.dart';
+import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
 
 class PlaceholderWidget extends StatelessWidget {
   const PlaceholderWidget({
@@ -10,10 +14,29 @@ class PlaceholderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).backgroundColor,
-      child: Center(
-        child: SelectableText(
-          AppLocalizations.of(context)!.helloWorld,
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SelectableText(
+            AppLocalizations.of(context)!.helloWorld,
+          ),
+          MaterialButton(
+            color: Colors.pink,
+            onPressed: () {
+              try {
+                GetIt.instance.get<LocaleName>().changeLocale(
+                      Locale('no', 'nb'),
+                    );
+              } catch (error) {
+                final Function? log =
+                    GetIt.instance.get<LogsService>().logger!.log;
+                log!(Level.error, """
+                    Tried to change the locale but the following error was encountered: $error
+                    """);
+              }
+            },
+          ),
+        ],
       ),
     );
   }

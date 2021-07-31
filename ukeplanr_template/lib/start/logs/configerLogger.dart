@@ -21,7 +21,15 @@ void configureLogger() {
     );
   } catch (error) {
     GetIt.instance.get<LogsService>().logger!.log(Level.warning,
-        "Encountered a error while registering logger. The following information was given: $error.");
+        "Encountered a error while registering logSession. The following information was given: $error.");
+  }
+  try {
+    GetIt.instance.registerSingleton<LogSession>(
+      LogSession(),
+    );
+  } catch (error) {
+    GetIt.instance.get<LogsService>().logger!.log(Level.warning,
+        "Encountered a error while registering logSession. The following information was given: $error.");
   }
   final Function? log = GetIt.instance.get<LogsService>().logger!.log;
   FlutterError.onError = (FlutterErrorDetails? error) => log!(

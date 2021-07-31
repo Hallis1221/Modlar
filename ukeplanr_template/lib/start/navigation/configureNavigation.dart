@@ -1,5 +1,5 @@
 import 'package:ukeplanr_template/logic/navigation/observers/navigationWatcher.dart';
-import 'package:ukeplanr_template/logic/logs/logService.dart';
+import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';

@@ -1,6 +1,6 @@
 import 'package:ukeplanr_template/config/routes/routes.dart';
 
-import 'package:ukeplanr_template/logic/logs/logService.dart';
+import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
 import 'package:ukeplanr_template/logic/navigation/routes/routes.dart';
 
 import 'package:get_it/get_it.dart';

@@ -3,7 +3,6 @@ import 'package:logger/logger.dart';
 
 class LogsService {
   final Logger? logger;
-
   Logger? get getLogger => logger;
 
   LogsService({

@@ -1,3 +1,4 @@
+import 'package:ukeplanr_template/start/localization/configureLocalization.dart';
 import 'package:ukeplanr_template/start/navigation/configureNavigation.dart';
 import 'package:ukeplanr_template/start/navigation/routes/configureRoutes.dart';
 import 'package:ukeplanr_template/start/widgets/configureInitialization.dart';
@@ -7,6 +8,7 @@ import 'package:ukeplanr_template/start/theme/configureTheme.dart';
 configureApp() {
   configureLogger();
   configureNavigationWatcher();
+  configureLocalization();
   configureRoutes();
   configureInitialization();
   configureThemes();

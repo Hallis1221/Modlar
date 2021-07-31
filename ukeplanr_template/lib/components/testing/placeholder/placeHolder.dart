@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:logger/logger.dart';
 import 'package:ukeplanr_template/logic/Localization/app_localizations.dart';
 import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
+import 'package:ukeplanr_template/extensions/list/RawListString.dart';
+
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:logger/logger.dart';
 
 class PlaceholderWidget extends StatelessWidget {
   const PlaceholderWidget({
@@ -34,6 +36,13 @@ class PlaceholderWidget extends StatelessWidget {
                     Tried to change the locale but the following error was encountered: $error
                     """);
               }
+              print(
+                GetIt.instance
+                    .get<LogsService>()
+                    .getSession
+                    .getSessionLog
+                    .RawString(),
+              );
             },
           ),
         ],

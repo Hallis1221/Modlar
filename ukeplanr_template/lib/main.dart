@@ -1,10 +1,10 @@
 import 'package:ukeplanr_template/logic/Localization/app_localizations.dart';
+import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:ukeplanr_template/logic/navigation/gen/generateRoute.dart';
 import 'package:ukeplanr_template/logic/navigation/observers/navigationWatcher.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:ukeplanr_template/start/configureApp.dart';
 
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -20,28 +20,34 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // Get theme from the themes service. ThemesService.getTheme give us
-      // whatever theme is compatible with its criterias (which could include
-      // stuff like system preference, settings, etc). Calls it directly
-      // in the argument to avoid having logic code in the build method/avoid
-      // storing variables in the buld method. We want to avoid this beacuse build
-      // is primarily a painting function, and the code looks *cleaner* when not
-      // storing stuff inside of it.
-      theme: GetIt.instance<ThemesService>().getTheme,
+    return StreamBuilder<Locale?>(
+        stream: GetIt.instance.get<LocaleName>().stream$,
+        builder: (context, snapshot) {
+          return MaterialApp(
+            // Get theme from the themes service. ThemesService.getTheme give us
+            // whatever theme is compatible with its criterias (which could include
+            // stuff like system preference, settings, etc). Calls it directly
+            // in the argument to avoid having logic code in the build method/avoid
+            // storing variables in the buld method. We want to avoid this beacuse build
+            // is primarily a painting function, and the code looks *cleaner* when not
+            // storing stuff inside of it.
+            theme: GetIt.instance<ThemesService>().getTheme,
 
-      initialRoute: "/",
-      // Same principle as with the theme. Passes it directly as it isent too
-      // long nor complicated.
-      navigatorObservers: [
-        GetIt.instance<NavigationWatcher>(),
-      ],
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: [
-        Locale('en', ''),
-        Locale('no', 'NB'),
-      ],
-      onGenerateRoute: (settings) => generateRoute(settings),
-    );
+            initialRoute: "/",
+            // Same principle as with the theme. Passes it directly as it isent too
+            // long nor complicated.
+            navigatorObservers: [
+              GetIt.instance<NavigationWatcher>(),
+            ],
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: [
+              Locale('en', ''),
+              Locale('no', 'NB'),
+            ],
+
+            locale: snapshot.data,
+            onGenerateRoute: (settings) => generateRoute(settings),
+          );
+        });
   }
 }

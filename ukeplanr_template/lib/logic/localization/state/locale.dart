@@ -1,5 +1,7 @@
-import 'package:ukeplanr_template/logic/logs/logService.dart';
+import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
 
+import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:get_it/get_it.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -7,14 +9,14 @@ class LocaleName {
   final Function? log = GetIt.instance.get<LogsService>().logger!.log;
 
   // ignore: close_sinks
-  BehaviorSubject localeName;
+  BehaviorSubject<Locale?> _localeName = BehaviorSubject.seeded(null);
 
-  Stream get stream$ => localeName.stream;
+  Stream<Locale?>? get stream$ => _localeName.stream;
 
-  changeLocale(String locale) {
-    log!("Changed locale from ${localeName.value} to $locale");
-    localeName.value = BehaviorSubject.seeded(locale);
+  changeLocale(Locale locale) {
+    log!(Level.debug, "Changed locale from ${_localeName.value} to $locale");
+    _localeName.value = locale;
   }
 
-  LocaleName({required this.localeName});
+  LocaleName();
 }

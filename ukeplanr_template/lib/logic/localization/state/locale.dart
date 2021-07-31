@@ -14,8 +14,13 @@ class LocaleName {
   Stream<Locale?>? get stream$ => _localeName.stream;
 
   changeLocale(Locale locale) {
-    log!(Level.debug, "Changed locale from ${_localeName.value} to $locale");
-    _localeName.value = locale;
+    if (_localeName.value == locale) {
+      log!(Level.error,
+          "Locale was not changed beacuse locale already is $locale. ($locale is the same as ${_localeName.value})");
+    } else {
+      log!(Level.debug, "Changed locale from ${_localeName.value} to $locale");
+      _localeName.value = locale;
+    }
   }
 
   LocaleName();

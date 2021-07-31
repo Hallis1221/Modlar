@@ -1,4 +1,8 @@
 //TODO currently the characters isnt supported to display so it looks like gibberish.
+//This is the relevant error:
+//Could not find a set of Noto fonts to display all missing characters.
+//Please add a font asset for the missing characters.
+//See: https://flutter.dev/docs/cookbook/design/fonts
 
 import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
 import 'package:ukeplanr_template/extensions/list/RawListString.dart';

@@ -27,7 +27,7 @@ class PlaceholderWidget extends StatelessWidget {
             onPressed: () {
               try {
                 GetIt.instance.get<LocaleName>().changeLocale(
-                      Locale('no', 'nb'),
+                      Locale('en', ''),
                     );
               } catch (error) {
                 final Function? log =

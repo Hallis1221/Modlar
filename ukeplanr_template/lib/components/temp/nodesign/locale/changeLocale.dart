@@ -1,9 +1,9 @@
-import 'package:ukeplanr_template/logic/Localization/state/locale.dart';
+import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
 
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:get_it/get_it.dart';
+import 'package:logger/logger.dart';
 
 class ChangeLocale extends StatelessWidget {
   const ChangeLocale({

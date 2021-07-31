@@ -7,9 +7,9 @@ import 'package:ukeplanr_template/start/theme/configureTheme.dart';
 
 configureApp() {
   configureLogger();
+  configureInitialization();
   configureLocalization();
   configureNavigationWatcher();
   configureRoutes();
-  configureInitialization();
   configureThemes();
 }

@@ -26,7 +26,6 @@ class LogSession extends LogOutput {
       log += "$line \n";
       GetIt.instance.get<LogSession>().addLogLineToSession(log);
     }
-    print(GetIt.instance.get<LogsService>().getSession.getSessionLogLines[0]);
     GetIt.instance.get<LogSession>().addLogToSession(log);
   }
 

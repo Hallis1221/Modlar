@@ -1,8 +1,5 @@
 import 'package:ukeplanr_template/components/temp/nodesign/locale/changeLocale.dart';
 import 'package:ukeplanr_template/logic/Localization/app_localizations.dart';
-import 'package:ukeplanr_template/logic/localization/state/locale.dart';
-import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
-import 'package:ukeplanr_template/extensions/list/RawListString.dart';
 
 import 'package:flutter/material.dart';
 

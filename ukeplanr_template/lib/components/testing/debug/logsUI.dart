@@ -18,7 +18,13 @@ class DebugLogsUI extends StatelessWidget {
     return Container(
       color: Colors.transparent,
       child: SelectableText(
-        GetIt.instance.get<LogsService>().getSession.getSessionLogLines.first,
+        GetIt.instance
+            .get<LogsService>()
+            .getSession
+            .getSessionsLogEvents
+            .first
+            .lines
+            .first,
         style: TextStyle(fontSize: 12),
       ),
     );

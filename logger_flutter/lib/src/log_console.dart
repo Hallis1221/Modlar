@@ -32,7 +32,7 @@ class RenderedEvent {
 }
 
 class _LogConsoleState extends State<LogConsole> {
-  OutputCallback _callback;
+  LogOutput? _callback;
 
   ListQueue<RenderedEvent> _renderedBuffer = ListQueue();
   List<RenderedEvent> _filteredBuffer = [];
@@ -40,7 +40,7 @@ class _LogConsoleState extends State<LogConsole> {
   var _scrollController = ScrollController();
   var _filterController = TextEditingController();
 
-  Level _filterLevel = Level.verbose;
+  Level? _filterLevel = Level.verbose;
   double _logFontSize = 14;
 
   var _currentId = 0;
@@ -58,7 +58,7 @@ class _LogConsoleState extends State<LogConsole> {
 
       _renderedBuffer.add(_renderEvent(e));
       _refreshFilter();
-    };
+    } as LogOutput?;
 
     _scrollController.addListener(() {
       if (!_scrollListenerEnabled) return;
@@ -83,7 +83,7 @@ class _LogConsoleState extends State<LogConsole> {
 
   void _refreshFilter() {
     var newFilteredBuffer = _renderedBuffer.where((it) {
-      var logLevelMatches = it.level.index >= _filterLevel.index;
+      var logLevelMatches = it.level.index >= _filterLevel!.index;
       if (!logLevelMatches) {
         return false;
       } else if (_filterController.text.isNotEmpty) {
@@ -261,7 +261,7 @@ class _LogConsoleState extends State<LogConsole> {
                 value: Level.wtf,
               )
             ],
-            onChanged: (value) {
+            onChanged: (Level? value) {
               _filterLevel = value;
               _refreshFilter();
             },
@@ -310,7 +310,7 @@ class LogBar extends StatelessWidget {
   final bool dark;
   final Widget child;
 
-  LogBar({this.dark, this.child});
+  LogBar({required this.dark, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -321,7 +321,7 @@ class LogBar extends StatelessWidget {
           boxShadow: [
             if (!dark)
               BoxShadow(
-                color: Colors.grey[400],
+                color: Colors.grey.withOpacity(400),
                 blurRadius: 3,
               ),
           ],

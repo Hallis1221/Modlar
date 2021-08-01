@@ -7,15 +7,16 @@ class LogSession extends LogOutput {
   // ignore: close_sinks
   BehaviorSubject<List<String>> _sessionLogs = BehaviorSubject.seeded([]);
   // ignore: close_sinks
-  BehaviorSubject<List<String>> _sessionLogLines = BehaviorSubject.seeded([]);
+  BehaviorSubject<List<OutputEvent>> _sessionLogEvents =
+      BehaviorSubject.seeded([]);
 
   List<String> get getSessionLog => _sessionLogs.value;
-  List<String> get getSessionLogLines => _sessionLogLines.value;
+  List<OutputEvent> get getSessionsLogEvents => _sessionLogEvents.value;
 
-  Stream<List<String>> get linesStream$ => _sessionLogLines.stream;
+  Stream<List<OutputEvent>> get eventsStream$ => _sessionLogEvents.stream;
 
   addLogToSession(String log) => _sessionLogs.value.add(log);
-  addLogLineToSession(String logLine) => _sessionLogLines.value.add(logLine);
+  addLogLineToSession(OutputEvent event) => _sessionLogEvents.value.add(event);
 
   @override
   void output(OutputEvent event) {
@@ -24,8 +25,8 @@ class LogSession extends LogOutput {
     for (var line in event.lines) {
       print(line);
       log += "$line \n";
-      GetIt.instance.get<LogSession>().addLogLineToSession(log);
     }
+    GetIt.instance.get<LogSession>().addLogLineToSession(event);
     GetIt.instance.get<LogSession>().addLogToSession(log);
   }
 

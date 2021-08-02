@@ -19,7 +19,7 @@ class PlaceholderWidget extends StatelessWidget {
             AppLocalizations.of(context)!.helloWorld,
           ),
           ChangeLocale(
-            newLocale: Locale('en', 'US'),
+            newLocale: Locale('no', 'NB'),
           ),
         ],
       ),

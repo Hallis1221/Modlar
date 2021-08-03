@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ThemeConfig {
-  final ThemeData _defaultTheme = ThemeData(
+  final ThemeData _orangeTheme = ThemeData(
     backgroundColor: Colors.orange,
   );
 
-  ThemeData get getDefaultTheme => _defaultTheme;
+  late final Map<String, ThemeData> themes = {"orange": _orangeTheme};
+  Map<String, ThemeData> get getAllThemes => themes;
 }

@@ -7,7 +7,5 @@
   },
 
   "pageNotFound": "This isn't the calender you're looking for...",
-  "@pageNotFound": {
-    "description": "The error when getting a 404 page not found error."
-  }
+  "changeBackgroundColor": "Change background color"
 }

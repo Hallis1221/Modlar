@@ -1,6 +1,5 @@
 import 'dart:async';
 
-// ignore: unused_import
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -64,7 +63,6 @@ abstract class AppLocalizations {
   AppLocalizations(String locale)
       : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
-  // ignore: unused_field
   final String localeName;
 
   static AppLocalizations? of(BuildContext context) {
@@ -104,11 +102,17 @@ abstract class AppLocalizations {
   /// **'Hello World!'**
   String get helloWorld;
 
-  /// The error when getting a 404 page not found error.
+  /// No description provided for @pageNotFound.
   ///
   /// In en, this message translates to:
-  /// **'Page not found!'**
+  /// **'This isn\'t the calender you\'re looking for...'**
   String get pageNotFound;
+
+  /// No description provided for @changeBackgroundColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Change background color'**
+  String get changeBackgroundColor;
 }
 
 class _AppLocalizationsDelegate

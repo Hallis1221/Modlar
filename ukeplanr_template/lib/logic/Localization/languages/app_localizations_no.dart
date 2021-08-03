@@ -1,8 +1,4 @@
-// ignore: unused_import
-import 'package:intl/intl.dart' as intl;
 import '../app_localizations.dart';
-
-// ignore_for_file: unnecessary_brace_in_string_interps
 
 /// The translations for Norwegian (`no`).
 class AppLocalizationsNo extends AppLocalizations {
@@ -12,5 +8,8 @@ class AppLocalizationsNo extends AppLocalizations {
   String get helloWorld => 'Hei verden!';
 
   @override
-  String get pageNotFound => 'Denne siden finnes ikke!';
+  String get pageNotFound => 'Dette er ikke kalenderen du ser etter...';
+
+  @override
+  String get changeBackgroundColor => 'Endre bakgrunnsfarge';
 }

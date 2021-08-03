@@ -1,8 +1,4 @@
-// ignore: unused_import
-import 'package:intl/intl.dart' as intl;
 import '../app_localizations.dart';
-
-// ignore_for_file: unnecessary_brace_in_string_interps
 
 /// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
@@ -12,5 +8,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get helloWorld => 'Hello World!';
 
   @override
-  String get pageNotFound => 'Page not found!';
+  String get pageNotFound => 'This isn\'t the calender you\'re looking for...';
+
+  @override
+  String get changeBackgroundColor => 'Change background color';
 }

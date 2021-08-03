@@ -1,4 +1,4 @@
-import 'package:ukeplanr_template/components/errors/404.dart';
+import 'package:ukeplanr_template/UI/components/errors/404.dart';
 import 'package:ukeplanr_template/logic/navigation/routes/routes.dart';
 
 import 'package:flutter/widgets.dart';

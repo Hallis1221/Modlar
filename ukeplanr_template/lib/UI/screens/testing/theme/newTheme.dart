@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:ukeplanr_template/components/theme/colorPicker.dart';
+import 'package:ukeplanr_template/UI/components/theme/colorPicker.dart';
 import 'package:ukeplanr_template/logic/Localization/app_localizations.dart';
 import 'package:ukeplanr_template/logic/theme/custom/customTheme.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';

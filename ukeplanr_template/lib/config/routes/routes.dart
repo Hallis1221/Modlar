@@ -1,8 +1,8 @@
-import 'package:ukeplanr_template/components/testing/debug/logsUI.dart';
-import 'package:ukeplanr_template/components/testing/placeholder/helloWorld.dart';
+import 'package:ukeplanr_template/screens/testing/debug/logsUI.dart';
+import 'package:ukeplanr_template/screens/testing/placeholder/helloWorld.dart';
+import 'package:ukeplanr_template/screens/testing/theme/newTheme.dart';
 
 import 'package:flutter/widgets.dart';
-import 'package:ukeplanr_template/components/testing/theme/newTheme.dart';
 
 class RoutesConfig {
   final Map<String, Widget> _routes = {

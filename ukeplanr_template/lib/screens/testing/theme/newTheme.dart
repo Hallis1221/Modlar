@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:get_it/get_it.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:ukeplanr_template/components/theme/colorPicker.dart';
 import 'package:ukeplanr_template/logic/Localization/app_localizations.dart';
 import 'package:ukeplanr_template/logic/theme/custom/customTheme.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
@@ -51,59 +51,6 @@ class ThemeCreator extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class ThemeColorPicker extends StatelessWidget {
-  const ThemeColorPicker({
-    Key? key,
-    required this.currentColor,
-    required this.title,
-    required this.onChange,
-  }) : super(key: key);
-
-  final Color currentColor;
-  final String title;
-  final Function(Color color) onChange;
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialButton(
-      elevation: 3.0,
-      onPressed: () {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              titlePadding: const EdgeInsets.all(0.0),
-              contentPadding: const EdgeInsets.all(0.0),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25.0),
-              ),
-              content: SingleChildScrollView(
-                child: SlidePicker(
-                  pickerColor: currentColor,
-                  onColorChanged: onChange,
-                  paletteType: PaletteType.rgb,
-                  enableAlpha: false,
-                  displayThumbColor: true,
-                  showLabel: false,
-                  showIndicator: true,
-                  indicatorBorderRadius: const BorderRadius.vertical(
-                    top: const Radius.circular(25.0),
-                  ),
-                ),
-              ),
-            );
-          },
-        );
-      },
-      child: Text(title),
-      color: currentColor,
-      textColor: useWhiteForeground(currentColor)
-          ? const Color(0xffffffff)
-          : const Color(0xff000000),
     );
   }
 }

@@ -17,29 +17,12 @@ class ThemeCreator extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          StreamBuilder<Color>(
-              stream: customTheme.backgroundColor.stream,
-              builder: (BuildContext context, AsyncSnapshot<Color> snapshot) {
-                if (snapshot.connectionState == ConnectionState.active ||
-                    snapshot.connectionState == ConnectionState.done)
-                  return ThemeColorPicker(
-                    // for some reason this thinks snapshot.data gives color?. therefor we reconstruct the color
-                    currentColor: new Color.fromARGB(
-                      snapshot.data!.alpha,
-                      snapshot.data!.red,
-                      snapshot.data!.green,
-                      snapshot.data!.blue,
-                    ),
-                    title: AppLocalizations.of(context)!.changeBackgroundColor,
-                    onChange: (Color color) {
-                      customTheme.backgroundColor.value = color;
-                    },
-                  );
-                else
-                  return Container(
-                    color: Colors.red,
-                  );
-              }),
+          _ColorChanger(
+            color: customTheme.backgroundColor,
+            onChange: (Color color) {
+              customTheme.backgroundColor.value = color;
+            },
+          ),
           MaterialButton(
             child: Text("Done"),
             onPressed: () {
@@ -52,5 +35,41 @@ class ThemeCreator extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class _ColorChanger extends StatelessWidget {
+  const _ColorChanger({
+    Key? key,
+    required this.color,
+    required this.onChange,
+  }) : super(key: key);
+
+  final BehaviorSubject<Color> color;
+  final Function(Color color) onChange;
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<Color>(
+        stream: color.stream,
+        builder: (BuildContext context, AsyncSnapshot<Color> snapshot) {
+          if (snapshot.connectionState == ConnectionState.active ||
+              snapshot.connectionState == ConnectionState.done)
+            return ThemeColorPicker(
+              // for some reason this thinks snapshot.data gives color?. therefor we reconstruct the color
+              currentColor: new Color.fromARGB(
+                snapshot.data!.alpha,
+                snapshot.data!.red,
+                snapshot.data!.green,
+                snapshot.data!.blue,
+              ),
+              title: AppLocalizations.of(context)!.changeBackgroundColor,
+              onChange: onChange,
+            );
+          else
+            return Container(
+              color: Colors.red,
+            );
+        });
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:ukeplanr_template/config/theme/themes.dart';
 
 import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
@@ -21,7 +22,9 @@ void configureThemes() {
     // When registering it we pass the default theme from the theme configuration
     // to the themeservice.
     GetIt.instance.registerSingleton<ThemesService>(
-      ThemesService(themes: ThemeConfig().themes),
+      ThemesService(
+          themes: ThemeConfig().themes,
+          currentTheme: BehaviorSubject.seeded(ThemeConfig().themes["orange"])),
     );
     log!(Level.info, "Configured Themes!");
   } catch (e) {

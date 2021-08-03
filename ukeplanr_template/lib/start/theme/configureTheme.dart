@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:ukeplanr_template/config/theme/themes.dart';
 
 import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
@@ -20,9 +21,7 @@ void configureThemes() {
     // When registering it we pass the default theme from the theme configuration
     // to the themeservice.
     GetIt.instance.registerSingleton<ThemesService>(
-      ThemesService(
-        defaultTheme: ThemeConfig().getDefaultTheme,
-      ),
+      ThemesService(themes: ThemeConfig().themes),
     );
     log!(Level.info, "Configured Themes!");
   } catch (e) {

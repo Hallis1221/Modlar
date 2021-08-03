@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             // storing variables in the buld method. We want to avoid this beacuse build
             // is primarily a painting function, and the code looks *cleaner* when not
             // storing stuff inside of it.
-            theme: GetIt.instance<ThemesService>().getTheme,
+            theme: GetIt.instance<ThemesService>().findTheme("orange"),
 
             initialRoute: "/",
             // Same principle as with the theme. Passes it directly as it isent too

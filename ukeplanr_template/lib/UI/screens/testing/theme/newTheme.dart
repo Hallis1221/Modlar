@@ -12,13 +12,7 @@ class ThemeCreator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CustomTheme customTheme = new CustomTheme(
-      backgroundColor:
-          BehaviorSubject.seeded(Theme.of(context).backgroundColor),
-      buttonColor: BehaviorSubject.seeded(
-        Theme.of(context).buttonColor,
-      ),
-    );
+    CustomTheme customTheme = new CustomTheme(context: context);
     return Container(
       child: Column(
         children: [
@@ -39,13 +33,16 @@ class ThemeCreator extends StatelessWidget {
           MaterialButton(
             child: Text("Done"),
             onPressed: () {
-              GetIt.instance.get<ThemesService>().addTheme(
+              ThemesService themesServiceInstance =
+                  GetIt.instance.get<ThemesService>();
+              themesServiceInstance.addTheme(
                   ThemeData(
                     backgroundColor: customTheme.backgroundColor.value,
                     buttonColor: customTheme.buttonColor.value,
                   ),
                   "custom");
-              GetIt.instance.get<ThemesService>().setCurrentTheme("custom");
+              themesServiceInstance.saveTheme("custom");
+              themesServiceInstance.setCurrentTheme("custom");
             },
           )
         ],
@@ -53,6 +50,8 @@ class ThemeCreator extends StatelessWidget {
     );
   }
 }
+
+// TODO make a text changer for changin textstyles
 
 class _ColorChanger extends StatelessWidget {
   const _ColorChanger({

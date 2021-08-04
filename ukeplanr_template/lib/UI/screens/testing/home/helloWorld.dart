@@ -1,4 +1,4 @@
-import 'package:ukeplanr_template/components/locale/changeLocale.dart';
+import 'package:ukeplanr_template/UI/components/locale/changeLocale.dart';
 import 'package:ukeplanr_template/logic/Localization/app_localizations.dart';
 
 import 'package:flutter/material.dart';

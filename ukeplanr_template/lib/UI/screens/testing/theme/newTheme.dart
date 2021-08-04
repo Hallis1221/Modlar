@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:ukeplanr_template/UI/components/theme/colorPicker.dart';
-import 'package:ukeplanr_template/logic/Localization/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ukeplanr_template/logic/theme/custom/customTheme.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 
@@ -33,7 +33,7 @@ class ThemeCreator extends StatelessWidget {
             onChange: (Color color) {
               customTheme.buttonColor.value = color;
             },
-            title: AppLocalizations.of(context)!.changeBackgroundColor,
+            title: AppLocalizations.of(context)!.changeButtonColor,
           ),
           MaterialButton(
             child: Text("Done"),

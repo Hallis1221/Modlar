@@ -1,6 +1,5 @@
 import 'package:ukeplanr_template/UI/components/locale/changeLocale.dart';
-import 'package:ukeplanr_template/logic/Localization/app_localizations.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class PlaceholderWidget extends StatelessWidget {

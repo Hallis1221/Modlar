@@ -7,5 +7,6 @@
   },
 
   "pageNotFound": "This isn't the calender you're looking for...",
-  "changeBackgroundColor": "Change background color"
+  "changeBackgroundColor": "Change background color",
+  "changeButtonColor": "Change button color"
 }

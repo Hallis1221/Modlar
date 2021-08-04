@@ -1,10 +1,10 @@
-import 'package:ukeplanr_template/logic/Localization/app_localizations.dart';
 import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:ukeplanr_template/logic/navigation/gen/generateRoute.dart';
 import 'package:ukeplanr_template/logic/navigation/observers/navigationWatcher.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:ukeplanr_template/start/configureApp.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 

@@ -41,8 +41,7 @@ class ThemeCreator extends StatelessWidget {
                     buttonColor: customTheme.buttonColor.value,
                   ),
                   "custom");
-              themesServiceInstance.saveTheme("custom");
-              themesServiceInstance.setCurrentTheme("custom");
+              themesServiceInstance.saveAndSetTheme("custom");
             },
           )
         ],

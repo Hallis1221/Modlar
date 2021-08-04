@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
+import 'package:ukeplanr_template/extensions/map/asTheme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ukeplanr_template/config/theme/themes.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 
@@ -8,7 +12,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 
-void configureThemes() {
+Future<void> configureThemes() async {
   // Get the logservice from getit then accessing the log function directly
   // from the logger object. Then we can directly call the log function
   // later in the code without doing logger.log. We can pass a level by doing
@@ -16,23 +20,55 @@ void configureThemes() {
   // ("message") without passing a level.
   final Function? log = GetIt.instance.get<LogsService>().logger!.log;
 
-  try {
-    // Register ThemesService with GetIt.
-    // When registering it we pass the default theme from the theme configuration
-    // to the themeservice.
-    GetIt.instance.registerSingleton<ThemesService>(
-      ThemesService(
-          themes: ThemeConfig().themes,
-          currentTheme: BehaviorSubject.seeded(ThemeConfig().themes["orange"])),
-    );
-    log!(Level.info, "Configured Themes!");
-  } catch (e) {
+  SharedPreferences.getInstance().then((SharedPreferences prefs) {
     try {
-      log!(Level.info,
-          """Failed to configure Themes! The following information was given: $e""");
+      // Register ThemesService with GetIt.
+      // When registering it we pass the default theme from the theme configuration
+      // to the themeservice.
+      GetIt.instance.registerSingleton<ThemesService>(
+        ThemesService(
+            themes: ThemeConfig().themes,
+            currentTheme:
+                BehaviorSubject.seeded(ThemeConfig().themes["orange"]),
+            customThemePrefix: ThemeConfig().customThemePrefix),
+      );
+      log!(Level.info, "Configured Themes!");
     } catch (e) {
-      throw FlutterError(
-          "Failed to configure themes and failed to log the exception! The error was: $e");
+      try {
+        log!(Level.info,
+            """Failed to configure Themes! The following information was given: $e""");
+      } catch (e) {
+        throw FlutterError(
+            "Failed to configure themes and failed to log the exception! The error was: $e");
+      }
     }
-  }
+    try {
+      List<String>? savedThemesNullable = prefs.getStringList("savedThemes");
+      List<String> savedThemes;
+      if (savedThemesNullable != null)
+        savedThemes = savedThemesNullable;
+      else
+        savedThemes = [];
+      for (String savedTheme in savedThemes) {
+        String? themeDataEncoded = prefs.getString(savedTheme);
+        if (themeDataEncoded != null) {
+          Map themeData = jsonDecode(themeDataEncoded);
+          String themeName = savedTheme.replaceAll("customTheme_", "");
+          Color(int.parse("4287679225"));
+          ThemesService themesServiceInstance =
+              GetIt.instance.get<ThemesService>();
+          themesServiceInstance.addTheme(themeData.toTheme(), themeName);
+          themesServiceInstance.setCurrentTheme(themeName, savedTheme);
+          log(Level.info, """
+          Sucsesfully loaded the theme '$themeName' from its save location 
+          at '$savedTheme' with the following data: '$themeData' and converted 
+          it to themedata and set it as the active theme (${themeData.toTheme()}).
+          """);
+        }
+      }
+    } catch (error) {
+      log(Level.error,
+          "Failed to get themes with the following exception: $error");
+    }
+  });
 }

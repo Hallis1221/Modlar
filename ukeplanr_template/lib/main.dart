@@ -10,8 +10,10 @@ import 'package:get_it/get_it.dart';
 
 main() {
   // Call configure app to setup/start all the required services before starting
-  //to paint on the screen. configureApp() is imported from start/configureApp.dart
+  // to paint on the screen. configureApp() is imported from start/configureApp.dart
   configureApp();
+  // Runapp runs the given widget as our main app. The widget referenced here
+  // should contain a root widget (like cupertinoapp, materialapp, etc)
   runApp(MyApp());
 }
 
@@ -20,9 +22,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // In order to change the Locale at run time we needto rebuild the entire
+    // app to use the new locale. Since we use rxdart behaviorsubjects to manage
+    // state, we have to use a stream that keeps track of that stream and rebuilds
+    // the app once the locale has changed.
     return StreamBuilder<Locale?>(
+      // Get LocaleName class and acsess the stream on it.
       stream: GetIt.instance.get<LocaleName>().stream$,
-      builder: (localeContext, AsyncSnapshot<Locale?> localeSnapshot) {
+      // Not naming it context and snapshot beacuse we have two streams. Also
+      // declare type for clarity.
+      builder:
+          (BuildContext localeContext, AsyncSnapshot<Locale?> localeSnapshot) {
         return StreamBuilder<ThemeData?>(
           stream: GetIt.instance.get<ThemesService>().currentTheme.stream,
           builder: (themeContext, themeSnapshot) {

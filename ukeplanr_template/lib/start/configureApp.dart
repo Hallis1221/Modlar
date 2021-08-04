@@ -5,11 +5,11 @@ import 'package:ukeplanr_template/start/navigation/configureNavigation.dart';
 import 'package:ukeplanr_template/start/theme/configureTheme.dart';
 import 'package:ukeplanr_template/start/logs/configerLogger.dart';
 
-configureApp() {
+Future<void> configureApp() async {
   configureLogger();
   configureInitialization();
   configureLocalization();
   configureNavigationWatcher();
   configureRoutes();
-  configureThemes();
+  await configureThemes();
 }

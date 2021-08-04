@@ -8,10 +8,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-main() {
+main() async {
   // Call configure app to setup/start all the required services before starting
   // to paint on the screen. configureApp() is imported from start/configureApp.dart
-  configureApp();
+  await configureApp();
   // Runapp runs the given widget as our main app. The widget referenced here
   // should contain a root widget (like cupertinoapp, materialapp, etc)
   runApp(MyApp());

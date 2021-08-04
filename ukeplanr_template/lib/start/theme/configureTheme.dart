@@ -43,18 +43,25 @@ Future<void> configureThemes() async {
       }
     }
     try {
+      // List of strings that represent themes on shared preferences, can be null
       List<String>? savedThemesNullable = prefs.getStringList("savedThemes");
       List<String> savedThemes;
+      // If savedThemesNullable is not null we can just set savedThemes to that
       if (savedThemesNullable != null)
         savedThemes = savedThemesNullable;
+      // If savedThemesNullable is null we simply set savedthemes to a empty
+      // list so it dosent go trough any loops in the for loop
       else
         savedThemes = [];
       for (String savedTheme in savedThemes) {
+        // Get the json encoded version of the saved themeData
         String? themeDataEncoded = prefs.getString(savedTheme);
         if (themeDataEncoded != null) {
           Map themeData = jsonDecode(themeDataEncoded);
-          String themeName = savedTheme.replaceAll("customTheme_", "");
-          Color(int.parse("4287679225"));
+          // A themename is a savedThemeName just without the prefix.
+          // Therefor we remove the prefix
+          String themeName =
+              savedTheme.replaceAll(ThemeConfig().customThemePrefix, "");
           ThemesService themesServiceInstance =
               GetIt.instance.get<ThemesService>();
           themesServiceInstance.addTheme(themeData.toTheme(), themeName);

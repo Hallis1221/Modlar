@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 // !! Each time a new property is added to custom theme it also have to be added to
-// !! the toMap extension in extensions/themeData/asMap.dart.
+// !! the toMap extension in extensions/themeData/asMap.dart. and extensios/map/asTheme.dart
 class CustomTheme {
   // ignore_for_file: close_sinks
   BuildContext context;

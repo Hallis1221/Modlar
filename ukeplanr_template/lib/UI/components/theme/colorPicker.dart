@@ -47,9 +47,7 @@ class ThemeColorPicker extends StatelessWidget {
       },
       child: Text(title),
       color: currentColor,
-      textColor: useWhiteForeground(currentColor)
-          ? const Color(0xffffffff)
-          : const Color(0xff000000),
+      textColor: useWhiteForeground(currentColor) ? Colors.white : Colors.black,
     );
   }
 }

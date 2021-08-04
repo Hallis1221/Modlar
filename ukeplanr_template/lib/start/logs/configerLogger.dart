@@ -1,6 +1,6 @@
-import 'package:ukeplanr_template/config/logs/logger.dart';
-import 'package:ukeplanr_template/logic/logs/output/logOutput.dart';
 import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
+import 'package:ukeplanr_template/logic/logs/output/logOutput.dart';
+import 'package:ukeplanr_template/config/logs/logger.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';

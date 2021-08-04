@@ -1,5 +1,3 @@
-import 'package:intl/intl_browser.dart';
-import 'package:rxdart/subjects.dart';
 import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
 

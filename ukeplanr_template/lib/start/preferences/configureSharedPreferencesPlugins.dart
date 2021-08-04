@@ -1,5 +1,5 @@
+// import 'package:ukeplanr_template/generated_plugin_registrant.dart';
 import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
-import 'package:ukeplanr_template/generated_plugin_registrant.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';

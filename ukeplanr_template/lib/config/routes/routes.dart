@@ -1,6 +1,6 @@
-import 'package:ukeplanr_template/UI/screens/testing/debug/logsUI.dart';
 import 'package:ukeplanr_template/UI/screens/testing/home/helloWorld.dart';
 import 'package:ukeplanr_template/UI/screens/testing/theme/newTheme.dart';
+import 'package:ukeplanr_template/UI/screens/testing/debug/logsUI.dart';
 
 import 'package:flutter/widgets.dart';
 

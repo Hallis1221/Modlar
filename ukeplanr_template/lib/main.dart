@@ -1,6 +1,6 @@
-import 'package:ukeplanr_template/logic/localization/state/locale.dart';
-import 'package:ukeplanr_template/logic/navigation/gen/generateRoute.dart';
 import 'package:ukeplanr_template/logic/navigation/observers/navigationWatcher.dart';
+import 'package:ukeplanr_template/logic/navigation/gen/generateRoute.dart';
+import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:ukeplanr_template/start/configureApp.dart';
 
@@ -35,7 +35,12 @@ class MyApp extends StatelessWidget {
           (BuildContext localeContext, AsyncSnapshot<Locale?> localeSnapshot) {
         return StreamBuilder<ThemeData?>(
           stream: GetIt.instance.get<ThemesService>().currentTheme.stream,
-          builder: (themeContext, themeSnapshot) {
+          builder: (BuildContext themeContext,
+              AsyncSnapshot<ThemeData?> themeSnapshot) {
+            // The reason we don't do themeSnapshot.connectionStatus nor connectionstatus
+            // on the localesnapshot is beacuse we would have to make a seperate root app
+            // for it, while both snapshots should not be null when reaching this point
+            // of the code.
             return MaterialApp(
               // Get theme from the themes service. ThemesService.getTheme give us
               // whatever theme is compatible with its criterias (which could include

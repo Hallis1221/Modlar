@@ -1,10 +1,11 @@
+import 'package:ukeplanr_template/logic/theme/custom/customTheme.dart';
+import 'package:ukeplanr_template/UI/components/theme/colorPicker.dart';
+import 'package:ukeplanr_template/logic/theme/themes.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:ukeplanr_template/UI/components/theme/colorPicker.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:ukeplanr_template/logic/theme/custom/customTheme.dart';
-import 'package:ukeplanr_template/logic/theme/themes.dart';
 
 class ThemeCreator extends StatelessWidget {
   const ThemeCreator({Key? key}) : super(key: key);

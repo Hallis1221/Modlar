@@ -1,11 +1,10 @@
+import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
+import 'package:ukeplanr_template/config/theme/themes.dart';
+import 'package:ukeplanr_template/logic/theme/themes.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:ukeplanr_template/config/theme/themes.dart';
-
-import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
-import 'package:ukeplanr_template/logic/theme/themes.dart';
-
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 

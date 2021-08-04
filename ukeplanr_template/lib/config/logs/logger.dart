@@ -1,5 +1,4 @@
 import 'package:logger/logger.dart';
-import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
 
 class LogsConfig {
   final LogPrinter _logPrinter = PrettyPrinter(

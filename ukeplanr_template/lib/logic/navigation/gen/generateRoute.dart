@@ -1,10 +1,10 @@
-import 'package:logger/logger.dart';
 import 'package:ukeplanr_template/logic/navigation/observers/navigationWatcher.dart';
 import 'package:ukeplanr_template/logic/navigation/mapping/findWidget.dart';
 import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
 
-import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:logger/logger.dart';
 
 Route generateRoute(RouteSettings settings) {
   final Function? log = GetIt.instance.get<LogsService>().logger!.log;

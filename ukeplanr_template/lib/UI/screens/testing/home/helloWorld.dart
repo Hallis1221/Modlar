@@ -10,18 +10,23 @@ class PlaceholderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).backgroundColor,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SelectableText(
-            AppLocalizations.of(context)!.helloWorld,
+    return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      body: Center(
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SelectableText(
+                AppLocalizations.of(context)!.helloWorld,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              ChangeLocale(
+                newLocale: Locale('no', 'NB'),
+              ),
+            ],
           ),
-          ChangeLocale(
-            newLocale: Locale('no', 'NB'),
-          ),
-        ],
+        ),
       ),
     );
   }

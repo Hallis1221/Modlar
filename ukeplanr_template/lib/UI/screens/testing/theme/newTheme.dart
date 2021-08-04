@@ -12,22 +12,37 @@ class ThemeCreator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CustomTheme customTheme = new CustomTheme(
-        backgroundColor:
-            BehaviorSubject.seeded(Theme.of(context).backgroundColor));
+      backgroundColor:
+          BehaviorSubject.seeded(Theme.of(context).backgroundColor),
+      buttonColor: BehaviorSubject.seeded(
+        Theme.of(context).buttonColor,
+      ),
+    );
     return Container(
       child: Column(
         children: [
           _ColorChanger(
             color: customTheme.backgroundColor,
+            title: AppLocalizations.of(context)!.changeBackgroundColor,
             onChange: (Color color) {
               customTheme.backgroundColor.value = color;
             },
+          ),
+          _ColorChanger(
+            color: customTheme.buttonColor,
+            onChange: (Color color) {
+              customTheme.buttonColor.value = color;
+            },
+            title: AppLocalizations.of(context)!.changeBackgroundColor,
           ),
           MaterialButton(
             child: Text("Done"),
             onPressed: () {
               GetIt.instance.get<ThemesService>().addTheme(
-                  ThemeData(backgroundColor: customTheme.backgroundColor.value),
+                  ThemeData(
+                    backgroundColor: customTheme.backgroundColor.value,
+                    buttonColor: customTheme.buttonColor.value,
+                  ),
                   "custom");
               GetIt.instance.get<ThemesService>().setCurrentTheme("custom");
             },
@@ -43,10 +58,12 @@ class _ColorChanger extends StatelessWidget {
     Key? key,
     required this.color,
     required this.onChange,
+    required this.title,
   }) : super(key: key);
 
   final BehaviorSubject<Color> color;
   final Function(Color color) onChange;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +80,7 @@ class _ColorChanger extends StatelessWidget {
                 snapshot.data!.green,
                 snapshot.data!.blue,
               ),
-              title: AppLocalizations.of(context)!.changeBackgroundColor,
+              title: title,
               onChange: onChange,
             );
           else

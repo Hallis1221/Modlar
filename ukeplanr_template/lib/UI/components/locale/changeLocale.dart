@@ -15,14 +15,14 @@ class ChangeLocale extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: Colors.pink,
+      color: Theme.of(context).buttonColor,
       onPressed: () {
+        final Function? log = GetIt.instance.get<LogsService>().logger!.log;
         try {
           GetIt.instance.get<LocaleName>().changeLocale(
                 newLocale,
               );
         } catch (error) {
-          final Function? log = GetIt.instance.get<LogsService>().logger!.log;
           log!(Level.error, """
               Tried to change the locale but the following error was encountered: $error
               """);

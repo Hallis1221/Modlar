@@ -1,6 +1,10 @@
+import 'package:flutter/services.dart';
+import 'package:ukeplanr_template/logic/theme/custom/customTextTheme.dart';
 import 'package:ukeplanr_template/logic/theme/custom/customTheme.dart';
 import 'package:ukeplanr_template/UI/components/theme/colorPicker.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
+import 'package:ukeplanr_template/extensions/textStyle/setSize.dart';
+import 'package:ukeplanr_template/extensions/customTextTheme/toTextTheme.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -13,44 +17,100 @@ class ThemeCreator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CustomTheme customTheme = new CustomTheme(context: context);
-    return Container(
-      child: Column(
-        children: [
-          _ColorChanger(
-            color: customTheme.backgroundColor,
-            title: AppLocalizations.of(context)!.changeBackgroundColor,
-            onChange: (Color color) {
-              customTheme.backgroundColor.value = color;
-            },
-          ),
-          _ColorChanger(
-            color: customTheme.buttonColor,
-            onChange: (Color color) {
-              customTheme.buttonColor.value = color;
-            },
-            title: AppLocalizations.of(context)!.changeButtonColor,
-          ),
-          MaterialButton(
-            child: Text("Done"),
-            onPressed: () {
-              ThemesService themesServiceInstance =
-                  GetIt.instance.get<ThemesService>();
-              themesServiceInstance.addTheme(
-                  ThemeData(
-                    backgroundColor: customTheme.backgroundColor.value,
-                    buttonColor: customTheme.buttonColor.value,
-                  ),
-                  "custom");
-              themesServiceInstance.saveAndSetTheme("custom");
-            },
-          )
-        ],
+    return Scaffold(
+      body: Container(
+        child: Column(
+          children: [
+            _ColorChanger(
+              color: customTheme.backgroundColor,
+              title: AppLocalizations.of(context)!.changeBackgroundColor,
+              onChange: (Color color) {
+                customTheme.backgroundColor.value = color;
+              },
+            ),
+            _ColorChanger(
+              color: customTheme.buttonColor,
+              onChange: (Color color) {
+                customTheme.buttonColor.value = color;
+              },
+              title: AppLocalizations.of(context)!.changeButtonColor,
+            ),
+            _TextChanger(
+              textTheme: customTheme.textTheme,
+            ),
+            MaterialButton(
+              child: Text("Done"),
+              onPressed: () {
+                print(customTheme.textTheme.value.bodyText1.toString());
+                ThemesService themesServiceInstance =
+                    GetIt.instance.get<ThemesService>();
+                themesServiceInstance.addTheme(
+                    ThemeData(
+                        backgroundColor: customTheme.backgroundColor.value,
+                        buttonColor: customTheme.buttonColor.value,
+                        // !! TODO throws exception
+                        textTheme: new TextTheme(
+                            bodyText1:
+                                customTheme.textTheme.value.bodyText1.value)),
+                    "custom");
+                themesServiceInstance.saveAndSetTheme("custom");
+              },
+            )
+          ],
+        ),
       ),
     );
   }
 }
 
 // TODO make a text changer for changin textstyles
+class _TextChanger extends StatelessWidget {
+  const _TextChanger({
+    Key? key,
+    required this.textTheme,
+  }) : super(key: key);
+  final BehaviorSubject<CustomTextTheme> textTheme;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      width: 100,
+      child: Row(
+        children: [
+          StreamBuilder<TextStyle?>(
+              stream: textTheme.value.bodyText1.stream,
+              builder: (context, snapshot) {
+                return Container(
+                  height: 100,
+                  width: 100,
+                  child: new TextField(
+                    decoration: new InputDecoration(
+                        labelText: "Size", labelStyle: snapshot.data),
+                    keyboardType: TextInputType.number,
+
+                    onChanged: (value) {
+                      textTheme.value.bodyText1.value = textTheme
+                          .value.bodyText1.value
+                          .setSize(int.parse(value));
+                    },
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly,
+                      TextInputFormatter.withFunction((oldValue, newValue) {
+                        if (int.parse(newValue.text) >= 144) {
+                          return oldValue;
+                        } else {
+                          return newValue;
+                        }
+                      })
+                    ], // Only numbers can be entered
+                  ),
+                );
+              }),
+        ],
+      ),
+    );
+  }
+}
 
 class _ColorChanger extends StatelessWidget {
   const _ColorChanger({

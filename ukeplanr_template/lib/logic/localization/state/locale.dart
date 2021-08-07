@@ -10,6 +10,7 @@ class LocaleName {
   // ignore: close_sinks
   BehaviorSubject<Locale?> _localeName = BehaviorSubject.seeded(null);
 
+  String get getLocaleName => _localeName.value.toString();
   Stream<Locale?>? get stream$ => _localeName.stream;
 
   changeLocale(Locale locale) async {

@@ -8,7 +8,9 @@ Widget findWidgetFromRoute({
   @required RouteSettings? settings,
 }) {
   Widget? nullableWidget =
-      GetIt.instance<RoutesService>().getRoutes![settings!.name];
-  Widget widget = nullableWidget != null ? nullableWidget : PageNotFound();
+      GetIt.instance<RoutesService>().getRoutes[settings!.name];
+  Widget widget = nullableWidget != null
+      ? nullableWidget
+      : GetIt.instance<RoutesService>().get404Widget;
   return widget;
 }

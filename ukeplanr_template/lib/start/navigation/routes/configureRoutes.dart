@@ -7,9 +7,12 @@ import 'package:logger/logger.dart';
 
 void configureRoutes() {
   try {
+    RoutesConfig configRef = RoutesConfig();
     GetIt.instance.registerSingleton<RoutesService>(
       RoutesService(
-        routes: RoutesConfig().getRoutes,
+        routesLoggedIn: configRef.getRoutesLoggedIn,
+        routesLoggedOut: configRef.getRoutedLoggedOut,
+        pageNotFoundWidget: configRef.get404,
       ),
     );
     try {

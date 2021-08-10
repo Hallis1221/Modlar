@@ -30,7 +30,8 @@ Future<void> configureThemes() async {
             themes: ThemeConfig().themes,
             currentTheme:
                 BehaviorSubject.seeded(ThemeConfig().themes["orange"]),
-            customThemePrefix: ThemeConfig().customThemePrefix),
+            customThemePrefix: ThemeConfig().customThemePrefix,
+            currentThemeName: 'orange'),
       );
       log!(Level.info, "Configured Themes!");
     } catch (e) {

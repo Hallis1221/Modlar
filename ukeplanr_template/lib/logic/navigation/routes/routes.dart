@@ -13,16 +13,13 @@ class RoutesService {
     else
       status404 = routesLoggedOut["/404"];
     if (status404 != null) {
-      print("returned status404");
       return status404;
     } else {
-      print("returned pnfw");
       return pageNotFoundWidget;
     }
   }
 
   Map<String, Widget> get getRoutes {
-    print(AuthServices().isLoggedIn);
     if (AuthServices().isLoggedIn)
       return routesLoggedIn;
     else

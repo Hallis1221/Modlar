@@ -12,7 +12,6 @@ class PlaceholderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(Localizations.localeOf(context).toString());
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Center(

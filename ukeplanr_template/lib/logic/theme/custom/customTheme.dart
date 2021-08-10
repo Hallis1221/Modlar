@@ -6,16 +6,20 @@ import 'package:ukeplanr_template/logic/theme/custom/customTextTheme.dart';
 // !! the toMap extension in extensions/themeData/asMap.dart. and extensios/map/asTheme.dart
 class CustomTheme {
   // ignore_for_file: close_sinks
-  BuildContext context;
+  ThemeData theme;
+  String themeName;
   late BehaviorSubject<Color> backgroundColor =
-      BehaviorSubject.seeded(Theme.of(context).backgroundColor);
+      BehaviorSubject.seeded(theme.backgroundColor);
   late BehaviorSubject<Color> buttonColor =
-      BehaviorSubject.seeded(Theme.of(context).buttonColor);
+      BehaviorSubject.seeded(theme.buttonColor);
   late BehaviorSubject<CustomTextTheme> textTheme = BehaviorSubject.seeded(
     new CustomTextTheme(
-      textTheme: Theme.of(context).textTheme,
+      textTheme: theme.textTheme,
     ),
   );
 
-  CustomTheme({required this.context});
+  CustomTheme({
+    required this.theme,
+    required this.themeName,
+  });
 }

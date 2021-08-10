@@ -18,11 +18,14 @@ class ThemesService {
 
   final String customThemePrefix;
 
+  String currentThemeName;
+
   setCurrentTheme(String themeName, String saveName) async {
     themeName = makeValidThemeName(themeName);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     Function log = GetIt.instance.get<LogsService>().logger!.log;
     currentTheme.value = this.findTheme(themeName);
+    currentThemeName = themeName;
     await prefs.setString("activeTheme", saveName);
     log(Level.info, "Set active theme to $saveName");
   }
@@ -72,6 +75,7 @@ class ThemesService {
   ThemesService({
     required this.themes,
     required this.currentTheme,
+    required this.currentThemeName,
     required this.customThemePrefix,
   });
 }

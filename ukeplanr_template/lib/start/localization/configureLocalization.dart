@@ -31,7 +31,7 @@ configureLocalization() async {
     try {
       log!(Level.info, "Configured LocaleName!");
     } catch (e) {
-      print(e);
+      print("Failed to configure LocaleName with exception: $e");
     }
   } catch (e) {
     try {

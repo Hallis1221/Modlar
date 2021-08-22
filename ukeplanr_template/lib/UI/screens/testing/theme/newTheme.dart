@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:ukeplanr_template/logic/theme/custom/customTheme.dart';
 import 'package:ukeplanr_template/UI/components/theme/colorPicker.dart';
@@ -16,9 +15,11 @@ class ThemeCreator extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: close_sinks
     BehaviorSubject<CustomTheme> customTheme = BehaviorSubject.seeded(
-        new CustomTheme(
-            theme: Theme.of(context),
-            themeName: GetIt.instance.get<ThemesService>().currentThemeName));
+      new CustomTheme(
+        theme: Theme.of(context),
+        themeName: GetIt.instance.get<ThemesService>().currentThemeName,
+      ),
+    );
     TextEditingController nameController = TextEditingController(
         text: GetIt.instance.get<ThemesService>().currentThemeName);
     return StreamBuilder<CustomTheme>(

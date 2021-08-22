@@ -1,11 +1,11 @@
 import 'package:ukeplanr_template/UI/components/errors/404.dart';
 import 'package:ukeplanr_template/UI/screens/testing/auth/loggedOut.dart';
 import 'package:ukeplanr_template/UI/screens/testing/home/helloWorld.dart';
+import 'package:ukeplanr_template/UI/screens/testing/styles/glassBackgroundTest.dart';
 import 'package:ukeplanr_template/UI/screens/testing/theme/newTheme.dart';
 import 'package:ukeplanr_template/UI/screens/testing/debug/logsUI.dart';
 
 import 'package:flutter/widgets.dart';
-import 'package:ukeplanr_template/logic/auth/authService.dart';
 
 class RoutesConfig {
   final Map<String, Widget> _routesLoggedIn = {
@@ -13,6 +13,7 @@ class RoutesConfig {
     "/session": DebugLogsUI(),
     "/theme": ThemeCreator(),
     "/404": PageNotFound(),
+    "/glass": GlassBackgroundPage(),
   };
   final Map<String, Widget> _routesLoggedOut = {
     "/": LoggedOut(),

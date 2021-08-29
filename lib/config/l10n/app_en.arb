@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "helloWorld": "Hello World!",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "pageNotFound": "This isn't the calender you're looking for...",
+  "changeBackgroundColor": "Change background color",
+  "changeButtonColor": "Change button color",
+  "done": "Done"
+}

@@ -6,6 +6,7 @@ class GlassBackground extends StatelessWidget {
   const GlassBackground({
     Key? key,
     required this.backgroundChild,
+    this.blur = 0.1,
     this.child,
     this.height,
     this.width,
@@ -13,6 +14,7 @@ class GlassBackground extends StatelessWidget {
   final Widget? child;
   final double? height;
   final double? width;
+  final double blur;
   final Widget backgroundChild;
 
   @override
@@ -25,8 +27,8 @@ class GlassBackground extends StatelessWidget {
             child: ClipRect(
               child: BackdropFilter(
                 filter: ImageFilter.blur(
-                  sigmaX: 20.0,
-                  sigmaY: 20.0,
+                  sigmaX: this.blur,
+                  sigmaY: this.blur,
                 ),
                 child: Container(
                   height: height,

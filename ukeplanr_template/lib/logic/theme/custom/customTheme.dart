@@ -12,6 +12,8 @@ class CustomTheme {
       BehaviorSubject.seeded(theme.backgroundColor);
   late BehaviorSubject<Color> buttonColor =
       BehaviorSubject.seeded(theme.buttonColor);
+  late BehaviorSubject<Color> primaryColor =
+      BehaviorSubject.seeded(theme.primaryColor);
   late BehaviorSubject<CustomTextTheme> textTheme = BehaviorSubject.seeded(
     new CustomTextTheme(
       textTheme: theme.textTheme,

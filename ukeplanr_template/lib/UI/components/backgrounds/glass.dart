@@ -6,12 +6,12 @@ class GlassBackground extends StatelessWidget {
   const GlassBackground({
     Key? key,
     required this.backgroundChild,
+    required this.child,
     this.blur = 0.1,
-    this.child,
     this.height,
     this.width,
   }) : super(key: key);
-  final Widget? child;
+  final Widget child;
   final double? height;
   final double? width;
   final double blur;
@@ -38,11 +38,11 @@ class GlassBackground extends StatelessWidget {
                       0.5,
                     ),
                   ),
-                  child: child,
                 ),
               ),
             ),
-          )
+          ),
+          child
         ],
       ),
     );

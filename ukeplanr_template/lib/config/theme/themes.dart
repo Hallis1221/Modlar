@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 
+// when adding stuff here it will be overwritten by theme changers
+// such as the one in UI/screens/testing/theme/newTheme.dart
+// to avoid this, carry over the values there.
+
 class ThemeConfig {
   final ThemeData _orangeTheme = ThemeData(
     backgroundColor: Colors.orange,
-    textTheme: TextTheme(),
+    fontFamily: "JakartaSans",
+    textTheme: TextTheme(
+        bodyText1: TextStyle(
+      fontFamily: "JakartaSans",
+    )),
   );
 
   // All the pre made themes and their name

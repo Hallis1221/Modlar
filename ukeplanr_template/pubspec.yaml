@@ -47,35 +47,35 @@ flutter:
   fonts:
     - family: JakartaSans
       fonts:
-        - asset: assets/fonts/PlusJakartaSans-Bold.ttf
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-Bold.ttf
           weight: 700
-        - asset: assets/fonts/PlusJakartaSans-BoldItalic.ttf
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-BoldItalic.ttf
           weight: 700
           style: italic
-        - asset: assets/fonts/PlusJakartaSans-ExtraBold.ttf
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-ExtraBold.ttf
           weight: 800
-        - asset: assets/fonts/PlusJakartaSans-ExtraBoldItalic.ttf
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-ExtraBoldItalic.ttf
           weight: 800
           style: italic
-        - asset: assets/fonts/PlusJakartaSans-ExtraLight.ttf
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-ExtraLight.ttf
           weight: 100
-        - asset: assets/fonts/PlusJakartaSans-ExtraLightItalic.ttf
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-ExtraLightItalic.ttf
           weight: 100
           style: italic
-        - asset: assets/fonts/PlusJakartaSans-Italic.ttf
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-Italic.ttf
           weight: 400
           style: italic
-        - asset: assets/fonts/PlusJakartaSans-Light.ttf
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-Light.ttf
           weight: 200
-        - asset: assets/fonts/PlusJakartaSans-LightItalic.ttf
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-LightItalic.ttf
           weight: 200
           style: italic
-        - asset: assets/fonts/PlusJakartaSans-Medium.ttf
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-Medium.ttf
           weight: 300
-        - asset: assets/fonts/PlusJakartaSans-MediumItalic.ttf
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-MediumItalic.ttf
           weight: 300
           style: italic
-        - asset: assets/fonts/PlusJakartaSans-Regular.ttf
+        - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-Regular.ttf
           weight: 400
   #
   # For details regarding fonts from package dependencies,

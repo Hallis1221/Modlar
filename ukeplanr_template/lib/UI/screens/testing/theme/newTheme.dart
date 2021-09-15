@@ -80,11 +80,14 @@ class ThemeCreator extends StatelessWidget {
 
                             themesServiceInstance.addTheme(
                                 ThemeData(
-                                  backgroundColor:
-                                      snapshot.data!.backgroundColor.value,
-                                  buttonColor: snapshot.data!.buttonColor.value,
-                                  // !! TODO throws exception
-                                ),
+                                    backgroundColor:
+                                        snapshot.data!.backgroundColor.value,
+                                    buttonColor:
+                                        snapshot.data!.buttonColor.value,
+                                    textTheme: themesServiceInstance
+                                        .currentTheme.value!.textTheme
+                                    // !! TODO throws exception
+                                    ),
                                 nameController.text);
                             themesServiceInstance
                                 .saveAndSetTheme(nameController.text);

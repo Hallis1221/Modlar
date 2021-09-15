@@ -15,7 +15,7 @@ class GlassedColor extends StatelessWidget {
 
   final double blur;
   final Widget? child;
-  final List<OffCenterCircle> colors;
+  final List<Widget> colors;
   final double opacity;
 
   @override

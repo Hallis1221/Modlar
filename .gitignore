@@ -27,3 +27,4 @@ ios/Flutter/flutter_export_environment.sh
 ios/Flutter/Generated.xcconfig
 ios/Runner/GeneratedPluginRegistrant.h
 ios/Runner/GeneratedPluginRegistrant.m
+.metadata

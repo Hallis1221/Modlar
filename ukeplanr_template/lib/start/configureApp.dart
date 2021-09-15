@@ -1,3 +1,4 @@
+import 'package:ukeplanr_template/start/animation/configureAnimation.dart';
 import 'package:ukeplanr_template/start/localization/configureLocalization.dart';
 import 'package:ukeplanr_template/start/navigation/routes/configureRoutes.dart';
 import 'package:ukeplanr_template/start/widgets/configureInitialization.dart';
@@ -11,5 +12,6 @@ Future<void> configureApp() async {
   configureLocalization();
   configureNavigationWatcher();
   configureRoutes();
+  configureAnimation();
   await configureThemes();
 }

@@ -9,9 +9,11 @@ class ThemeConfig {
     backgroundColor: Colors.orange,
     fontFamily: "JakartaSans",
     textTheme: TextTheme(
-        bodyText1: TextStyle(
-      fontFamily: "JakartaSans",
-    )),
+      bodyText1: TextStyle(
+        fontFamily: "JakartaSans",
+        fontWeight: FontWeight.w400,
+      ),
+    ),
   );
 
   // All the pre made themes and their name

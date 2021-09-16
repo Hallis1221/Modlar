@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class ThemeConfig {
   final ThemeData _orangeTheme = ThemeData(
     backgroundColor: Colors.orange,
+    accentColor: Colors.white,
     fontFamily: "JakartaSans",
     textTheme: TextTheme(
       bodyText1: TextStyle(

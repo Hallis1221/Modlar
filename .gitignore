@@ -30,3 +30,4 @@ ios/Runner/GeneratedPluginRegistrant.m
 .metadata
 ukeplanr_template/windows/flutter/generated_plugin_registrant.cc
 ukeplanr_template/windows/flutter/generated_plugin_registrant.h
+ukeplanr_template/windows/flutter/generated_plugins.cmake

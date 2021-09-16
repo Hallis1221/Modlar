@@ -22,23 +22,24 @@ class GlassBackgroundPage extends StatelessWidget {
           StreamBuilder<num>(
               stream: GetIt.instance.get<BackgroundColorAnimation>().stream$,
               builder: (context, snapshot) {
-                if (!snapshot.hasData || snapshot.data == null)
+                if (!snapshot.hasData || snapshot.data == null) {
                   return OffCenterCircle(
-                    color: Colors.blue,
+                    color: Colors.orange,
                     alignment: Alignment(-1.5, 1.5),
                   );
-                num thing = -1;
+                }
+                num thing = 1;
                 Color clr = Colors.red;
                 if (snapshot.requireData >= 10) {
-                  thing = 1;
+                  thing = -1 * thing;
                   clr = Colors.black;
                 }
-                print(thing);
-                return AnimatedContainer(
-                  duration: const Duration(seconds: 20),
+                return Container(
                   child: OffCenterCircle(
-                    color: clr,
-                    alignment: Alignment(1.5 * thing, 1.5),
+                    duration: Duration(seconds: 5),
+                    color:
+                        snapshot.requireData >= 1 ? Colors.black : Colors.red,
+                    alignment: Alignment(-1.5 * thing, 1.5),
                   ),
                 );
               }),

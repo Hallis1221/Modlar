@@ -14,7 +14,6 @@ class ThemeCreator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: close_sinks
     BehaviorSubject<CustomTheme> customTheme = BehaviorSubject.seeded(
         new CustomTheme(
             theme: Theme.of(context),

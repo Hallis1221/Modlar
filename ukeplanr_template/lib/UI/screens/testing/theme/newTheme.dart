@@ -62,8 +62,8 @@ class ThemeCreator extends StatelessWidget {
                           onChange: (Color color) {
                             customTheme.value.primaryColor.value = color;
                           },
-                          title: AppLocalizations.of(context)!
-                              .changeBackgroundColor,
+                          title:
+                              AppLocalizations.of(context)!.changePrimaryColor,
                         ),
                         MaterialButton(
                           child: Text(

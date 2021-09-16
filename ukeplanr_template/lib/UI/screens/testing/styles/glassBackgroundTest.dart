@@ -15,7 +15,7 @@ class GlassBackgroundPage extends StatelessWidget {
           child: GlassedColor(
         child: MaterialButton(
             onPressed: () {
-              GetIt.instance.get<BackgroundColorAnimation>().setVarOne(15);
+              GetIt.instance.get<BackgroundColorAnimation>().setVarOne(1);
             },
             child: ClassCard()),
         colors: [
@@ -28,18 +28,13 @@ class GlassBackgroundPage extends StatelessWidget {
                     alignment: Alignment(-1.5, 1.5),
                   );
                 }
-                num thing = 1;
-                Color clr = Colors.red;
-                if (snapshot.requireData >= 10) {
-                  thing = -1 * thing;
-                  clr = Colors.black;
-                }
+
                 return Container(
                   child: OffCenterCircle(
                     duration: Duration(seconds: 5),
                     color:
                         snapshot.requireData >= 1 ? Colors.black : Colors.red,
-                    alignment: Alignment(-1.5 * thing, 1.5),
+                    alignment: Alignment(-1.5 * snapshot.requireData, 1.5),
                   ),
                 );
               }),

@@ -1,6 +1,6 @@
 # ukeplanr_ukeplanr_template
 
-A new Flutter project.
+You might need to use fvm flutter run as the project does not work 100% on flutter version 2.5
 
 ## Getting Started
 

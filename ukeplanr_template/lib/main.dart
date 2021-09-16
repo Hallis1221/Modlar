@@ -56,6 +56,8 @@ class MyApp extends StatelessWidget {
           // long nor complicated
           locale: localeSnapshot.data,
           onGenerateRoute: (settings) => generateRoute(settings),
+          // we use a custom one
+          debugShowCheckedModeBanner: false,
         ),
       ),
     );

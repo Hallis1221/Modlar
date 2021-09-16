@@ -1,8 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:ukeplanr_template/UI/components/backgrounds/glass.dart';
-import 'package:ukeplanr_template/UI/components/off-center/offCenterCircle.dart';
 
 class GlassedColor extends StatelessWidget {
   const GlassedColor({

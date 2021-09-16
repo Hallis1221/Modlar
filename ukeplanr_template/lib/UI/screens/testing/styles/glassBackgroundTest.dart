@@ -43,7 +43,7 @@ class GlassBackgroundPage extends StatelessWidget {
                 );
               }),
           OffCenterCircle(
-            color: Colors.blue,
+            color: Theme.of(context).primaryColor,
             alignment: Alignment(1, -1.5),
           )
         ],

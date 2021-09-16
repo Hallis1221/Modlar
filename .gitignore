@@ -28,3 +28,5 @@ ios/Flutter/Generated.xcconfig
 ios/Runner/GeneratedPluginRegistrant.h
 ios/Runner/GeneratedPluginRegistrant.m
 .metadata
+ukeplanr_template/windows/flutter/generated_plugin_registrant.cc
+ukeplanr_template/windows/flutter/generated_plugin_registrant.h

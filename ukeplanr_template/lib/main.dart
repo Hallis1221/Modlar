@@ -31,29 +31,28 @@ class MyApp extends StatelessWidget {
       stream: GetIt.instance.get<LocaleName>().stream$,
       // Not naming it context and snapshot beacuse we have two streams. Also
       // declare type for clarity.
-      builder:
-          (BuildContext localeContext, AsyncSnapshot<Locale?> localeSnapshot) {
+      builder: (_, AsyncSnapshot<Locale?> localeSnapshot) {
         return StreamBuilder<ThemeData?>(
           stream: GetIt.instance.get<ThemesService>().currentTheme.stream,
-          builder: (BuildContext themeContext,
-              AsyncSnapshot<ThemeData?> themeSnapshot) {
+          builder: (_, AsyncSnapshot<ThemeData?> themeSnapshot) {
             // The reason we don't do themeSnapshot.connectionStatus nor connectionstatus
             // on the localesnapshot is beacuse we would have to make a seperate root app
             // for it, while both snapshots should not be null when reaching this point
-            // of the code.
+            // of the code. It might be better to just return an error at that point as
+            // null should never be returned as a value form the sync functions. The build context(s)
+            // are written as _ instead of a name like cotext beacuse we do not need to use it
+
             return MaterialApp(
               // Get theme from the themes service. ThemesService.getTheme give us
               // whatever theme is compatible with its criterias (which could include
               // stuff like system preference, settings, etc). Calls it directly
               // in the argument to avoid having logic code in the build method/avoid
-              // storing variables in the buld method. We want to avoid this beacuse build
+              // storing variables in the build method. We want to avoid this beacuse build
               // is primarily a painting function, and the code looks *cleaner* when not
               // storing stuff inside of it.
               theme: themeSnapshot.data,
 
               initialRoute: "/",
-              // Same principle as with the theme. Passes it directly as it isent too
-              // long nor complicated.
               navigatorObservers: [
                 GetIt.instance<NavigationWatcher>(),
               ],
@@ -62,7 +61,8 @@ class MyApp extends StatelessWidget {
                 Locale('en', ''),
                 Locale('no', 'NB'),
               ],
-
+              // Same principle as with the theme. Passes it directly as it isent too
+              // long nor complicated
               locale: localeSnapshot.data,
               onGenerateRoute: (settings) => generateRoute(settings),
             );

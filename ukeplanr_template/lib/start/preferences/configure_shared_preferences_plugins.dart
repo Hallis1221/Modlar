@@ -1,20 +1,13 @@
 // import 'package:ukeplanr_template/generated_plugin_registrant.dart';
-import 'package:ukeplanr_template/config/dev/dev.dart';
-import 'package:ukeplanr_template/logic/dev/mode.dart';
-import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
+import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 
-void configureRunMode() {
+void configureNavigationWatcher() {
   try {
-    GetIt.instance.registerSingleton<RunMode>(
-      RunMode(
-        showBanner: (RunModeConfig().runMode == "") ? false : true,
-        runMode: RunModeConfig().runMode,
-      ),
-    );
+    // registerPlugins():
     try {
       final Function? log = GetIt.instance.get<LogsService>().logger!.log;
       log!(Level.info, "Configured shared preference plugins!");

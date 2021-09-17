@@ -4,7 +4,7 @@
 //Please add a font asset for the missing characters.
 //See: https://flutter.dev/docs/cookbook/design/fonts
 
-import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
+import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';

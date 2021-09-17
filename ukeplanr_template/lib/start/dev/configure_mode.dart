@@ -1,22 +1,22 @@
 // import 'package:ukeplanr_template/generated_plugin_registrant.dart';
-import 'package:ukeplanr_template/logic/animation/background.dart';
-import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
+import 'package:ukeplanr_template/config/dev/dev.dart';
+import 'package:ukeplanr_template/logic/dev/mode.dart';
+import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 
-void configureAnimation() {
+void configureRunMode() {
   try {
-    GetIt.instance.registerSingleton<BackgroundColorAnimation>(
-      BackgroundColorAnimation(),
+    GetIt.instance.registerSingleton<RunMode>(
+      RunMode(
+        showBanner: (RunModeConfig().runMode == "") ? false : true,
+        runMode: RunModeConfig().runMode,
+      ),
     );
-    try {
-      final Function? log = GetIt.instance.get<LogsService>().logger!.log;
-      log!(Level.info, "Configured shared preference plugins!");
-    } catch (e) {
-      print(e);
-    }
+    final Function? log = GetIt.instance.get<LogsService>().logger!.log;
+    log!(Level.info, "Configured shared preference plugins!");
   } catch (e) {
     try {
       final Function? log = GetIt.instance.get<LogsService>().logger!.log;

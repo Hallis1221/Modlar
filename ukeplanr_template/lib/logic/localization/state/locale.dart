@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
+import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
 
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -8,12 +8,12 @@ import 'package:rxdart/rxdart.dart';
 
 class LocaleName {
   // ignore: close_sinks
-  BehaviorSubject<Locale?> _localeName = BehaviorSubject.seeded(null);
+  final BehaviorSubject<Locale?> _localeName = BehaviorSubject.seeded(null);
 
   String get getLocaleName => _localeName.value.toString();
   Stream<Locale?>? get stream$ => _localeName.stream;
 
-  changeLocale(Locale locale) async {
+  void changeLocale(Locale locale) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final Function? _log = GetIt.instance.get<LogsService>().logger!.log;
 

@@ -6,7 +6,7 @@ class NavigationWatcher extends NavigatorObserver {
   @override
   void didReplace({Route? newRoute, Route? oldRoute}) {}
 
-  List<Map<String?, RouteSettings>> _routeHistory = [];
+  final List<Map<String?, RouteSettings>> _routeHistory = [];
 
   List<Map<String?, RouteSettings>> get getRouteHistory => _routeHistory;
   void registerRoute(RouteSettings settings) =>

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:ukeplanr_template/UI/components/backgrounds/glassedColor.dart';
+import 'package:ukeplanr_template/UI/components/backgrounds/glassed_color.dart';
 import 'package:ukeplanr_template/UI/components/forground/card.dart';
-import 'package:ukeplanr_template/UI/components/off-center/offCenterCircle.dart';
+import 'package:ukeplanr_template/UI/components/off-center/off_center_circle.dart';
 import 'package:ukeplanr_template/logic/animation/background.dart';
 
 class GlassBackgroundPage extends StatelessWidget {
@@ -15,7 +15,14 @@ class GlassBackgroundPage extends StatelessWidget {
           child: GlassedColor(
         child: MaterialButton(
             onPressed: () {
-              GetIt.instance.get<BackgroundColorAnimation>().setVarOne(1);
+              BackgroundColorAnimation backgroundColorAnimationInstance =
+                  GetIt.instance.get<BackgroundColorAnimation>();
+              if (backgroundColorAnimationInstance.getVarOne == 0) {
+                backgroundColorAnimationInstance.setVarOne(1);
+              } else {
+                backgroundColorAnimationInstance.setVarOne(0);
+              }
+              print(backgroundColorAnimationInstance.getVarOne);
             },
             child: ClassCard()),
         colors: [

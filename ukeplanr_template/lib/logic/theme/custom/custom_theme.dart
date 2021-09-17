@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:ukeplanr_template/logic/theme/custom/customTextTheme.dart';
+import 'package:ukeplanr_template/logic/theme/custom/custom_text_theme.dart';
 
 // !! Each time a new property is added to custom theme it also have to be added to
 // !! the toMap extension in extensions/themeData/asMap.dart. and extensios/map/asTheme.dart
@@ -15,7 +15,7 @@ class CustomTheme {
   late BehaviorSubject<Color> primaryColor =
       BehaviorSubject.seeded(theme.primaryColor);
   late BehaviorSubject<CustomTextTheme> textTheme = BehaviorSubject.seeded(
-    new CustomTextTheme(
+    CustomTextTheme(
       textTheme: theme.textTheme,
     ),
   );

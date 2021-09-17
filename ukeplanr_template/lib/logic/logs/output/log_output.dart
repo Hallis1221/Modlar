@@ -1,13 +1,14 @@
+// ignore_for_file: avoid_print
+
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:rxdart/subjects.dart';
-import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
 
 class LogSession extends LogOutput {
   // ignore: close_sinks
-  BehaviorSubject<List<String>> _sessionLogs = BehaviorSubject.seeded([]);
+  final BehaviorSubject<List<String>> _sessionLogs = BehaviorSubject.seeded([]);
   // ignore: close_sinks
-  BehaviorSubject<List<OutputEvent>> _sessionLogEvents =
+  final BehaviorSubject<List<OutputEvent>> _sessionLogEvents =
       BehaviorSubject.seeded([]);
 
   List<String> get getSessionLog => _sessionLogs.value;
@@ -15,8 +16,9 @@ class LogSession extends LogOutput {
 
   Stream<List<OutputEvent>> get eventsStream$ => _sessionLogEvents.stream;
 
-  addLogToSession(String log) => _sessionLogs.value.add(log);
-  addLogLineToSession(OutputEvent event) => _sessionLogEvents.value.add(event);
+  void addLogToSession(String log) => _sessionLogs.value.add(log);
+  void addLogLineToSession(OutputEvent event) =>
+      _sessionLogEvents.value.add(event);
 
   @override
   void output(OutputEvent event) {

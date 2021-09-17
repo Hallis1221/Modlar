@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ukeplanr_template/logic/localization/state/locale.dart';
-import 'package:ukeplanr_template/logic/logs/printer/logService.dart';
+import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/foundation.dart';

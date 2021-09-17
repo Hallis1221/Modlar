@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class RunModeBanner extends StatelessWidget {
   const RunModeBanner(
-    this.mode,
-  );
+    this.mode, {
+    Key? key,
+  }) : super(key: key);
 
   final String mode;
 
@@ -12,12 +13,21 @@ class RunModeBanner extends StatelessWidget {
     return Align(
       alignment: Alignment.topRight,
       child: Container(
-        padding: EdgeInsets.only(top: 55, right: 50),
+        padding: const EdgeInsets.only(top: 55, right: 50),
         child: Banner(
-          message: this.mode,
+          message: mode,
           location: BannerLocation.bottomStart,
         ),
       ),
     );
+  }
+}
+
+class Whatever extends StatelessWidget {
+  const Whatever({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

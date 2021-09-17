@@ -1,4 +1,4 @@
-import 'package:ukeplanr_template/UI/components/dev/runModeIndicator.dart';
+import 'package:ukeplanr_template/UI/components/dev/run_mode_indicator.dart';
 import 'package:ukeplanr_template/logic/dev/mode.dart';
 import 'package:ukeplanr_template/logic/navigation/routes/routes.dart';
 

@@ -37,7 +37,7 @@ class ThemeColorPicker extends StatelessWidget {
                   showLabel: false,
                   showIndicator: true,
                   indicatorBorderRadius: const BorderRadius.vertical(
-                    top: const Radius.circular(25.0),
+                    top: Radius.circular(25.0),
                   ),
                 ),
               ),

@@ -1,4 +1,4 @@
-import 'package:ukeplanr_template/UI/components/errors/404.dart';
+import 'package:ukeplanr_template/UI/components/errors/page_not_found.dart';
 import 'package:ukeplanr_template/UI/screens/testing/auth/logged_out.dart';
 import 'package:ukeplanr_template/UI/screens/testing/home/hello_world.dart';
 import 'package:ukeplanr_template/UI/screens/testing/styles/glass_background_test.dart';

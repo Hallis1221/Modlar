@@ -11,8 +11,7 @@ class GlassBackgroundPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          child: GlassedColor(
+      body: GlassedColor(
         child: MaterialButton(
             onPressed: () {
               BackgroundColorAnimation backgroundColorAnimationInstance =
@@ -22,35 +21,33 @@ class GlassBackgroundPage extends StatelessWidget {
               } else {
                 backgroundColorAnimationInstance.setVarOne(0);
               }
+              // ignore: avoid_print
               print(backgroundColorAnimationInstance.getVarOne);
             },
-            child: ClassCard()),
+            child: const ClassCard()),
         colors: [
           StreamBuilder<num>(
               stream: GetIt.instance.get<BackgroundColorAnimation>().stream$,
               builder: (context, snapshot) {
                 if (!snapshot.hasData || snapshot.data == null) {
-                  return OffCenterCircle(
+                  return const OffCenterCircle(
                     color: Colors.orange,
                     alignment: Alignment(-1.5, 1.5),
                   );
                 }
 
-                return Container(
-                  child: OffCenterCircle(
-                    duration: Duration(seconds: 5),
-                    color:
-                        snapshot.requireData >= 1 ? Colors.black : Colors.red,
-                    alignment: Alignment(-1.5 * snapshot.requireData, 1.5),
-                  ),
+                return OffCenterCircle(
+                  duration: const Duration(seconds: 5),
+                  color: snapshot.requireData >= 1 ? Colors.black : Colors.red,
+                  alignment: Alignment(-1.5 * snapshot.requireData, 1.5),
                 );
               }),
           OffCenterCircle(
             color: Theme.of(context).primaryColor,
-            alignment: Alignment(1, -1.5),
+            alignment: const Alignment(1, -1.5),
           )
         ],
-      )),
+      ),
     );
   }
 }

@@ -6,6 +6,8 @@ import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 
 void configureRoutes() {
+  final Function? log = GetIt.instance.get<LogsService>().logger!.log;
+
   try {
     RoutesConfig configRef = RoutesConfig();
     GetIt.instance.registerSingleton<RoutesService>(
@@ -15,16 +17,10 @@ void configureRoutes() {
         pageNotFoundWidget: configRef.get404,
       ),
     );
-    try {
-      final Function? log = GetIt.instance.get<LogsService>().logger!.log;
-      log!(Level.info, "Configured Routes!");
-    } catch (e) {}
+    log!(Level.info, "Configured Routes!");
   } catch (e) {
-    try {
-      final Function? log = GetIt.instance.get<LogsService>().logger!.log;
-      log!(Level.error, """
+    log!(Level.error, """
           Failed to configure Routes! The following information was given: $e
           """);
-    } catch (e) {}
   }
 }

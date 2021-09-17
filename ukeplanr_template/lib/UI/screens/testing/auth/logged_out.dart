@@ -5,11 +5,9 @@ class LoggedOut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Text(
-          "You are not logged in",
-        ),
+    return const Scaffold(
+      body: Text(
+        "You are not logged in",
       ),
     );
   }

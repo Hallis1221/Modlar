@@ -8,7 +8,7 @@ class GlassedColor extends StatelessWidget {
     this.child,
     this.colors = const [],
     this.opacity = 0.5,
-  });
+  }) : super(key: key);
 
   final double blur;
   final Widget? child;
@@ -18,19 +18,19 @@ class GlassedColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlassBackground(
-      blur: this.blur,
+      blur: blur,
       child: Container(
-        child: this.child,
+        child: child,
       ),
       backgroundChild: Center(
         child: Container(
-          decoration: new BoxDecoration(
+          decoration: BoxDecoration(
             color: Colors.grey.shade200.withOpacity(
-              this.opacity,
+              opacity,
             ),
           ),
           child: Stack(
-            children: this.colors,
+            children: colors,
           ),
         ),
       ),

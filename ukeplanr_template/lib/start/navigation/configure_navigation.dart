@@ -10,10 +10,9 @@ void configureNavigationWatcher() {
     GetIt.instance.registerSingleton<NavigationWatcher>(
       NavigationWatcher(),
     );
-    try {
-      final Function? log = GetIt.instance.get<LogsService>().logger!.log;
-      log!(Level.info, "Configured Navigation Watcher!");
-    } catch (e) {}
+
+    final Function? log = GetIt.instance.get<LogsService>().logger!.log;
+    log!(Level.info, "Configured Navigation Watcher!");
   } catch (e) {
     try {
       final Function? log = GetIt.instance.get<LogsService>().logger!.log;

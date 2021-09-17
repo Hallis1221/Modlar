@@ -6,15 +6,14 @@ import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 
 void configureNavigationWatcher() {
+  final Function? log = GetIt.instance.get<LogsService>().logger!.log;
+
   try {
     // registerPlugins():
-    try {
-      final Function? log = GetIt.instance.get<LogsService>().logger!.log;
-      log!(Level.info, "Configured shared preference plugins!");
-    } catch (e) {}
+
+    log!(Level.info, "Configured shared preference plugins!");
   } catch (e) {
     try {
-      final Function? log = GetIt.instance.get<LogsService>().logger!.log;
       log!(Level.error, """
           Failed to configure shared preference plugins! The following information was given: $e
           """);

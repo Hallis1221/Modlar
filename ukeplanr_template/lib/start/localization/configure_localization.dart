@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 
-configureLocalization() async {
+void configureLocalization() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   final Function? log = GetIt.instance.get<LogsService>().logger!.log;
 
@@ -31,6 +31,7 @@ configureLocalization() async {
     try {
       log!(Level.info, "Configured LocaleName!");
     } catch (e) {
+      // ignore: avoid_print
       print("Failed to configure LocaleName with exception: $e");
     }
   } catch (e) {

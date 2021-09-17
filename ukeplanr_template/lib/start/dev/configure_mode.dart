@@ -11,7 +11,10 @@ void configureRunMode() {
   try {
     GetIt.instance.registerSingleton<RunMode>(
       RunMode(
-        showBanner: (RunModeConfig().runMode == "") ? false : true,
+        showBanner:
+            (RunModeConfig().runMode == "" || !RunModeConfig().showBanner)
+                ? false
+                : true,
         runMode: RunModeConfig().runMode,
       ),
     );

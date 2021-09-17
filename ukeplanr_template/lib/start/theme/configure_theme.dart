@@ -48,12 +48,11 @@ Future<void> configureThemes() async {
       List<String>? savedThemesNullable = prefs.getStringList("savedThemes");
       List<String> savedThemes;
       // If savedThemesNullable is not null we can just set savedThemes to that
-      if (savedThemesNullable != null)
+      if (savedThemesNullable != null) {
         savedThemes = savedThemesNullable;
-      // If savedThemesNullable is null we simply set savedthemes to a empty
-      // list so it dosent go trough any loops in the for loop
-      else
+      } else {
         savedThemes = [];
+      }
       for (String savedTheme in savedThemes) {
         // Get the json encoded version of the saved themeData
         String? themeDataEncoded = prefs.getString(savedTheme);

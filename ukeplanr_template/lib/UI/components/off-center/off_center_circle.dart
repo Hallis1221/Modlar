@@ -16,16 +16,16 @@ class OffCenterCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedAlign(
-      duration: this.duration,
-      alignment: this.alignment,
+      duration: duration,
+      alignment: alignment,
       child: Transform.scale(
         // scale does not determine the size, it determines by how
         // much to move in the x and y direction
         scale: 5,
         child: AnimatedContainer(
-          duration: this.duration,
-          height: MediaQuery.of(context).size.height / this.sizeDivider,
-          width: MediaQuery.of(context).size.width / this.sizeDivider,
+          duration: duration,
+          height: MediaQuery.of(context).size.height / sizeDivider,
+          width: MediaQuery.of(context).size.width / sizeDivider,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: color,

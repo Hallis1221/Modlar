@@ -1,4 +1,4 @@
-//TODO currently the characters isnt supported to display so it looks like gibberish.
+// TODO currently the characters isnt supported to display so it looks like gibberish.
 //This is the relevant error:
 //Could not find a set of Noto fonts to display all missing characters.
 //Please add a font asset for the missing characters.
@@ -24,7 +24,7 @@ class DebugLogsUI extends StatelessWidget {
             .first
             .lines
             .first,
-        style: TextStyle(fontSize: 12),
+        style: const TextStyle(fontSize: 12),
       ),
     );
   }

@@ -7,7 +7,6 @@ import 'package:get_it/get_it.dart';
 import 'package:rxdart/rxdart.dart';
 
 class LocaleName {
-  // ignore: close_sinks
   final BehaviorSubject<Locale?> _localeName = BehaviorSubject.seeded(null);
 
   String get getLocaleName => _localeName.value.toString();

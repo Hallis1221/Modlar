@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 class CustomTextTheme {
-  // ignore_for_file: close_sinks
   TextTheme textTheme;
   late BehaviorSubject<TextStyle?> bodyText1 =
       BehaviorSubject.seeded(textTheme.bodyText1);

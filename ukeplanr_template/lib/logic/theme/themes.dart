@@ -13,7 +13,6 @@ class ThemesService {
   final Map<String?, ThemeData?> themes;
   Map<String?, ThemeData?> get themesList => themes;
 
-  // ignore: close_sinks
   final BehaviorSubject<ThemeData?> currentTheme;
 
   final String customThemePrefix;

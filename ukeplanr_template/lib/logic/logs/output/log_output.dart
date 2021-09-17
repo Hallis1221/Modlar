@@ -1,13 +1,9 @@
-// ignore_for_file: avoid_print
-
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:rxdart/subjects.dart';
 
 class LogSession extends LogOutput {
-  // ignore: close_sinks
   final BehaviorSubject<List<String>> _sessionLogs = BehaviorSubject.seeded([]);
-  // ignore: close_sinks
   final BehaviorSubject<List<OutputEvent>> _sessionLogEvents =
       BehaviorSubject.seeded([]);
 

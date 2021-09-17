@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
 import 'package:ukeplanr_template/UI/components/theme/color_picker.dart';

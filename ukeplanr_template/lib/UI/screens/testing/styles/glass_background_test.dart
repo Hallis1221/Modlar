@@ -21,8 +21,6 @@ class GlassBackgroundPage extends StatelessWidget {
               } else {
                 backgroundColorAnimationInstance.setVarOne(0);
               }
-              // ignore: avoid_print
-              print(backgroundColorAnimationInstance.getVarOne);
             },
             child: const ClassCard()),
         colors: [

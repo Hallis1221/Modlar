@@ -1,5 +1,4 @@
 // import 'package:ukeplanr_template/generated_plugin_registrant.dart';
-// ignore_for_file: avoid_print
 
 import 'package:ukeplanr_template/logic/animation/background.dart';
 import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';

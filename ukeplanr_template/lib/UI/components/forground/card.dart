@@ -1,3 +1,5 @@
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:flutter/material.dart';
 
 class ClassCard extends StatelessWidget {
@@ -11,10 +13,10 @@ class ClassCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(15.0),
         ),
         color: Theme.of(context).accentColor,
-        child: const Padding(
-          padding: EdgeInsets.all(8.0),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
           child: Text(
-            'Card with circular border',
+            AppLocalizations.of(context)!.clickMe,
             textScaleFactor: 1.2,
           ),
         ),

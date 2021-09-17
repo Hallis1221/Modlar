@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 extension ConvertToMap on ThemeData {
   Map<String, String> toMap() {
     return {
+      "scaffoldBackgroundColor": scaffoldBackgroundColor.toExportableString(),
       "dialogBackgroundColor": dialogBackgroundColor.toExportableString(),
       "toggleableActiveColor": toggleableActiveColor.toExportableString(),
       "unselectedWidgetColor": unselectedWidgetColor.toExportableString(),
@@ -19,7 +20,6 @@ extension ConvertToMap on ThemeData {
       "disabledColor": disabledColor.toExportableString(),
       "dividerColor": dividerColor.toExportableString(),
       "primaryColor": primaryColor.toExportableString(),
-      "scaffoldBackgroundColor": scaffoldBackgroundColor.toExportableString(),
       "shadowColor": shadowColor.toExportableString(),
       "splashColor": splashColor.toExportableString(),
       "canvasColor": canvasColor.toExportableString(),

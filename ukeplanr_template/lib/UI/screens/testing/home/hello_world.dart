@@ -21,7 +21,7 @@ class PlaceholderWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyText1,
             ),
             ChangeLocale(
-              newLocale: Localizations.localeOf(context).toString() == "en_"
+              newLocale: Localizations.localeOf(context).countryCode == "en"
                   ? const Locale("no", "NB")
                   : const Locale("en", "US"),
             ),

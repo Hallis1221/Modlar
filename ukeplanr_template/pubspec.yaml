@@ -33,6 +33,14 @@ dependencies:
   rxdart: ^0.27.2
   shared_preferences: ^2.0.7
 
+dev_dependencies: 
+  flutter_lints: ^1.0.4
+  flutter_test: 
+    sdk: flutter
+    version: ^0.0.0
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
@@ -76,5 +84,3 @@ flutter:
           style: italic
         - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-Regular.ttf
           weight: 400
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages

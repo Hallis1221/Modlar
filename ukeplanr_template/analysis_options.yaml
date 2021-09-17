@@ -23,9 +23,15 @@ linter:
   # producing the lint.
   rules:
     always_declare_return_types: true
-    deprecated_member_use: false
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    always_put_control_body_on_new_line: true
+    always_put_required_named_parameters_first: true
+    always_require_non_null_named_parameters: true
+    always_specify_types: true
+    always_use_package_imports: true
+    annotate_overrides: true
+    
+    # set this to true before production build
+    avoid_print: false 
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

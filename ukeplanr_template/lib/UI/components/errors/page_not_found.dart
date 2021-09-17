@@ -9,14 +9,12 @@ class PageNotFound extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: MaterialButton(
-          onPressed: () =>
-              print(GetIt.instance<NavigationWatcher>().getRouteHistory),
-          child: Text(
-            AppLocalizations.of(context)!.pageNotFound,
-          ),
+    return Center(
+      child: MaterialButton(
+        onPressed: () =>
+            print(GetIt.instance<NavigationWatcher>().getRouteHistory),
+        child: Text(
+          AppLocalizations.of(context)!.pageNotFound,
         ),
       ),
     );

@@ -14,9 +14,11 @@ class ThemeCreator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BehaviorSubject<CustomTheme> customTheme = BehaviorSubject.seeded(
-        CustomTheme(
-            theme: Theme.of(context),
-            themeName: GetIt.instance.get<ThemesService>().currentThemeName));
+      CustomTheme(
+        theme: Theme.of(context),
+        themeName: GetIt.instance.get<ThemesService>().currentThemeName,
+      ),
+    );
     TextEditingController nameController = TextEditingController(
         text: GetIt.instance.get<ThemesService>().currentThemeName);
     return StreamBuilder<CustomTheme>(

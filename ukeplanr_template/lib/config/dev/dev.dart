@@ -1,3 +1,3 @@
 class RunModeConfig {
-  final String runMode = "DEV";
+  final String runMode = "DEBUG";
 }

@@ -9,7 +9,7 @@ class ThemeConfig {
     backgroundColor: Colors.orange,
     accentColor: Colors.white,
     fontFamily: "JakartaSans",
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       bodyText1: TextStyle(
         fontFamily: "JakartaSans",
         fontWeight: FontWeight.w400,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ukeplanr_template/logic/auth/authService.dart';
+import 'package:ukeplanr_template/logic/auth/auth_services.dart';
 
 class RoutesService {
   final Map<String, Widget> routesLoggedIn;
@@ -8,10 +8,11 @@ class RoutesService {
 
   Widget get get404Widget {
     Widget? status404;
-    if (AuthServices().isLoggedIn)
+    if (AuthServices().isLoggedIn) {
       status404 = routesLoggedIn["/404"];
-    else
+    } else {
       status404 = routesLoggedOut["/404"];
+    }
     if (status404 != null) {
       return status404;
     } else {
@@ -20,10 +21,11 @@ class RoutesService {
   }
 
   Map<String, Widget> get getRoutes {
-    if (AuthServices().isLoggedIn)
+    if (AuthServices().isLoggedIn) {
       return routesLoggedIn;
-    else
+    } else {
       return routesLoggedOut;
+    }
   }
 
   RoutesService({

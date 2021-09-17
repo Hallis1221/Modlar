@@ -19,32 +19,30 @@ class GlassBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
-        children: [
-          backgroundChild,
-          Center(
-            child: ClipRect(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(
-                  sigmaX: this.blur,
-                  sigmaY: this.blur,
-                ),
-                child: Container(
-                  height: height,
-                  width: width,
-                  decoration: new BoxDecoration(
-                    color: Colors.grey.shade200.withOpacity(
-                      0.5,
-                    ),
+    return Stack(
+      children: [
+        backgroundChild,
+        Center(
+          child: ClipRect(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: blur,
+                sigmaY: blur,
+              ),
+              child: Container(
+                height: height,
+                width: width,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200.withOpacity(
+                    0.5,
                   ),
                 ),
               ),
             ),
           ),
-          child
-        ],
-      ),
+        ),
+        child
+      ],
     );
   }
 }

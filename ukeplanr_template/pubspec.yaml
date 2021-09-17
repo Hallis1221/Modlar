@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -21,18 +21,25 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_colorpicker: ^0.6.0
   flutter_localizations:
     sdk: flutter
+  get_it: ^7.2.0
   intl: any
-  
-  cupertino_icons: ^1.0.2
-  flutter_colorpicker: 0.4.0
-  get_it: ^7.1.4
-  logger: ^1.0.0
-  rxdart: ^0.27.1
-  shared_preferences: ^2.0.6
+  logger: ^1.1.0
+  rxdart: ^0.27.2
+  shared_preferences: ^2.0.7
+
+dev_dependencies: 
+  flutter_lints: ^1.0.4
+  flutter_test: 
+    sdk: flutter
+    version: ^0.0.0
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -77,6 +84,3 @@ flutter:
           style: italic
         - asset: assets/fonts/PlusJakartaSans/PlusJakartaSans-Regular.ttf
           weight: 400
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages

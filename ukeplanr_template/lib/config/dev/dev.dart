@@ -1,3 +1,4 @@
 class RunModeConfig {
-  final String runMode = "DEV";
+  final String runMode = "DEBUG";
+  final bool showBanner = true;
 }

@@ -14,17 +14,19 @@ class DebugLogsUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.transparent,
-      child: SelectableText(
-        GetIt.instance
-            .get<LogsService>()
-            .getSession
-            .getSessionsLogEvents
-            .first
-            .lines
-            .first,
-        style: const TextStyle(fontSize: 12),
+    return Scaffold(
+      body: Container(
+        color: Colors.transparent,
+        child: SelectableText(
+          GetIt.instance
+              .get<LogsService>()
+              .getSession
+              .getSessionsLogEvents
+              .first
+              .lines
+              .first,
+          style: const TextStyle(fontSize: 12),
+        ),
       ),
     );
   }

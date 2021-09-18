@@ -23,10 +23,10 @@ class GlassBackgroundPage extends StatelessWidget {
               }
             },
             child: const ClassCard()),
-        colors: [
+        colors: <Widget>[
           StreamBuilder<num>(
               stream: GetIt.instance.get<BackgroundColorAnimation>().stream$,
-              builder: (context, snapshot) {
+              builder: (_, AsyncSnapshot<num> snapshot) {
                 if (!snapshot.hasData || snapshot.data == null) {
                   return const OffCenterCircle(
                     color: Colors.orange,

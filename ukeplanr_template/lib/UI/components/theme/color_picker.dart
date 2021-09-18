@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class ThemeColorPicker extends StatelessWidget {
   const ThemeColorPicker({
-    Key? key,
     required this.currentColor,
     required this.title,
     required this.onChange,
+    Key? key,
   }) : super(key: key);
 
   final Color currentColor;

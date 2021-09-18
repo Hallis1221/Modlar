@@ -57,7 +57,7 @@ class ThemesService {
       }
       savedThemes.add(saveName);
     } else {
-      savedThemes = [saveName];
+      savedThemes = <String>[saveName];
     }
     await prefs.setStringList("savedThemes", savedThemes);
     return "$customThemePrefix$themeName";

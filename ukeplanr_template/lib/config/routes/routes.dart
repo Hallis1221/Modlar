@@ -11,6 +11,7 @@ import 'package:flutter/widgets.dart';
 class RoutesConfig {
   final Map<String, Widget> _routesLoggedIn = <String, Widget>{
     "/": const PlaceholderWidget(),
+    "/home": const PlaceholderWidget(),
     "/session": const DebugLogsUI(),
     "/theme": const ThemeCreator(),
     "/404": const PageNotFound(),

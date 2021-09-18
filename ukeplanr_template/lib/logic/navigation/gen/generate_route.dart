@@ -1,4 +1,3 @@
-import 'package:ukeplanr_template/UI/components/errors/page_not_found.dart';
 import 'package:ukeplanr_template/logic/navigation/observers/navigation_watcher.dart';
 import 'package:ukeplanr_template/logic/navigation/mapping/find_widget.dart';
 import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';

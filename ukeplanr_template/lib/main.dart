@@ -1,5 +1,4 @@
 import 'package:ukeplanr_template/logic/navigation/observers/navigation_watcher.dart';
-import 'package:ukeplanr_template/logic/navigation/gen/generate_route.dart';
 import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:ukeplanr_template/logic/navigation/routes/routes.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
@@ -45,11 +44,11 @@ class MyApp extends StatelessWidget {
           theme: themeSnapshot.data,
 
           initialRoute: "/",
-          navigatorObservers: [
+          navigatorObservers: <NavigatorObserver>[
             GetIt.instance<NavigationWatcher>(),
           ],
           localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: const [
+          supportedLocales: const <Locale>[
             Locale('en', ''),
             Locale('no', 'NB'),
           ],

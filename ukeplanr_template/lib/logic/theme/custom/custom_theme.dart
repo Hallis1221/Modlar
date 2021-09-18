@@ -8,12 +8,15 @@ class CustomTheme {
   ThemeData theme;
   String themeName;
   late BehaviorSubject<Color> backgroundColor =
-      BehaviorSubject.seeded(theme.backgroundColor);
+      BehaviorSubject<Color>.seeded(theme.backgroundColor);
   late BehaviorSubject<Color> buttonColor =
-      BehaviorSubject.seeded(theme.buttonColor);
+      BehaviorSubject<Color>.seeded(theme.buttonColor);
   late BehaviorSubject<Color> primaryColor =
-      BehaviorSubject.seeded(theme.primaryColor);
-  late BehaviorSubject<CustomTextTheme> textTheme = BehaviorSubject.seeded(
+      BehaviorSubject<Color>.seeded(theme.primaryColor);
+
+  @Deprecated("This feature is not fully implemented fully")
+  late BehaviorSubject<CustomTextTheme> textdTheme =
+      BehaviorSubject<CustomTextTheme>.seeded(
     CustomTextTheme(
       textTheme: theme.textTheme,
     ),

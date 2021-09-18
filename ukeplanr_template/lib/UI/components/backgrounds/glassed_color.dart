@@ -6,7 +6,7 @@ class GlassedColor extends StatelessWidget {
     Key? key,
     this.blur = 120,
     this.child,
-    this.colors = const [],
+    this.colors = const <Widget>[],
     this.opacity = 0.5,
   }) : super(key: key);
 

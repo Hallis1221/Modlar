@@ -3,8 +3,7 @@ import 'package:ukeplanr_template/UI/screens/testing/arguments/arguments/argumen
 
 // A Widget that extracts the necessary arguments from
 // the ModalRoute.
-// A Widget that extracts the necessary arguments from
-// the ModalRoute.
+
 class ExtractArgumentsScreen extends StatelessWidget {
   const ExtractArgumentsScreen({Key? key}) : super(key: key);
 

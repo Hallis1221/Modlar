@@ -13,16 +13,17 @@ class GlassBackgroundPage extends StatelessWidget {
     return Scaffold(
       body: GlassedColor(
         child: MaterialButton(
-            onPressed: () {
-              BackgroundColorAnimation backgroundColorAnimationInstance =
-                  GetIt.instance.get<BackgroundColorAnimation>();
-              if (backgroundColorAnimationInstance.getVarOne == 0) {
-                backgroundColorAnimationInstance.setVarOne(1);
-              } else {
-                backgroundColorAnimationInstance.setVarOne(0);
-              }
-            },
-            child: const ClassCard()),
+          onPressed: () {
+            BackgroundColorAnimation backgroundColorAnimationInstance =
+                GetIt.instance.get<BackgroundColorAnimation>();
+            if (backgroundColorAnimationInstance.getVarOne == 0) {
+              backgroundColorAnimationInstance.setVarOne(1);
+            } else {
+              backgroundColorAnimationInstance.setVarOne(0);
+            }
+          },
+          child: const ClassCard(),
+        ),
         colors: <Widget>[
           StreamBuilder<num>(
               stream: GetIt.instance.get<BackgroundColorAnimation>().stream$,

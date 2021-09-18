@@ -12,7 +12,7 @@ void main() async {
   // Call configure app to setup/start all the required services before starting
   // to paint on the screen. configureApp() is imported from start/configureApp.dart
   await configureApp();
-  // Runapp runs the given widget as our main app. The widget referenced here
+  // Runapp runs the given widget as our app. The widget referenced here
   // should contain a root widget (like cupertinoapp, materialapp, etc)
   runApp(const MyApp());
 }

@@ -3,9 +3,14 @@ import 'package:logger/logger.dart';
 import 'package:rxdart/subjects.dart';
 
 class LogSession extends LogOutput {
-  final BehaviorSubject<List<String>> _sessionLogs = BehaviorSubject.seeded([]);
+  final BehaviorSubject<List<String>> _sessionLogs =
+      BehaviorSubject<List<String>>.seeded(
+    <String>[],
+  );
   final BehaviorSubject<List<OutputEvent>> _sessionLogEvents =
-      BehaviorSubject.seeded([]);
+      BehaviorSubject<List<OutputEvent>>.seeded(
+    <OutputEvent>[],
+  );
 
   List<String> get getSessionLog => _sessionLogs.value;
   List<OutputEvent> get getSessionsLogEvents => _sessionLogEvents.value;
@@ -20,7 +25,7 @@ class LogSession extends LogOutput {
   void output(OutputEvent event) {
     String log = "";
 
-    for (var line in event.lines) {
+    for (String line in event.lines) {
       print(line);
       log += "$line \n";
     }

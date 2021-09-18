@@ -7,7 +7,8 @@ import 'package:get_it/get_it.dart';
 import 'package:rxdart/rxdart.dart';
 
 class LocaleName {
-  final BehaviorSubject<Locale?> _localeName = BehaviorSubject.seeded(null);
+  final BehaviorSubject<Locale?> _localeName =
+      BehaviorSubject<Locale?>.seeded(null);
 
   String get getLocaleName => _localeName.value.toString();
   Stream<Locale?>? get stream$ => _localeName.stream;

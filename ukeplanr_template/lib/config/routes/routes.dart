@@ -8,14 +8,14 @@ import 'package:ukeplanr_template/UI/screens/testing/debug/logs_ui.dart';
 import 'package:flutter/widgets.dart';
 
 class RoutesConfig {
-  final Map<String, Widget> _routesLoggedIn = {
+  final Map<String, Widget> _routesLoggedIn = <String, Widget>{
     "/": const PlaceholderWidget(),
     "/session": const DebugLogsUI(),
     "/theme": const ThemeCreator(),
     "/404": const PageNotFound(),
     "/glass": const GlassBackgroundPage(),
   };
-  final Map<String, Widget> _routesLoggedOut = {
+  final Map<String, Widget> _routesLoggedOut = <String, Widget>{
     "/": const LoggedOut(),
     "/404": const LoggedOut(),
   };

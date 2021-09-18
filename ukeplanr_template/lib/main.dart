@@ -1,6 +1,7 @@
 import 'package:ukeplanr_template/logic/navigation/observers/navigation_watcher.dart';
 import 'package:ukeplanr_template/logic/navigation/gen/generate_route.dart';
 import 'package:ukeplanr_template/logic/localization/state/locale.dart';
+import 'package:ukeplanr_template/logic/navigation/routes/routes.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:ukeplanr_template/start/configure_app.dart';
 
@@ -55,7 +56,11 @@ class MyApp extends StatelessWidget {
           // Same principle as with the theme. Passes it directly as it isent too
           // long nor complicated
           locale: localeSnapshot.data,
-          onGenerateRoute: (settings) => generateRoute(settings),
+          routes: GetIt.instance.get<RoutesService>().materialPageRoutes(),
+          onUnknownRoute: (_) => MaterialPageRoute<Widget>(
+            builder: (_) => GetIt.instance.get<RoutesService>().get404Widget,
+          ),
+
           // we use a custom one
           debugShowCheckedModeBanner: false,
         ),

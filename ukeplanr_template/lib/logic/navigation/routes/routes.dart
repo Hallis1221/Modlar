@@ -20,6 +20,21 @@ class RoutesService {
     }
   }
 
+  Map<String, Widget Function(BuildContext)> materialPageRoutes() {
+    Map<String, Widget Function(BuildContext)> returnMap =
+        <String, Widget Function(BuildContext)>{};
+    if (AuthServices().isLoggedIn) {
+      for (String key in routesLoggedIn.keys) {
+        returnMap[key] = (BuildContext context) => routesLoggedIn[key]!;
+      }
+    } else {
+      for (String key in routesLoggedOut.keys) {
+        returnMap[key] = (BuildContext context) => routesLoggedOut[key]!;
+      }
+    }
+    return returnMap;
+  }
+
   Map<String, Widget> get getRoutes {
     if (AuthServices().isLoggedIn) {
       return routesLoggedIn;

@@ -18,7 +18,9 @@ class ThemeConfig {
   );
 
   // All the pre made themes and their name
-  late final Map<String, ThemeData> themes = {"orange": _orangeTheme};
+  late final Map<String, ThemeData> themes = <String, ThemeData>{
+    "orange": _orangeTheme
+  };
 
   final String customThemePrefix = "customTheme_";
   Map<String, ThemeData> get getAllThemes => themes;

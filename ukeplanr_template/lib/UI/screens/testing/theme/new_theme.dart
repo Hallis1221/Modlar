@@ -145,26 +145,27 @@ class _ColorChanger extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<Color>(
-        stream: color.stream,
-        builder: (BuildContext context, AsyncSnapshot<Color> snapshot) {
-          if (snapshot.connectionState == ConnectionState.active ||
-              snapshot.connectionState == ConnectionState.done) {
-            return ThemeColorPicker(
-              // for some reason this thinks snapshot.data gives color?. therefor we reconstruct the color
-              currentColor: Color.fromARGB(
-                snapshot.data!.alpha,
-                snapshot.data!.red,
-                snapshot.data!.green,
-                snapshot.data!.blue,
-              ),
-              title: title,
-              onChange: onChange,
-            );
-          } else {
-            return Container(
-              color: Colors.red,
-            );
-          }
-        });
+      stream: color.stream,
+      builder: (BuildContext context, AsyncSnapshot<Color> snapshot) {
+        if (snapshot.connectionState == ConnectionState.active ||
+            snapshot.connectionState == ConnectionState.done) {
+          return ThemeColorPicker(
+            // for some reason this thinks snapshot.data gives color?. therefor we reconstruct the color
+            currentColor: Color.fromARGB(
+              snapshot.data!.alpha,
+              snapshot.data!.red,
+              snapshot.data!.green,
+              snapshot.data!.blue,
+            ),
+            title: title,
+            onChange: onChange,
+          );
+        } else {
+          return Container(
+            color: Colors.red,
+          );
+        }
+      },
+    );
   }
 }

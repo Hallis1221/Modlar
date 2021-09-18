@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// This lint warning is false. You should not specify type on a extension
+//ignore: always_specify_types
 extension ConvertToTheme on Map {
   ThemeData toTheme() {
     return ThemeData(

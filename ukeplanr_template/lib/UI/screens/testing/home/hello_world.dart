@@ -16,7 +16,7 @@ class PlaceholderWidget extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             SelectableText(
               AppLocalizations.of(context)!.helloWorld,
               style: Theme.of(context).textTheme.bodyText1,

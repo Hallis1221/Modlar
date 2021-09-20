@@ -1,7 +1,7 @@
 import 'package:rxdart/rxdart.dart';
 
 class BackgroundColorAnimation {
-  final BehaviorSubject<double> _varone = BehaviorSubject.seeded(0);
+  final BehaviorSubject<double> _varone = BehaviorSubject<double>.seeded(0);
 
   double get getVarOne => _varone.value;
   Stream<double> get stream$ => _varone.stream;

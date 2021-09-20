@@ -1,8 +1,8 @@
+import 'package:ukeplanr_template/UI/screens/testing/arguments/arguments/arguments.dart';
 import 'package:ukeplanr_template/UI/components/locale/change_locale.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:ukeplanr_template/UI/screens/testing/arguments/arguments/arguments.dart';
 
 class PlaceholderWidget extends StatelessWidget {
   const PlaceholderWidget({
@@ -16,7 +16,7 @@ class PlaceholderWidget extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             SelectableText(
               AppLocalizations.of(context)!.helloWorld,
               style: Theme.of(context).textTheme.bodyText1,

@@ -13,7 +13,8 @@ class ThemeCreator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BehaviorSubject<CustomTheme> customTheme = BehaviorSubject.seeded(
+    BehaviorSubject<CustomTheme> customTheme =
+        BehaviorSubject<CustomTheme>.seeded(
       CustomTheme(
         theme: Theme.of(context),
         themeName: GetIt.instance.get<ThemesService>().currentThemeName,
@@ -23,16 +24,16 @@ class ThemeCreator extends StatelessWidget {
         text: GetIt.instance.get<ThemesService>().currentThemeName);
     return StreamBuilder<CustomTheme>(
         stream: customTheme.stream,
-        builder: (context, snapshot) {
+        builder: (_, AsyncSnapshot<CustomTheme> snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
             return Scaffold(
               backgroundColor: snapshot.data!.backgroundColor.value,
               body: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+                children: <Widget>[
                   Column(
-                    children: [
+                    children: <Widget>[
                       SizedBox(
                         height: 50,
                         width: 50,
@@ -81,9 +82,7 @@ class ThemeCreator extends StatelessWidget {
                                       snapshot.data!.backgroundColor.value,
                                   buttonColor: snapshot.data!.buttonColor.value,
                                   textTheme: themesServiceInstance
-                                      .currentTheme.value!.textTheme
-                                  // !! TODO throws exception
-                                  ),
+                                      .currentTheme.value!.textTheme),
                               nameController.text);
                           themesServiceInstance
                               .saveAndSetTheme(nameController.text);
@@ -91,7 +90,7 @@ class ThemeCreator extends StatelessWidget {
                       )
                     ],
                   ),
-                  DropdownButton(
+                  DropdownButton<String>(
                       value: snapshot.data!.themeName,
                       isDense: false,
                       onChanged: (String? value) {
@@ -117,7 +116,7 @@ class ThemeCreator extends StatelessWidget {
                             .keys
                             .toSet()
                             .toList())
-                          DropdownMenuItem(
+                          DropdownMenuItem<String>(
                               value: themeName.toString(),
                               child: Text(themeName.toString())),
                       ]),
@@ -133,10 +132,10 @@ class ThemeCreator extends StatelessWidget {
 
 class _ColorChanger extends StatelessWidget {
   const _ColorChanger({
-    Key? key,
     required this.color,
     required this.onChange,
     required this.title,
+    Key? key,
   }) : super(key: key);
 
   final BehaviorSubject<Color> color;
@@ -146,26 +145,27 @@ class _ColorChanger extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<Color>(
-        stream: color.stream,
-        builder: (BuildContext context, AsyncSnapshot<Color> snapshot) {
-          if (snapshot.connectionState == ConnectionState.active ||
-              snapshot.connectionState == ConnectionState.done) {
-            return ThemeColorPicker(
-              // for some reason this thinks snapshot.data gives color?. therefor we reconstruct the color
-              currentColor: Color.fromARGB(
-                snapshot.data!.alpha,
-                snapshot.data!.red,
-                snapshot.data!.green,
-                snapshot.data!.blue,
-              ),
-              title: title,
-              onChange: onChange,
-            );
-          } else {
-            return Container(
-              color: Colors.red,
-            );
-          }
-        });
+      stream: color.stream,
+      builder: (BuildContext context, AsyncSnapshot<Color> snapshot) {
+        if (snapshot.connectionState == ConnectionState.active ||
+            snapshot.connectionState == ConnectionState.done) {
+          return ThemeColorPicker(
+            // for some reason this thinks snapshot.data gives color?. therefor we reconstruct the color
+            currentColor: Color.fromARGB(
+              snapshot.data!.alpha,
+              snapshot.data!.red,
+              snapshot.data!.green,
+              snapshot.data!.blue,
+            ),
+            title: title,
+            onChange: onChange,
+          );
+        } else {
+          return Container(
+            color: Colors.red,
+          );
+        }
+      },
+    );
   }
 }

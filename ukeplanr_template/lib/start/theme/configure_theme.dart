@@ -28,8 +28,8 @@ Future<void> configureThemes() async {
       GetIt.instance.registerSingleton<ThemesService>(
         ThemesService(
             themes: ThemeConfig().themes,
-            currentTheme:
-                BehaviorSubject.seeded(ThemeConfig().themes["orange"]),
+            currentTheme: BehaviorSubject<ThemeData?>.seeded(
+                ThemeConfig().themes["orange"]),
             customThemePrefix: ThemeConfig().customThemePrefix,
             currentThemeName: 'orange'),
       );
@@ -51,13 +51,13 @@ Future<void> configureThemes() async {
       if (savedThemesNullable != null) {
         savedThemes = savedThemesNullable;
       } else {
-        savedThemes = [];
+        savedThemes = <String>[];
       }
       for (String savedTheme in savedThemes) {
         // Get the json encoded version of the saved themeData
         String? themeDataEncoded = prefs.getString(savedTheme);
         if (themeDataEncoded != null) {
-          Map themeData = jsonDecode(themeDataEncoded);
+          Map<String, String> themeData = jsonDecode(themeDataEncoded);
           // A themename is a savedThemeName just without the prefix.
           // Therefor we remove the prefix
           String themeName =

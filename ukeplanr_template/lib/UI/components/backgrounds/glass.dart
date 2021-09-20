@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 class GlassBackground extends StatelessWidget {
   const GlassBackground({
-    Key? key,
     required this.backgroundChild,
     required this.child,
     this.blur = 0.1,
     this.height,
     this.width,
+    Key? key,
   }) : super(key: key);
   final Widget child;
   final double? height;
@@ -20,7 +20,7 @@ class GlassBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
+      children: <Widget>[
         backgroundChild,
         Center(
           child: ClipRect(

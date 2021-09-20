@@ -17,7 +17,7 @@ Widget findWidgetFromRoute({
   // if the app has a banner enabled, show it.
   if (runMode.showBanner) {
     return Stack(
-      children: [widget, RunModeBanner(runMode.runMode)],
+      children: <Widget>[widget, RunModeBanner(runMode.runMode)],
     );
   }
   return widget;

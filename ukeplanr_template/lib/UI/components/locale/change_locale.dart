@@ -7,8 +7,8 @@ import 'package:logger/logger.dart';
 
 class ChangeLocale extends StatelessWidget {
   const ChangeLocale({
-    Key? key,
     required this.newLocale,
+    Key? key,
   }) : super(key: key);
 
   final Locale newLocale;

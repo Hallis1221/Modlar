@@ -18,7 +18,7 @@ void configureLocalization() async {
     try {
       String? storedLocale = prefs.getString("activeLocale");
       if (storedLocale != null) {
-        List localeStrings = storedLocale.split("_");
+        List<String> localeStrings = storedLocale.split("_");
         GetIt.instance
             .get<LocaleName>()
             .changeLocale(Locale(localeStrings[0], localeStrings[1]));

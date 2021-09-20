@@ -3,8 +3,7 @@ import 'package:ukeplanr_template/UI/screens/testing/arguments/arguments/argumen
 
 // A Widget that extracts the necessary arguments from
 // the ModalRoute.
-// A Widget that extracts the necessary arguments from
-// the ModalRoute.
+
 class ExtractArgumentsScreen extends StatelessWidget {
   const ExtractArgumentsScreen({Key? key}) : super(key: key);
 
@@ -12,7 +11,8 @@ class ExtractArgumentsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Extract the arguments from the current ModalRoute
     // settings and cast them as ScreenArguments.
-    final args = ModalRoute.of(context)!.settings.arguments as ExtractArguments;
+    final ExtractArguments args =
+        ModalRoute.of(context)!.settings.arguments as ExtractArguments;
 
     return Scaffold(
       appBar: AppBar(

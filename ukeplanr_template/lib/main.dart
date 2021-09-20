@@ -1,5 +1,4 @@
 import 'package:ukeplanr_template/logic/navigation/observers/navigation_watcher.dart';
-import 'package:ukeplanr_template/logic/navigation/gen/generate_route.dart';
 import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:ukeplanr_template/logic/navigation/routes/routes.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
@@ -13,7 +12,7 @@ void main() async {
   // Call configure app to setup/start all the required services before starting
   // to paint on the screen. configureApp() is imported from start/configureApp.dart
   await configureApp();
-  // Runapp runs the given widget as our main app. The widget referenced here
+  // Runapp runs the given widget as our app. The widget referenced here
   // should contain a root widget (like cupertinoapp, materialapp, etc)
   runApp(const MyApp());
 }
@@ -45,11 +44,11 @@ class MyApp extends StatelessWidget {
           theme: themeSnapshot.data,
 
           initialRoute: "/",
-          navigatorObservers: [
+          navigatorObservers: <NavigatorObserver>[
             GetIt.instance<NavigationWatcher>(),
           ],
           localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: const [
+          supportedLocales: const <Locale>[
             Locale('en', ''),
             Locale('no', 'NB'),
           ],

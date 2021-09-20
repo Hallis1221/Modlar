@@ -9,5 +9,6 @@
   "changeButtonColor": "Change button color",
   "changePrimaryColor": "Change the primary color",
   "clickMe": "Click me!",
+  "runningMode": "You are running the !MODE! version of ukeplanr.",
   "done": "Done"
 }

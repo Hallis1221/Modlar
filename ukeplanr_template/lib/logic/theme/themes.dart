@@ -17,8 +17,6 @@ class ThemesService {
 
   final String customThemePrefix;
 
-  final Color debugColor;
-
   String currentThemeName;
 
   void setCurrentTheme(String themeName, String saveName) async {
@@ -79,6 +77,5 @@ class ThemesService {
     required this.currentTheme,
     required this.currentThemeName,
     required this.customThemePrefix,
-    this.debugColor = Colors.transparent,
   });
 }

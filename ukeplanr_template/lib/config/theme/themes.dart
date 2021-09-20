@@ -21,7 +21,7 @@ class ThemeConfig {
   late final Map<String, ThemeData> themes = <String, ThemeData>{
     "orange": _orangeTheme
   };
-  final Color debugColor = Colors.transparent;
+
   final String customThemePrefix = "customTheme_";
   Map<String, ThemeData> get getAllThemes => themes;
 }

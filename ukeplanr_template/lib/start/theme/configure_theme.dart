@@ -27,13 +27,11 @@ Future<void> configureThemes() async {
       // to the themeservice.
       GetIt.instance.registerSingleton<ThemesService>(
         ThemesService(
-          themes: ThemeConfig().themes,
-          currentTheme: BehaviorSubject<ThemeData?>.seeded(
-              ThemeConfig().themes["orange"]),
-          customThemePrefix: ThemeConfig().customThemePrefix,
-          currentThemeName: 'orange',
-          debugColor: ThemeConfig().debugColor,
-        ),
+            themes: ThemeConfig().themes,
+            currentTheme: BehaviorSubject<ThemeData?>.seeded(
+                ThemeConfig().themes["orange"]),
+            customThemePrefix: ThemeConfig().customThemePrefix,
+            currentThemeName: 'orange'),
       );
       log!(Level.info, "Configured Themes!");
     } catch (e) {

@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import 'package:ukeplanr_template/UI/components/off-center/off_center_circle.dart';
+
 import 'package:ukeplanr_template/UI/components/backgrounds/glassed_color.dart';
 import 'package:ukeplanr_template/UI/components/forground/card.dart';
-import 'package:ukeplanr_template/UI/components/off-center/off_center_circle.dart';
 import 'package:ukeplanr_template/logic/animation/background.dart';
+
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 class GlassBackgroundPage extends StatelessWidget {
   const GlassBackgroundPage({Key? key}) : super(key: key);

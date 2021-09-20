@@ -8,6 +8,7 @@ import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:ukeplanr_template/logic/theme/themes.dart';
 
 class DebugLogsUI extends StatelessWidget {
   const DebugLogsUI({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class DebugLogsUI extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.transparent,
+        color: GetIt.instance.get<ThemesService>().debugColor,
         child: SelectableText(
           GetIt.instance
               .get<LogsService>()

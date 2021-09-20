@@ -22,12 +22,3 @@ class RunModeBanner extends StatelessWidget {
     );
   }
 }
-
-class Whatever extends StatelessWidget {
-  const Whatever({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}

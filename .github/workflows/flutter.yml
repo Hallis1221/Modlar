@@ -12,6 +12,11 @@ jobs:
         with:
           channel: 'stable'
       - run: flutter pub get
+        working-directory: ./ukeplanr_template
       - run: flutter build aot
+        working-directory: ./ukeplanr_template
       - run: flutter analyze
+        working-directory: ./ukeplanr_template
       - run: flutter test
+        working-directory: ./ukeplanr_template
+

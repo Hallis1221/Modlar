@@ -1,4 +1,7 @@
+import 'package:ukeplanr_template/UI/components/about/about_dialog.dart';
+import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 class RunModeBanner extends StatelessWidget {
   const RunModeBanner(
@@ -12,11 +15,16 @@ class RunModeBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topRight,
-      child: Container(
-        padding: const EdgeInsets.only(top: 55, right: 50),
-        child: Banner(
-          message: mode,
-          location: BannerLocation.bottomStart,
+      child: GestureDetector(
+        onTap: () => showFilledOutAboutDialog(context, mode),
+        child: Container(
+          // For some reason gestureDetector does not work without a color
+          color: GetIt.instance.get<ThemesService>().debugColor,
+          padding: const EdgeInsets.only(top: 55, right: 50),
+          child: Banner(
+            message: mode.toUpperCase(),
+            location: BannerLocation.bottomStart,
+          ),
         ),
       ),
     );

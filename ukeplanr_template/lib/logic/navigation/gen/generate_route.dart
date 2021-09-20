@@ -39,6 +39,6 @@ Route<Widget> generateRoute(RouteSettings settings) {
       Navigating to ${settings.name} 
       """);
   return MaterialPageRoute<Widget>(
-    builder: (_) => findWidgetFromRoute(settings: settings),
+    builder: (_) => findWidgetFromRoute(routeName: settings.name),
   );
 }

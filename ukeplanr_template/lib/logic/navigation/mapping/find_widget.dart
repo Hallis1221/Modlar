@@ -6,10 +6,9 @@ import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 
 Widget findWidgetFromRoute({
-  @required RouteSettings? settings,
+  @required String? routeName,
 }) {
-  Widget? nullableWidget =
-      GetIt.instance<RoutesService>().getRoutes[settings!.name];
+  Widget? nullableWidget = GetIt.instance<RoutesService>().getRoutes[routeName];
   RunMode runMode = GetIt.instance<RunMode>();
   Widget widget =
       nullableWidget ?? GetIt.instance<RoutesService>().get404Widget;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ukeplanr_template/logic/auth/auth_services.dart';
+import 'package:ukeplanr_template/logic/navigation/mapping/find_widget.dart';
 
 class RoutesService {
   final Map<String, Widget> routesLoggedIn;
@@ -23,15 +24,13 @@ class RoutesService {
   Map<String, Widget Function(BuildContext)> materialPageRoutes() {
     Map<String, Widget Function(BuildContext)> returnMap =
         <String, Widget Function(BuildContext)>{};
-    if (AuthServices().isLoggedIn) {
-      for (String key in routesLoggedIn.keys) {
-        returnMap[key] = (BuildContext context) => routesLoggedIn[key]!;
-      }
-    } else {
-      for (String key in routesLoggedOut.keys) {
-        returnMap[key] = (BuildContext context) => routesLoggedOut[key]!;
-      }
+
+    for (String key in getRoutes.keys) {
+      returnMap[key] = (BuildContext context) => findWidgetFromRoute(
+            routeName: key,
+          );
     }
+
     return returnMap;
   }
 

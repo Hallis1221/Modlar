@@ -51,11 +51,14 @@ class ThemeCreator extends StatelessWidget {
                         },
                       ),
                       _ColorChanger(
-                        color: snapshot.data!.buttonColor,
+                        color:
+                            snapshot.data!.colorScheme.value.secondaryVariant,
                         onChange: (Color color) {
-                          customTheme.value.buttonColor.value = color;
+                          customTheme.value.colorScheme.value.secondaryVariant
+                              .value = color;
                         },
-                        title: AppLocalizations.of(context)!.changeButtonColor,
+                        title: AppLocalizations.of(context)!
+                            .changeSecondaryVariantColor,
                       ),
                       _ColorChanger(
                         color: snapshot.data!.primaryColor,
@@ -80,7 +83,8 @@ class ThemeCreator extends StatelessWidget {
                               ThemeData(
                                   backgroundColor:
                                       snapshot.data!.backgroundColor.value,
-                                  buttonColor: snapshot.data!.buttonColor.value,
+                                  colorScheme: themesServiceInstance
+                                      .currentTheme.value!.colorScheme,
                                   textTheme: themesServiceInstance
                                       .currentTheme.value!.textTheme),
                               nameController.text);
@@ -102,8 +106,8 @@ class ThemeCreator extends StatelessWidget {
                         customTheme.value = CustomTheme(
                           theme: ThemeData(
                             backgroundColor: themeData!.backgroundColor,
-                            buttonColor: themeData.buttonColor,
                             primaryColor: themeData.primaryColor,
+                            colorScheme: themeData.colorScheme,
                           ),
                           themeName: value,
                         );

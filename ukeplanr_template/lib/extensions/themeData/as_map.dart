@@ -23,13 +23,12 @@ extension ConvertToMap on ThemeData {
       "shadowColor": shadowColor.toExportableString(),
       "splashColor": splashColor.toExportableString(),
       "canvasColor": canvasColor.toExportableString(),
-      "buttonColor": buttonColor.toExportableString(),
-      "accentColor": accentColor.toExportableString(),
       "errorColor": errorColor.toExportableString(),
       "focusColor": focusColor.toExportableString(),
       "hoverColor": hoverColor.toExportableString(),
       "hintColor": hintColor.toExportableString(),
       "cardColor": cardColor.toExportableString(),
+      // TODO "colorScheme": colorScheme.toString(),
     };
   }
 }

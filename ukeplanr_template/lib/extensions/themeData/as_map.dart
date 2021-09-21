@@ -28,7 +28,7 @@ extension ConvertToMap on ThemeData {
       "hoverColor": hoverColor.toExportableString(),
       "hintColor": hintColor.toExportableString(),
       "cardColor": cardColor.toExportableString(),
-      // TODO "colorScheme": colorScheme.toString(),
+      "colorScheme": colorScheme.toString(),
     };
   }
 }

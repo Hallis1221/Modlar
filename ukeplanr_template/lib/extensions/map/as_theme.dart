@@ -24,13 +24,12 @@ extension ConvertToTheme on Map {
       shadowColor: Color(int.parse(this["shadowColor"])),
       splashColor: Color(int.parse(this["splashColor"])),
       canvasColor: Color(int.parse(this["canvasColor"])),
-      buttonColor: Color(int.parse(this["buttonColor"])),
-      accentColor: Color(int.parse(this["accentColor"])),
       errorColor: Color(int.parse(this["errorColor"])),
       focusColor: Color(int.parse(this["focusColor"])),
       hoverColor: Color(int.parse(this["hoverColor"])),
       hintColor: Color(int.parse(this["hintColor"])),
       cardColor: Color(int.parse(this["cardColor"])),
+      //colorScheme: ColorScheme(),
     );
   }
 }

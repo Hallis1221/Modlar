@@ -46,35 +46,7 @@ Future<void> configureThemes() async {
       }
     }
     try {
-      // List of strings that represent themes on shared preferences, can be null
-      List<String>? savedThemesNullable = prefs.getStringList("savedThemes");
-      List<String> savedThemes;
-      // If savedThemesNullable is not null we can just set savedThemes to that
-      if (savedThemesNullable != null) {
-        savedThemes = savedThemesNullable;
-      } else {
-        savedThemes = <String>[];
-      }
-      for (String savedTheme in savedThemes) {
-        // Get the json encoded version of the saved themeData
-        String? themeDataEncoded = prefs.getString(savedTheme);
-        if (themeDataEncoded != null) {
-          Map<String, String> themeData = jsonDecode(themeDataEncoded);
-          // A themename is a savedThemeName just without the prefix.
-          // Therefor we remove the prefix
-          String themeName =
-              savedTheme.replaceAll(ThemeConfig().customThemePrefix, "");
-          ThemesService themesServiceInstance =
-              GetIt.instance.get<ThemesService>();
-          themesServiceInstance.addTheme(themeData.toTheme(), themeName);
-          themesServiceInstance.setCurrentTheme(themeName, savedTheme);
-          log(Level.info, """
-          Sucsesfully loaded the theme '$themeName' from its save location 
-          at '$savedTheme' with the following data: '$themeData' and converted 
-          it to themedata and set it as the active theme (${themeData.toTheme()}).
-          """);
-        }
-      }
+      GetIt.instance.get<ThemesService>().loadThemes(prefs);
     } catch (error) {
       log(Level.error,
           "Failed to get themes with the following exception: $error");

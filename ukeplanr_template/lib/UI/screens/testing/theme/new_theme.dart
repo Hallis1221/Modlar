@@ -57,8 +57,7 @@ class ThemeCreator extends StatelessWidget {
                           customTheme.value.colorScheme.value.secondaryVariant
                               .value = color;
                         },
-                        title: AppLocalizations.of(context)!
-                            .changeSecondaryVariantColor,
+                        title: AppLocalizations.of(context)!.helloWorld,
                       ),
                       _ColorChanger(
                         color: snapshot.data!.primaryColor,

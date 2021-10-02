@@ -9,6 +9,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Check localization', (WidgetTester tester) async {
-// TODO implement
+  // TODO implement
   });
 }

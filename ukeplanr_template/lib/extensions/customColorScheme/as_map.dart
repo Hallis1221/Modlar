@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-import '../color/as_exportable_string.dart';
+import 'package:ukeplanr_template/extensions/color/as_exportable_string.dart';
 import 'package:ukeplanr_template/logic/theme/custom/custom_color_scheme.dart';
 
 extension ToMap on CustomColorScheme {
   Map<String, String> toMap() {
-    return {
+    return <String, String>{
       "background": background.value.toExportableString(),
       "error": error.value.toExportableString(),
       "onBackground": onBackground.value.toExportableString(),

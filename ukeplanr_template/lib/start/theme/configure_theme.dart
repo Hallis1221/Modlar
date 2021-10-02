@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
-import 'package:ukeplanr_template/extensions/map/as_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ukeplanr_template/config/theme/themes.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';

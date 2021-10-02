@@ -41,7 +41,10 @@ class GlassBackgroundPage extends StatelessWidget {
                   color: snapshot.requireData >= 1
                       ? Theme.of(context).colorScheme.primary
                       : Theme.of(context).colorScheme.secondary,
-                  alignment: Alignment(-1.5 * snapshot.requireData, 1.5),
+                  alignment: Alignment(
+                    -1.5 * snapshot.requireData,
+                    1.5,
+                  ),
                 );
               }),
           OffCenterCircle(

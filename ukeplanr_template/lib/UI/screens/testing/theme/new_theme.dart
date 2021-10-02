@@ -1,6 +1,7 @@
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
 import 'package:ukeplanr_template/UI/components/theme/color_picker.dart';
+import 'package:ukeplanr_template/extensions/customColorScheme/to_color_scheme.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -42,27 +43,28 @@ class ThemeCreator extends StatelessWidget {
                         ),
                       ),
                       _ColorChanger(
-                        color: snapshot.data!.backgroundColor,
+                        color: snapshot.data!.colorScheme.value.background,
                         title:
                             AppLocalizations.of(context)!.changeBackgroundColor,
                         onChange: (Color color) {
-                          customTheme.value.backgroundColor.value = color;
-                          customTheme.value = customTheme.value;
+                          customTheme.value.colorScheme.value.background.value =
+                              color;
                         },
                       ),
                       _ColorChanger(
-                        color:
-                            snapshot.data!.colorScheme.value.secondaryVariant,
+                        color: snapshot.data!.colorScheme.value.secondary,
                         onChange: (Color color) {
-                          customTheme.value.colorScheme.value.secondaryVariant
-                              .value = color;
+                          customTheme.value.colorScheme.value.secondary.value =
+                              color;
                         },
-                        title: AppLocalizations.of(context)!.helloWorld,
+                        title: AppLocalizations.of(context)!
+                            .changeSecondaryVariantColor,
                       ),
                       _ColorChanger(
-                        color: snapshot.data!.primaryColor,
+                        color: snapshot.data!.colorScheme.value.primary,
                         onChange: (Color color) {
-                          customTheme.value.primaryColor.value = color;
+                          customTheme.value.colorScheme.value.primary.value =
+                              color;
                         },
                         title: AppLocalizations.of(context)!.changePrimaryColor,
                       ),
@@ -82,8 +84,8 @@ class ThemeCreator extends StatelessWidget {
                               ThemeData(
                                   backgroundColor:
                                       snapshot.data!.backgroundColor.value,
-                                  colorScheme: themesServiceInstance
-                                      .currentTheme.value!.colorScheme,
+                                  colorScheme: snapshot.data!.colorScheme.value
+                                      .toColorScheme(),
                                   textTheme: themesServiceInstance
                                       .currentTheme.value!.textTheme),
                               nameController.text);

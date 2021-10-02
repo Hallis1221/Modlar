@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:ukeplanr_template/extensions/color/as_exportable_string.dart';
+import '../colorScheme/as_map.dart';
 
 import 'package:flutter/material.dart';
 
@@ -28,7 +31,7 @@ extension ConvertToMap on ThemeData {
       "hoverColor": hoverColor.toExportableString(),
       "hintColor": hintColor.toExportableString(),
       "cardColor": cardColor.toExportableString(),
-      "colorScheme": colorScheme.toString(),
+      "colorScheme": jsonEncode(colorScheme.toMap()),
     };
   }
 }

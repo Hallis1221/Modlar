@@ -15,7 +15,7 @@ class ChangeLocale extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: Theme.of(context).buttonColor,
+      color: Theme.of(context).colorScheme.secondaryVariant,
       onLongPress: () => Navigator.of(context).pushNamed("/glass"),
       onPressed: () {
         final Function? log = GetIt.instance.get<LogsService>().logger!.log;

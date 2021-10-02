@@ -1,6 +1,7 @@
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
 import 'package:ukeplanr_template/UI/components/theme/color_picker.dart';
+import 'package:ukeplanr_template/extensions/customColorScheme/to_color_scheme.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -51,16 +52,19 @@ class ThemeCreator extends StatelessWidget {
                         },
                       ),
                       _ColorChanger(
-                        color: snapshot.data!.buttonColor,
+                        color: snapshot.data!.colorScheme.value.secondary,
                         onChange: (Color color) {
-                          customTheme.value.buttonColor.value = color;
+                          customTheme.value.colorScheme.value.secondary.value =
+                              color;
                         },
-                        title: AppLocalizations.of(context)!.changeButtonColor,
+                        title: AppLocalizations.of(context)!
+                            .changeSecondaryVariantColor,
                       ),
                       _ColorChanger(
-                        color: snapshot.data!.primaryColor,
+                        color: snapshot.data!.colorScheme.value.primary,
                         onChange: (Color color) {
-                          customTheme.value.primaryColor.value = color;
+                          customTheme.value.colorScheme.value.primary.value =
+                              color;
                         },
                         title: AppLocalizations.of(context)!.changePrimaryColor,
                       ),
@@ -75,12 +79,12 @@ class ThemeCreator extends StatelessWidget {
                         onPressed: () {
                           ThemesService themesServiceInstance =
                               GetIt.instance.get<ThemesService>();
-
                           themesServiceInstance.addTheme(
                               ThemeData(
                                   backgroundColor:
                                       snapshot.data!.backgroundColor.value,
-                                  buttonColor: snapshot.data!.buttonColor.value,
+                                  colorScheme: snapshot.data!.colorScheme.value
+                                      .toColorScheme(),
                                   textTheme: themesServiceInstance
                                       .currentTheme.value!.textTheme),
                               nameController.text);
@@ -102,8 +106,8 @@ class ThemeCreator extends StatelessWidget {
                         customTheme.value = CustomTheme(
                           theme: ThemeData(
                             backgroundColor: themeData!.backgroundColor,
-                            buttonColor: themeData.buttonColor,
                             primaryColor: themeData.primaryColor,
+                            colorScheme: themeData.colorScheme,
                           ),
                           themeName: value,
                         );

@@ -2,6 +2,7 @@ import 'package:logger/logger.dart';
 
 class LogsConfig {
   final LogPrinter _logPrinter = PrettyPrinter(
+    stackTraceBeginIndex: 2,
     methodCount: 1,
     errorMethodCount: 1,
     lineLength: 55,

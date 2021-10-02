@@ -12,7 +12,7 @@ class ClassCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondaryVariant,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(

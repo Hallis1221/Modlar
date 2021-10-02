@@ -7,8 +7,11 @@ import 'package:flutter/material.dart';
 class ThemeConfig {
   final ThemeData _orangeTheme = ThemeData(
     backgroundColor: Colors.orange,
-    accentColor: Colors.white,
     fontFamily: "JakartaSans",
+    colorScheme: ColorScheme.fromSwatch(
+      accentColor: Colors.white,
+      cardColor: Colors.blue,
+    ),
     textTheme: const TextTheme(
       bodyText1: TextStyle(
         fontFamily: "JakartaSans",

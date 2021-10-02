@@ -82,7 +82,6 @@ class ThemesService {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String themeMapAsString = jsonEncode(themesList[themeName]!.toMap());
     String saveName = "$customThemePrefix$themeName";
-    print("json encoded: $themeMapAsString");
     await prefs.setString(saveName, themeMapAsString);
     // save the name of the saved theme
     List<String>? savedThemes = prefs.getStringList("savedThemes");

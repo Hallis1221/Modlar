@@ -7,6 +7,7 @@
   "pageNotFound": "This isn't the calender you're looking for...",
   "changeBackgroundColor": "Change background color",
   "changeSecondaryVariantColor": "Change second variant color",
+  "changeSecondaryColor": "Change the secondary color",
   "changePrimaryColor": "Change the primary color",
   "clickMe": "Click me!",
   "runningMode": "You are running the !MODE! version of ukeplanr.",

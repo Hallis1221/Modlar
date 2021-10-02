@@ -30,15 +30,17 @@ class GlassBackgroundPage extends StatelessWidget {
               stream: GetIt.instance.get<BackgroundColorAnimation>().stream$,
               builder: (_, AsyncSnapshot<num> snapshot) {
                 if (!snapshot.hasData || snapshot.data == null) {
-                  return const OffCenterCircle(
-                    color: Colors.orange,
-                    alignment: Alignment(-1.5, 1.5),
+                  return OffCenterCircle(
+                    color: Theme.of(context).colorScheme.background,
+                    alignment: const Alignment(-1.5, 1.5),
                   );
                 }
 
                 return OffCenterCircle(
                   duration: const Duration(seconds: 5),
-                  color: snapshot.requireData >= 1 ? Colors.black : Colors.red,
+                  color: snapshot.requireData >= 1
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.secondary,
                   alignment: Alignment(-1.5 * snapshot.requireData, 1.5),
                 );
               }),

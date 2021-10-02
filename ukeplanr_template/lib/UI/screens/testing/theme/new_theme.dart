@@ -43,12 +43,12 @@ class ThemeCreator extends StatelessWidget {
                         ),
                       ),
                       _ColorChanger(
-                        color: snapshot.data!.colorScheme.value.background,
+                        color: snapshot.data!.backgroundColor,
                         title:
                             AppLocalizations.of(context)!.changeBackgroundColor,
                         onChange: (Color color) {
-                          customTheme.value.colorScheme.value.background.value =
-                              color;
+                          customTheme.value.backgroundColor.value = color;
+                          customTheme.value = customTheme.value;
                         },
                       ),
                       _ColorChanger(

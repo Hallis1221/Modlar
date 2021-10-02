@@ -79,7 +79,6 @@ class ThemeCreator extends StatelessWidget {
                         onPressed: () {
                           ThemesService themesServiceInstance =
                               GetIt.instance.get<ThemesService>();
-
                           themesServiceInstance.addTheme(
                               ThemeData(
                                   backgroundColor:

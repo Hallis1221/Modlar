@@ -6,7 +6,6 @@ import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ukeplanr_template/start/configure_app.dart';
 
-// TODO seperate into different files and folders
 void main() => group(
       "App localization:",
       () {
@@ -33,7 +32,7 @@ void main() => group(
           );
         });
 
-        // Ensure that the app displayes the loaded localization correctly
+        // Ensure that the app displays the loaded localization correctly
         testWidgets(
           "Check localization on screen based on loaded localization",
           (WidgetTester widgetTester) async => await _localizedHomeScreenTest(
@@ -42,7 +41,7 @@ void main() => group(
           ),
         );
 
-        // Ensure that the app displayes no_NB localization correctly
+        // Ensure that the app displays no_NB localization correctly
         testWidgets(
           "Check localization for no_NB",
           (WidgetTester widgetTester) async => await _localizedHomeScreenTest(
@@ -51,7 +50,7 @@ void main() => group(
           ),
         );
 
-        // Ensure that the app displayes en_US localization correctly
+        // Ensure that the app displays en_US localization correctly
         testWidgets(
           "Check localization for en_US",
           (WidgetTester widgetTester) async => await _localizedHomeScreenTest(

@@ -34,7 +34,7 @@ void main() => group(
 
         // Ensure that the app displays the loaded localization correctly
         testWidgets(
-          "Check localization on screen based on loaded localization",
+          "Check localization for loaded localization",
           (WidgetTester widgetTester) async => await _localizedHomeScreenTest(
             widgetTester,
             localeNameInstance.getLocaleName,

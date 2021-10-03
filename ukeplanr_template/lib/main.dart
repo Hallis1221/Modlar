@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
           ],
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: const <Locale>[
-            Locale('en', ''),
+            Locale('en', 'US'),
             Locale('no', 'NB'),
           ],
           // Same principle as with the theme. Passes it directly as it isent too

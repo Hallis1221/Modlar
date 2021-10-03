@@ -18,7 +18,7 @@ class PlaceholderWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "hello",
+              AppLocalizations.of(context)!.currentLocale,
               style: Theme.of(context).textTheme.bodyText1,
             ),
             ChangeLocale(

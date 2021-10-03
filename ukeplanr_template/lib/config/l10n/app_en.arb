@@ -4,6 +4,7 @@
   "@helloWorld": {
     "description": "The conventional newborn programmer greeting"
   },
+  "currentLocale": "en_US",
   "pageNotFound": "This isn't the calender you're looking for...",
   "changeBackgroundColor": "Change background color",
   "changeSecondaryVariantColor": "Change second variant color",

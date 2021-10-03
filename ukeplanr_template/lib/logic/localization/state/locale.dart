@@ -13,7 +13,7 @@ class LocaleName {
   String get getLocaleName => _localeName.value.toString();
   Stream<Locale?>? get stream$ => _localeName.stream;
 
-  void changeLocale(Locale locale) async {
+  Future<void> changeLocale(Locale locale) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final Function? _log = GetIt.instance.get<LogsService>().logger!.log;
 

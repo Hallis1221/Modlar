@@ -24,113 +24,113 @@ class ThemeCreator extends StatelessWidget {
     TextEditingController nameController = TextEditingController(
         text: GetIt.instance.get<ThemesService>().currentThemeName);
     return StreamBuilder<CustomTheme>(
-        stream: customTheme.stream,
-        builder: (_, AsyncSnapshot<CustomTheme> snapshot) {
-          if (snapshot.connectionState == ConnectionState.active) {
-            return Scaffold(
-              backgroundColor: snapshot.data!.backgroundColor.value,
-              body: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 50,
-                        width: 50,
-                        child: TextField(
-                          controller: nameController,
-                        ),
+      stream: customTheme.stream,
+      builder: (_, AsyncSnapshot<CustomTheme> snapshot) {
+        if (snapshot.connectionState == ConnectionState.active) {
+          return Scaffold(
+            backgroundColor: snapshot.data!.backgroundColor.value,
+            body: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 50,
+                      width: 50,
+                      child: TextField(
+                        controller: nameController,
                       ),
-                      _ColorChanger(
-                        color: snapshot.data!.backgroundColor,
-                        title:
-                            AppLocalizations.of(context)!.changeBackgroundColor,
-                        onChange: (Color color) {
-                          customTheme.value.backgroundColor.value = color;
-                          customTheme.value = customTheme.value;
-                        },
-                      ),
-                      _ColorChanger(
-                        color: snapshot.data!.colorScheme.value.secondary,
-                        onChange: (Color color) {
-                          customTheme.value.colorScheme.value.secondary.value =
-                              color;
-                        },
-                        title: AppLocalizations.of(context)!
-                            .changeSecondaryVariantColor,
-                      ),
-                      _ColorChanger(
-                        color: snapshot.data!.colorScheme.value.primary,
-                        onChange: (Color color) {
-                          customTheme.value.colorScheme.value.primary.value =
-                              color;
-                        },
-                        title: AppLocalizations.of(context)!.changePrimaryColor,
-                      ),
-                      MaterialButton(
-                        child: Text(
-                          AppLocalizations.of(context)!.done,
-                        ),
-                        textColor: useWhiteForeground(
-                                snapshot.data!.backgroundColor.value)
-                            ? Colors.white
-                            : Colors.black,
-                        onPressed: () {
-                          ThemesService themesServiceInstance =
-                              GetIt.instance.get<ThemesService>();
-                          themesServiceInstance.addTheme(
-                              ThemeData(
-                                  backgroundColor:
-                                      snapshot.data!.backgroundColor.value,
-                                  colorScheme: snapshot.data!.colorScheme.value
-                                      .toColorScheme(),
-                                  textTheme: themesServiceInstance
-                                      .currentTheme.value!.textTheme),
-                              nameController.text);
-                          themesServiceInstance
-                              .saveAndSetTheme(nameController.text);
-                        },
-                      )
-                    ],
-                  ),
-                  DropdownButton<String>(
-                      value: snapshot.data!.themeName,
-                      isDense: false,
-                      onChanged: (String? value) {
-                        customTheme.value.themeName = value.toString();
-                        ThemeData? themeData = GetIt.instance
-                            .get<ThemesService>()
-                            .findTheme(value!);
-                        nameController.text = value;
-                        customTheme.value = CustomTheme(
-                          theme: ThemeData(
-                            backgroundColor: themeData!.backgroundColor,
-                            primaryColor: themeData.primaryColor,
-                            colorScheme: themeData.colorScheme,
-                          ),
-                          themeName: value,
-                        );
-                        customTheme = customTheme;
+                    ),
+                    _ColorChanger(
+                      color: snapshot.data!.backgroundColor,
+                      title:
+                          AppLocalizations.of(context)!.changeBackgroundColor,
+                      onChange: (Color color) {
+                        customTheme.value.backgroundColor.value = color;
+                        customTheme.value = customTheme.value;
                       },
-                      items: <DropdownMenuItem<String>>[
-                        for (String? themeName in GetIt.instance
-                            .get<ThemesService>()
-                            .themes
-                            .keys
-                            .toSet()
-                            .toList())
-                          DropdownMenuItem<String>(
-                              value: themeName.toString(),
-                              child: Text(themeName.toString())),
-                      ]),
-                ],
-              ),
-            );
-          } else {
-            return Container();
-          }
-        });
+                    ),
+                    _ColorChanger(
+                      color: snapshot.data!.colorScheme.value.secondary,
+                      onChange: (Color color) {
+                        customTheme.value.colorScheme.value.secondary.value =
+                            color;
+                      },
+                      title: AppLocalizations.of(context)!
+                          .changeSecondaryVariantColor,
+                    ),
+                    _ColorChanger(
+                      color: snapshot.data!.colorScheme.value.primary,
+                      onChange: (Color color) {
+                        customTheme.value.colorScheme.value.primary.value =
+                            color;
+                      },
+                      title: AppLocalizations.of(context)!.changePrimaryColor,
+                    ),
+                    MaterialButton(
+                      child: Text(
+                        AppLocalizations.of(context)!.done,
+                      ),
+                      textColor: useWhiteForeground(
+                              snapshot.data!.backgroundColor.value)
+                          ? Colors.white
+                          : Colors.black,
+                      onPressed: () {
+                        ThemesService themesServiceInstance =
+                            GetIt.instance.get<ThemesService>();
+                        themesServiceInstance.addTheme(
+                            ThemeData(
+                                backgroundColor:
+                                    snapshot.data!.backgroundColor.value,
+                                colorScheme: snapshot.data!.colorScheme.value
+                                    .toColorScheme(),
+                                textTheme: themesServiceInstance
+                                    .currentTheme.value!.textTheme),
+                            nameController.text);
+                        themesServiceInstance
+                            .saveAndSetTheme(nameController.text);
+                      },
+                    )
+                  ],
+                ),
+                DropdownButton<String>(
+                    value: snapshot.data!.themeName,
+                    isDense: false,
+                    onChanged: (String? value) {
+                      customTheme.value.themeName = value.toString();
+                      ThemeData? themeData =
+                          GetIt.instance.get<ThemesService>().findTheme(value!);
+                      nameController.text = value;
+                      customTheme.value = CustomTheme(
+                        theme: ThemeData(
+                          backgroundColor: themeData!.backgroundColor,
+                          primaryColor: themeData.primaryColor,
+                          colorScheme: themeData.colorScheme,
+                        ),
+                        themeName: value,
+                      );
+                      customTheme = customTheme;
+                    },
+                    items: <DropdownMenuItem<String>>[
+                      for (String? themeName in GetIt.instance
+                          .get<ThemesService>()
+                          .themes
+                          .keys
+                          .toSet()
+                          .toList())
+                        DropdownMenuItem<String>(
+                            value: themeName.toString(),
+                            child: Text(themeName.toString())),
+                    ]),
+              ],
+            ),
+          );
+        } else {
+          return Container();
+        }
+      },
+    );
   }
 }
 

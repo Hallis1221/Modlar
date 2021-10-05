@@ -1,6 +1,7 @@
 import 'package:ukeplanr_template/logic/navigation/observers/navigation_watcher.dart';
 import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:ukeplanr_template/logic/navigation/routes/routes.dart';
+import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:ukeplanr_template/start/configure_app.dart';
 
@@ -31,9 +32,9 @@ class MyApp extends StatelessWidget {
       stream: GetIt.instance.get<LocaleName>().stream$,
       // declare type for clarity.
       builder: (_, AsyncSnapshot<Locale?> localeSnapshot) =>
-          StreamBuilder<ThemeData?>(
-        stream: GetIt.instance.get<ThemesService>().currentTheme.stream,
-        builder: (_, AsyncSnapshot<ThemeData?> themeSnapshot) => MaterialApp(
+          StreamBuilder<CustomTheme?>(
+        stream: GetIt.instance.get<ThemesService>().currentCustomTheme.stream,
+        builder: (_, AsyncSnapshot<CustomTheme?> themeSnapshot) => MaterialApp(
           // Get theme from the themes service. ThemesService.getTheme give us
           // whatever theme is compatible with its criterias (which could include
           // stuff like system preference, settings, etc). Calls it directly
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
           // storing variables in the build method. We want to avoid this beacuse build
           // is primarily a painting function, and the code looks *cleaner* when not
           // storing stuff inside of it.
-          theme: themeSnapshot.data,
+          theme: themeSnapshot.data!.theme.value,
 
           initialRoute: "/",
           navigatorObservers: <NavigatorObserver>[

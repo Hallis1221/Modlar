@@ -89,7 +89,7 @@ class ThemeCreator extends StatelessWidget {
                             GetIt.instance.get<ThemesService>();
                         themesServiceInstance.saveAndAddTheme(
                           CustomTheme(
-                            theme: BehaviorSubject.seeded(
+                            theme: BehaviorSubject<ThemeData>.seeded(
                               ThemeData(
                                 backgroundColor:
                                     snapshot.data!.backgroundColor.value,

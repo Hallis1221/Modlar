@@ -1,7 +1,6 @@
 import 'package:ukeplanr_template/logic/navigation/observers/navigation_watcher.dart';
 import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:ukeplanr_template/logic/navigation/routes/routes.dart';
-import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 import 'package:ukeplanr_template/start/configure_app.dart';
 

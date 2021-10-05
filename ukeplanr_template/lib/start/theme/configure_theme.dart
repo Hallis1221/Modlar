@@ -26,10 +26,7 @@ Future<void> configureThemes() async {
       GetIt.instance.registerSingleton<ThemesService>(
         ThemesService(
           themes: ThemeConfig().themes,
-          currentTheme: BehaviorSubject<ThemeData?>.seeded(
-              ThemeConfig().themes["orange"]),
           customThemePrefix: ThemeConfig().customThemePrefix,
-          currentThemeName: 'orange',
           debugColor: ThemeConfig().debugColor,
           saveThemePrefix: ThemeConfig().saveThemePrefix,
           currentCustomTheme: BehaviorSubject<CustomTheme>.seeded(

@@ -47,10 +47,10 @@ class MyApp extends StatelessWidget {
               }
               return MaterialApp(
                 // Get theme from the themes service. ThemesService.getTheme give us
-                // whatever theme is compatible with its criterias (which could include
+                // whatever theme is compatible with its criteria (which could include
                 // stuff like system preference, settings, etc). Calls it directly
                 // in the argument to avoid having logic code in the build method/avoid
-                // storing variables in the build method. We want to avoid this beacuse build
+                // storing variables in the build method. We want to avoid this because build
                 // is primarily a painting function, and the code looks *cleaner* when not
                 // storing stuff inside of it.
                 theme: themeSnapshot.data!,

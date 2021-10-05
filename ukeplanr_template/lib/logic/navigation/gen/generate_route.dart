@@ -25,7 +25,7 @@ Route<Widget> generateRoute(RouteSettings settings) {
       navigationWatcher.registerRoute(settings);
     } else {
       log!(Level.info, """
-          Did not register ${settings.name} beacuse the previous entry to the route history was also ${settings.name} 
+          Did not register ${settings.name} because the previous entry to the route history was also ${settings.name} 
           if this was not the intended behavior (for example if you tried to pass arguments) consider changing line 20 
           in generateRoute.dart to check for values instead of just keys.
           """);

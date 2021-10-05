@@ -9,6 +9,7 @@ import 'package:ukeplanr_template/extensions/themeData/as_map.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
+import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
 
 class ThemesService {
   Function log = GetIt.instance.get<LogsService>().logger!.log;
@@ -16,14 +17,34 @@ class ThemesService {
   final Map<String?, ThemeData?> themes;
   Map<String?, ThemeData?> get themesList => themes;
 
+  final BehaviorSubject<CustomTheme?> currentCustomTheme;
+
+  @Deprecated("Deprecated in favor of currentCustomTheme")
   final BehaviorSubject<ThemeData?> currentTheme;
 
   final String customThemePrefix;
 
   final Color debugColor;
 
+  @Deprecated("Deprecated in favor of currentCustomTheme")
   String currentThemeName;
 
+  Future<void> setActiveTheme(String themeName) async {
+    // Get the current instance of sharedpreferences in order to save data to storage
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    themeName = makeValidThemeName(themeName);
+
+    // Update internal class values
+    currentCustomTheme.value!.theme = findTheme(themeName)!;
+    currentCustomTheme.value!.themeName = themeName;
+
+    // Update the stored active theme in order to preserve the current theme across sessions
+    await prefs.setString("activeTheme", themeName);
+    log(Level.info, "Set active theme to $themeName");
+  }
+
+  @Deprecated("setCurrentTheme is deprecated in favor of setActiveTheme")
   void setCurrentTheme(String themeName, String saveName) async {
     themeName = makeValidThemeName(themeName);
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -33,17 +54,58 @@ class ThemesService {
     log(Level.info, "Set active theme to $saveName");
   }
 
+  void _addTheme(CustomTheme customTheme) {
+    // Will throw a error if customTheme.theme is null.
+    ThemeData theme = customTheme.theme;
+    String themeName = makeValidThemeName(customTheme.themeName);
+
+    // Set the map member with key themeName to theme. This will add {themeName: theme} to the list of themes.
+    themesList[themeName] = theme;
+    log(Level.debug,
+        "Added the following theme: ${theme.toMap()}/$theme with name $themeName");
+  }
+
+  Future<void> saveAndAddTheme(CustomTheme customTheme) async {
+    _addTheme(customTheme);
+  }
+
+  Future<void> _saveTheme() async {}
+
+  @Deprecated("addTheme is deprecated in favor of saveAndAddTheme.")
+  Future<String> saveTheme(String themeName) async {
+    themeName = makeValidThemeName(themeName);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String themeMapAsString = jsonEncode(themesList[themeName]!.toMap());
+    await prefs.setString(themeName, themeMapAsString);
+    // save the name of the saved theme
+    List<String>? savedThemes = prefs.getStringList("savedThemes");
+    if (savedThemes != null) {
+      for (String savedTheme in savedThemes) {
+        if (savedTheme == themeName) {
+          savedThemes.remove(savedTheme);
+        }
+      }
+      savedThemes.add(themeName);
+    } else {
+      savedThemes = <String>[themeName];
+    }
+    await prefs.setStringList("savedThemes", savedThemes);
+    return themeName;
+  }
+
+  @Deprecated("addTheme is deprecated in favor of saveAndAddTheme.")
   void addTheme(ThemeData theme, String themeName) {
     themeName = makeValidThemeName(themeName);
-    log(Level.debug,
-        "Adding the following theme: ${theme.toMap()}/$theme with name $themeName");
+
+    // Set the map member with key themeName to theme. This will add {themeName: theme} to the list of themes.
     themesList[themeName] = theme;
+    log(Level.debug,
+        "Added the following theme: ${theme.toMap()}/$theme with name $themeName");
   }
 
   void saveAndSetTheme(String themeName) async {
-    themeName = makeValidThemeName(themeName);
-    String saveName = await saveTheme(themeName);
-    setCurrentTheme(themeName, saveName);
+    await saveTheme(themeName);
+    setActiveTheme(themeName);
   }
 
   void loadThemes(SharedPreferences prefs) {
@@ -63,7 +125,7 @@ class ThemesService {
         Map<String, dynamic> themeData = jsonDecode(themeDataEncoded);
         // A themename is a savedThemeName just without the prefix.
         // Therefor we remove the prefix
-        String themeName = savedTheme.replaceAll(customThemePrefix, "");
+        String themeName = savedTheme;
 
         addTheme(themeData.toTheme(), themeName);
         setCurrentTheme(themeName, savedTheme);
@@ -76,31 +138,8 @@ class ThemesService {
     }
   }
 
-  // DOes something with [themeName]
-  Future<String> saveTheme(String themeName) async {
-    themeName = makeValidThemeName(themeName);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String themeMapAsString = jsonEncode(themesList[themeName]!.toMap());
-    String saveName = "$customThemePrefix$themeName";
-    await prefs.setString(saveName, themeMapAsString);
-    // save the name of the saved theme
-    List<String>? savedThemes = prefs.getStringList("savedThemes");
-    if (savedThemes != null) {
-      for (String savedTheme in savedThemes) {
-        if (savedTheme == saveName) {
-          savedThemes.remove(savedTheme);
-        }
-      }
-      savedThemes.add(saveName);
-    } else {
-      savedThemes = <String>[saveName];
-    }
-    await prefs.setStringList("savedThemes", savedThemes);
-    return "$customThemePrefix$themeName";
-  }
-
   String makeValidThemeName(String themeName) {
-    return themeName.replaceAll("_", ".");
+    return "$customThemePrefix${themeName.replaceAll("_", ".")}";
   }
 
   ThemeData? findTheme(String themeName) {

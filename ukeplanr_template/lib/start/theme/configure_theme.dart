@@ -1,6 +1,7 @@
 import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ukeplanr_template/config/theme/themes.dart';
+import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -30,6 +31,14 @@ Future<void> configureThemes() async {
           customThemePrefix: ThemeConfig().customThemePrefix,
           currentThemeName: 'orange',
           debugColor: ThemeConfig().debugColor,
+          saveThemePrefix: ThemeConfig().saveThemePrefix,
+          currentCustomTheme: BehaviorSubject<CustomTheme>.seeded(
+            CustomTheme(
+              theme: BehaviorSubject<ThemeData?>.seeded(
+                  ThemeConfig().themes["orange"]),
+              themeName: "orange",
+            ),
+          ),
         ),
       );
       log!(Level.info, "Configured Themes!");

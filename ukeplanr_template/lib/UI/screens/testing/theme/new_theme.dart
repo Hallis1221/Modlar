@@ -30,7 +30,9 @@ class ThemeCreator extends StatelessWidget {
             .get<ThemesService>()
             .currentCustomTheme
             .value!
-            .themeName);
+            .themeName
+            .replaceAll(
+                GetIt.instance.get<ThemesService>().customThemePrefix, ""));
     return StreamBuilder<CustomTheme>(
       stream: customTheme.stream,
       builder: (_, AsyncSnapshot<CustomTheme> snapshot) {
@@ -120,7 +122,10 @@ class ThemeCreator extends StatelessWidget {
                       customTheme.value.themeName = value.toString();
                       ThemeData? themeData =
                           GetIt.instance.get<ThemesService>().findTheme(value!);
-                      nameController.text = value;
+                      nameController.text = value.replaceAll(
+                          GetIt.instance.get<ThemesService>().customThemePrefix,
+                          "");
+
                       customTheme.value = CustomTheme(
                         theme: BehaviorSubject<ThemeData>.seeded(
                           ThemeData(
@@ -136,7 +141,7 @@ class ThemeCreator extends StatelessWidget {
                     items: <DropdownMenuItem<String>>[
                       for (String? themeName in GetIt.instance
                           .get<ThemesService>()
-                          .themes
+                          .themesList
                           .keys
                           .toSet()
                           .toList())

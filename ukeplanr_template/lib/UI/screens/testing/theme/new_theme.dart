@@ -2,6 +2,7 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
 import 'package:ukeplanr_template/UI/components/theme/color_picker.dart';
 import 'package:ukeplanr_template/extensions/customColorScheme/to_color_scheme.dart';
+import 'package:ukeplanr_template/extensions/themeData/as_map.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,7 +18,7 @@ class ThemeCreator extends StatelessWidget {
     BehaviorSubject<CustomTheme> customTheme =
         BehaviorSubject<CustomTheme>.seeded(
       CustomTheme(
-        theme: Theme.of(context),
+        theme: BehaviorSubject<ThemeData>.seeded(Theme.of(context)),
         themeName: GetIt.instance.get<ThemesService>().currentThemeName,
       ),
     );
@@ -79,17 +80,28 @@ class ThemeCreator extends StatelessWidget {
                       onPressed: () {
                         ThemesService themesServiceInstance =
                             GetIt.instance.get<ThemesService>();
-                        themesServiceInstance.addTheme(
-                            ThemeData(
+                        themesServiceInstance.saveAndAddTheme(
+                          CustomTheme(
+                            theme: BehaviorSubject.seeded(
+                              ThemeData(
                                 backgroundColor:
                                     snapshot.data!.backgroundColor.value,
                                 colorScheme: snapshot.data!.colorScheme.value
                                     .toColorScheme(),
                                 textTheme: themesServiceInstance
-                                    .currentTheme.value!.textTheme),
-                            nameController.text);
+                                    .currentCustomTheme
+                                    .value!
+                                    .theme
+                                    .value!
+                                    .textTheme,
+                              ),
+                            ),
+                            themeName: nameController.text,
+                          ),
+                        );
+
                         themesServiceInstance
-                            .saveAndSetTheme(nameController.text);
+                            .setActiveTheme(nameController.text);
                       },
                     )
                   ],
@@ -103,10 +115,12 @@ class ThemeCreator extends StatelessWidget {
                           GetIt.instance.get<ThemesService>().findTheme(value!);
                       nameController.text = value;
                       customTheme.value = CustomTheme(
-                        theme: ThemeData(
-                          backgroundColor: themeData!.backgroundColor,
-                          primaryColor: themeData.primaryColor,
-                          colorScheme: themeData.colorScheme,
+                        theme: BehaviorSubject<ThemeData>.seeded(
+                          ThemeData(
+                            backgroundColor: themeData!.backgroundColor,
+                            primaryColor: themeData.primaryColor,
+                            colorScheme: themeData.colorScheme,
+                          ),
                         ),
                         themeName: value,
                       );

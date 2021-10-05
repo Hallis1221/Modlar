@@ -52,7 +52,7 @@ Future<void> configureThemes() async {
       }
     }
     try {
-      GetIt.instance.get<ThemesService>().loadThemes(prefs);
+      GetIt.instance.get<ThemesService>().loadThemesFromStorage(prefs);
     } catch (error) {
       log(Level.error,
           "Failed to get themes with the following exception: $error");

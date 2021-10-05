@@ -30,40 +30,55 @@ class MyApp extends StatelessWidget {
       // Get LocaleName class and acsess the stream on it.
       stream: GetIt.instance.get<LocaleName>().stream$,
       // declare type for clarity.
-      builder: (_, AsyncSnapshot<Locale?> localeSnapshot) =>
-          StreamBuilder<ThemeData?>(
-        stream: GetIt.instance.get<ThemesService>().currentTheme.stream,
-        builder: (_, AsyncSnapshot<ThemeData?> themeSnapshot) => MaterialApp(
-          // Get theme from the themes service. ThemesService.getTheme give us
-          // whatever theme is compatible with its criterias (which could include
-          // stuff like system preference, settings, etc). Calls it directly
-          // in the argument to avoid having logic code in the build method/avoid
-          // storing variables in the build method. We want to avoid this beacuse build
-          // is primarily a painting function, and the code looks *cleaner* when not
-          // storing stuff inside of it.
-          theme: themeSnapshot.data,
+      builder: (_, AsyncSnapshot<Locale?> localeSnapshot) {
+        if (localeSnapshot.connectionState == ConnectionState.waiting) {
+          return Container();
+        }
+        return StreamBuilder<ThemeData?>(
+            stream: GetIt.instance
+                .get<ThemesService>()
+                .currentCustomTheme
+                .value!
+                .theme
+                .stream,
+            builder: (_, AsyncSnapshot<ThemeData?> themeSnapshot) {
+              if (themeSnapshot.connectionState == ConnectionState.waiting) {
+                return Container();
+              }
+              return MaterialApp(
+                // Get theme from the themes service. ThemesService.getTheme give us
+                // whatever theme is compatible with its criteria (which could include
+                // stuff like system preference, settings, etc). Calls it directly
+                // in the argument to avoid having logic code in the build method/avoid
+                // storing variables in the build method. We want to avoid this because build
+                // is primarily a painting function, and the code looks *cleaner* when not
+                // storing stuff inside of it.
+                theme: themeSnapshot.data!,
 
-          initialRoute: "/",
-          navigatorObservers: <NavigatorObserver>[
-            GetIt.instance<NavigationWatcher>(),
-          ],
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: const <Locale>[
-            Locale('en', 'US'),
-            Locale('no', 'NB'),
-          ],
-          // Same principle as with the theme. Passes it directly as it isent too
-          // long nor complicated
-          locale: localeSnapshot.data,
-          routes: GetIt.instance.get<RoutesService>().materialPageRoutes(),
-          onUnknownRoute: (_) => MaterialPageRoute<Widget>(
-            builder: (_) => GetIt.instance.get<RoutesService>().get404Widget,
-          ),
+                initialRoute: "/",
+                navigatorObservers: <NavigatorObserver>[
+                  GetIt.instance<NavigationWatcher>(),
+                ],
+                localizationsDelegates: AppLocalizations.localizationsDelegates,
+                supportedLocales: const <Locale>[
+                  Locale('en', 'US'),
+                  Locale('no', 'NB'),
+                ],
+                // Same principle as with the theme. Passes it directly as it isent too
+                // long nor complicated
+                locale: localeSnapshot.data,
+                routes:
+                    GetIt.instance.get<RoutesService>().materialPageRoutes(),
+                onUnknownRoute: (_) => MaterialPageRoute<Widget>(
+                  builder: (_) =>
+                      GetIt.instance.get<RoutesService>().get404Widget,
+                ),
 
-          // we use a custom one
-          debugShowCheckedModeBanner: false,
-        ),
-      ),
+                // we use a custom one
+                debugShowCheckedModeBanner: false,
+              );
+            });
+      },
     );
   }
 }

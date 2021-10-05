@@ -17,12 +17,22 @@ class ThemeCreator extends StatelessWidget {
     BehaviorSubject<CustomTheme> customTheme =
         BehaviorSubject<CustomTheme>.seeded(
       CustomTheme(
-        theme: Theme.of(context),
-        themeName: GetIt.instance.get<ThemesService>().currentThemeName,
+        theme: BehaviorSubject<ThemeData>.seeded(Theme.of(context)),
+        themeName: GetIt.instance
+            .get<ThemesService>()
+            .currentCustomTheme
+            .value!
+            .themeName,
       ),
     );
     TextEditingController nameController = TextEditingController(
-        text: GetIt.instance.get<ThemesService>().currentThemeName);
+        text: GetIt.instance
+            .get<ThemesService>()
+            .currentCustomTheme
+            .value!
+            .themeName
+            .replaceAll(
+                GetIt.instance.get<ThemesService>().customThemePrefix, ""));
     return StreamBuilder<CustomTheme>(
       stream: customTheme.stream,
       builder: (_, AsyncSnapshot<CustomTheme> snapshot) {
@@ -79,17 +89,28 @@ class ThemeCreator extends StatelessWidget {
                       onPressed: () {
                         ThemesService themesServiceInstance =
                             GetIt.instance.get<ThemesService>();
-                        themesServiceInstance.addTheme(
-                            ThemeData(
+                        themesServiceInstance.saveAndAddTheme(
+                          CustomTheme(
+                            theme: BehaviorSubject<ThemeData>.seeded(
+                              ThemeData(
                                 backgroundColor:
                                     snapshot.data!.backgroundColor.value,
                                 colorScheme: snapshot.data!.colorScheme.value
                                     .toColorScheme(),
                                 textTheme: themesServiceInstance
-                                    .currentTheme.value!.textTheme),
-                            nameController.text);
+                                    .currentCustomTheme
+                                    .value!
+                                    .theme
+                                    .value!
+                                    .textTheme,
+                              ),
+                            ),
+                            themeName: nameController.text,
+                          ),
+                        );
+
                         themesServiceInstance
-                            .saveAndSetTheme(nameController.text);
+                            .setActiveTheme(nameController.text);
                       },
                     )
                   ],
@@ -101,12 +122,17 @@ class ThemeCreator extends StatelessWidget {
                       customTheme.value.themeName = value.toString();
                       ThemeData? themeData =
                           GetIt.instance.get<ThemesService>().findTheme(value!);
-                      nameController.text = value;
+                      nameController.text = value.replaceAll(
+                          GetIt.instance.get<ThemesService>().customThemePrefix,
+                          "");
+
                       customTheme.value = CustomTheme(
-                        theme: ThemeData(
-                          backgroundColor: themeData!.backgroundColor,
-                          primaryColor: themeData.primaryColor,
-                          colorScheme: themeData.colorScheme,
+                        theme: BehaviorSubject<ThemeData>.seeded(
+                          ThemeData(
+                            backgroundColor: themeData!.backgroundColor,
+                            primaryColor: themeData.primaryColor,
+                            colorScheme: themeData.colorScheme,
+                          ),
                         ),
                         themeName: value,
                       );
@@ -115,7 +141,7 @@ class ThemeCreator extends StatelessWidget {
                     items: <DropdownMenuItem<String>>[
                       for (String? themeName in GetIt.instance
                           .get<ThemesService>()
-                          .themes
+                          .themesList
                           .keys
                           .toSet()
                           .toList())

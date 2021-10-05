@@ -1,6 +1,7 @@
 import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ukeplanr_template/config/theme/themes.dart';
+import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -24,12 +25,18 @@ Future<void> configureThemes() async {
       // to the themeservice.
       GetIt.instance.registerSingleton<ThemesService>(
         ThemesService(
-          themes: ThemeConfig().themes,
-          currentTheme: BehaviorSubject<ThemeData?>.seeded(
-              ThemeConfig().themes["orange"]),
+          themes: BehaviorSubject<Map<String?, ThemeData>>.seeded(
+              ThemeConfig().themes),
           customThemePrefix: ThemeConfig().customThemePrefix,
-          currentThemeName: 'orange',
           debugColor: ThemeConfig().debugColor,
+          saveThemePrefix: ThemeConfig().saveThemePrefix,
+          currentCustomTheme: BehaviorSubject<CustomTheme>.seeded(
+            CustomTheme(
+              theme: BehaviorSubject<ThemeData?>.seeded(
+                  ThemeConfig().themes["orange"]),
+              themeName: "orange",
+            ),
+          ),
         ),
       );
       log!(Level.info, "Configured Themes!");
@@ -43,7 +50,7 @@ Future<void> configureThemes() async {
       }
     }
     try {
-      GetIt.instance.get<ThemesService>().loadThemes(prefs);
+      GetIt.instance.get<ThemesService>().loadThemesFromStorage(prefs);
     } catch (error) {
       log(Level.error,
           "Failed to get themes with the following exception: $error");

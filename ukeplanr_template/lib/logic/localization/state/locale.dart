@@ -19,7 +19,7 @@ class LocaleName {
 
     if (_localeName.value == locale) {
       _log!(Level.error,
-          "Locale was not changed beacuse locale already is $locale. ($locale is the same as ${_localeName.value})");
+          "Locale was not changed because locale already is $locale. ($locale is the same as ${_localeName.value})");
     } else {
       _log!(Level.debug, "Changed locale from ${_localeName.value} to $locale");
       _localeName.value = locale;

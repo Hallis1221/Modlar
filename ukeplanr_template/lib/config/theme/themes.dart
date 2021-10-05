@@ -26,5 +26,6 @@ class ThemeConfig {
   };
   final Color debugColor = Colors.transparent;
   final String customThemePrefix = "customTheme_";
+  final String saveThemePrefix = "theme_";
   Map<String, ThemeData> get getAllThemes => themes;
 }

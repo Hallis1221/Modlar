@@ -2,7 +2,6 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
 import 'package:ukeplanr_template/UI/components/theme/color_picker.dart';
 import 'package:ukeplanr_template/extensions/customColorScheme/to_color_scheme.dart';
-import 'package:ukeplanr_template/extensions/themeData/as_map.dart';
 import 'package:ukeplanr_template/logic/theme/themes.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,11 +18,19 @@ class ThemeCreator extends StatelessWidget {
         BehaviorSubject<CustomTheme>.seeded(
       CustomTheme(
         theme: BehaviorSubject<ThemeData>.seeded(Theme.of(context)),
-        themeName: GetIt.instance.get<ThemesService>().currentThemeName,
+        themeName: GetIt.instance
+            .get<ThemesService>()
+            .currentCustomTheme
+            .value!
+            .themeName,
       ),
     );
     TextEditingController nameController = TextEditingController(
-        text: GetIt.instance.get<ThemesService>().currentThemeName);
+        text: GetIt.instance
+            .get<ThemesService>()
+            .currentCustomTheme
+            .value!
+            .themeName);
     return StreamBuilder<CustomTheme>(
       stream: customTheme.stream,
       builder: (_, AsyncSnapshot<CustomTheme> snapshot) {

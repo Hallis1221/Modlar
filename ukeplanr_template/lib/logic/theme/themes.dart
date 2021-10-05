@@ -23,6 +23,7 @@ class ThemesService {
   final BehaviorSubject<ThemeData?> currentTheme;
 
   final String customThemePrefix;
+  final String saveThemePrefix;
 
   final Color debugColor;
 
@@ -55,7 +56,7 @@ class ThemesService {
   }
 
   void _addTheme(CustomTheme customTheme) {
-    // Will throw a error if customTheme.theme is null.
+    // Will throw an error if customTheme.theme is null.
     ThemeData theme = customTheme.theme;
     String themeName = makeValidThemeName(customTheme.themeName);
 
@@ -67,9 +68,46 @@ class ThemesService {
 
   Future<void> saveAndAddTheme(CustomTheme customTheme) async {
     _addTheme(customTheme);
+    await _saveTheme(customTheme.themeName);
   }
 
-  Future<void> _saveTheme() async {}
+  Future<void> _saveTheme(String themeName) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    themeName = makeValidThemeName(themeName);
+    String saveName = makeValidSaveName(themeName);
+
+    // Get the themeData for the passed themeName
+    String themeDataAsJSON = jsonEncode(themesList[themeName]!.toMap());
+
+    await prefs.setString(saveName, themeDataAsJSON);
+
+    await _addThemeToSavedThemes(prefs, themeName);
+  }
+
+  /// Adds passed themeName to the stored list of savedThemes. Follows the Get, Change, Set principle.
+  Future<void> _addThemeToSavedThemes(
+      SharedPreferences prefs, String newthemeName) async {
+    // GET.
+    // Get the exsisting list from storage
+    List<String>? savedThemes = prefs.getStringList("savedThemes");
+
+    // CHANGE.
+    // Remove other entries of newThemeName and add ours, for it to be the right order.
+    savedThemes!.isNotEmpty
+        ? // Remove previous instances to not get two entries with the same value
+        savedThemes.removeWhere(
+            (String savedThemeName) => savedThemeName == newthemeName)
+        :
+        // If savedThemes does not exsist, create it so we can add our new entry to it later
+        savedThemes = <String>[];
+    // Add the new entry to the list
+    savedThemes.add(newthemeName);
+
+    // SET.
+    // Set our new list as the value saved on storage.
+    await prefs.setStringList("savedThemes", savedThemes);
+  }
 
   @Deprecated("addTheme is deprecated in favor of saveAndAddTheme.")
   Future<String> saveTheme(String themeName) async {
@@ -105,9 +143,39 @@ class ThemesService {
 
   void saveAndSetTheme(String themeName) async {
     await saveTheme(themeName);
-    setActiveTheme(themeName);
+    setCurrentTheme(themeName);
   }
 
+  Future<void> loadThemesFromStorage(SharedPreferences prefs) async {
+    List<String>? savedThemes = prefs.getStringList("savedThemes");
+
+    // If savedThemes is null (IE savedThemes did not exsist on sharedPreferences) then set it to a empty list
+    savedThemes ??= <String>[];
+
+    for (String saveName in savedThemes) {
+      // Get the json encoded version of the saved themeData
+      String? themeDataEncoded = prefs.getString(saveName);
+
+      // If the savedTheme did not exsist as a savedTHeme
+      // (IE a bug added a theme that was not saved to the list over savedThemes)
+      // then skip this element in the for loop
+      if (themeDataEncoded == null) {
+        continue;
+      }
+
+      Map<String, dynamic> themeData = jsonDecode(themeDataEncoded);
+      String themeName = convertSaveNameToThemeName(saveName);
+      _addTheme(CustomTheme(theme: themeData.toTheme(), themeName: themeName));
+      setActiveTheme(themeName);
+      log(Level.info, """
+          Sucsesfully loaded the theme '$themeName' from its save location 
+          at '$saveName' with the following data: '$themeData' and converted 
+          it to themedata and set it as the active theme (${themeData.toTheme()}).
+          """);
+    }
+  }
+
+  @Deprecated("Deprecated in favor of loadThemesFromStorage")
   void loadThemes(SharedPreferences prefs) {
     // List of strings that represent themes on shared preferences, can be null
     List<String>? savedThemesNullable = prefs.getStringList("savedThemes");
@@ -139,7 +207,17 @@ class ThemesService {
   }
 
   String makeValidThemeName(String themeName) {
+    themeName = themeName.replaceAll(customThemePrefix, "");
     return "$customThemePrefix${themeName.replaceAll("_", ".")}";
+  }
+
+// Custom themes should call makeValidThemeName before this one
+  String makeValidSaveName(String themeName) {
+    return "$saveThemePrefix$themeName";
+  }
+
+  String convertSaveNameToThemeName(String themeName) {
+    return themeName.replaceAll(saveThemePrefix, "");
   }
 
   ThemeData? findTheme(String themeName) {
@@ -152,6 +230,8 @@ class ThemesService {
     required this.currentTheme,
     required this.currentThemeName,
     required this.customThemePrefix,
+    required this.currentCustomTheme,
+    required this.saveThemePrefix,
     this.debugColor = Colors.transparent,
   });
 }

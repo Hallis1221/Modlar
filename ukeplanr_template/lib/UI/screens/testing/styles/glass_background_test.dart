@@ -31,7 +31,7 @@ class GlassBackgroundPage extends StatelessWidget {
               builder: (_, AsyncSnapshot<num> snapshot) {
                 if (!snapshot.hasData || snapshot.data == null) {
                   return OffCenterCircle(
-                    color: Theme.of(context).colorScheme.background,
+                    color: Theme.of(context).colorScheme.primary,
                     alignment: const Alignment(-1.5, 1.5),
                   );
                 }
@@ -48,7 +48,7 @@ class GlassBackgroundPage extends StatelessWidget {
                 );
               }),
           OffCenterCircle(
-            color: Theme.of(context).primaryColor,
+            color: Theme.of(context).backgroundColor,
             alignment: const Alignment(1, -1.5),
           )
         ],

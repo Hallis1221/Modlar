@@ -37,7 +37,7 @@ class ThemesService {
     themeName = makeValidThemeName(themeName);
 
     // Update internal class values
-    currentCustomTheme.value!.theme = findTheme(themeName)!;
+    currentCustomTheme.value!.theme.value = findTheme(themeName)!;
     currentCustomTheme.value!.themeName = themeName;
 
     // Update the stored active theme in order to preserve the current theme across sessions
@@ -57,13 +57,13 @@ class ThemesService {
 
   void _addTheme(CustomTheme customTheme) {
     // Will throw an error if customTheme.theme is null.
-    ThemeData theme = customTheme.theme;
+    ThemeData? theme = customTheme.theme.value;
     String themeName = makeValidThemeName(customTheme.themeName);
 
     // Set the map member with key themeName to theme. This will add {themeName: theme} to the list of themes.
     themesList[themeName] = theme;
     log(Level.debug,
-        "Added the following theme: ${theme.toMap()}/$theme with name $themeName");
+        "Added the following theme: ${theme!.toMap()}/$theme with name $themeName");
   }
 
   Future<void> saveAndAddTheme(CustomTheme customTheme) async {
@@ -141,11 +141,6 @@ class ThemesService {
         "Added the following theme: ${theme.toMap()}/$theme with name $themeName");
   }
 
-  void saveAndSetTheme(String themeName) async {
-    await saveTheme(themeName);
-    setCurrentTheme(themeName);
-  }
-
   Future<void> loadThemesFromStorage(SharedPreferences prefs) async {
     List<String>? savedThemes = prefs.getStringList("savedThemes");
 
@@ -165,7 +160,9 @@ class ThemesService {
 
       Map<String, dynamic> themeData = jsonDecode(themeDataEncoded);
       String themeName = convertSaveNameToThemeName(saveName);
-      _addTheme(CustomTheme(theme: themeData.toTheme(), themeName: themeName));
+      _addTheme(CustomTheme(
+          theme: BehaviorSubject<ThemeData>.seeded(themeData.toTheme()),
+          themeName: themeName));
       setActiveTheme(themeName);
       log(Level.info, """
           Sucsesfully loaded the theme '$themeName' from its save location 
@@ -227,8 +224,10 @@ class ThemesService {
 
   ThemesService({
     required this.themes,
-    required this.currentTheme,
-    required this.currentThemeName,
+    @Deprecated("Deprecated in favor of currentCustomTheme")
+        required this.currentTheme,
+    @Deprecated("Deprecated in favor of currentCustomTheme")
+        required this.currentThemeName,
     required this.customThemePrefix,
     required this.currentCustomTheme,
     required this.saveThemePrefix,

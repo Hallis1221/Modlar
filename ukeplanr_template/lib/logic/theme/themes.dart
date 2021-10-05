@@ -14,8 +14,8 @@ import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
 class ThemesService {
   Function log = GetIt.instance.get<LogsService>().logger!.log;
 
-  final Map<String?, ThemeData?> themes;
-  Map<String?, ThemeData?> get themesList => themes;
+  final BehaviorSubject<Map<String?, ThemeData?>> themes;
+  Map<String?, ThemeData?> get themesList => themes.value;
 
   final BehaviorSubject<CustomTheme?> currentCustomTheme;
 
@@ -78,7 +78,7 @@ class ThemesService {
 
     // CHANGE.
     // Remove other entries of newThemeName and add ours, for it to be the right order.
-    savedThemes!.isNotEmpty
+    savedThemes != null
         ? // Remove previous instances to not get two entries with the same value
         savedThemes.removeWhere(
             (String savedThemeName) => savedThemeName == newthemeName)
@@ -139,7 +139,6 @@ class ThemesService {
   }
 
   ThemeData? findTheme(String themeName) {
-    themeName = makeValidThemeName(themeName);
     return themesList[themeName];
   }
 

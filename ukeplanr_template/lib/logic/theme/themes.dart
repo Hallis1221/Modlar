@@ -8,6 +8,7 @@ import 'package:ukeplanr_template/extensions/themeData/as_map.dart';
 
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:ukeplanr_template/logic/analytics/firebase_analytics.dart';
 import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
 import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
 
@@ -29,6 +30,8 @@ class ThemesService {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     themeName = makeValidThemeName(themeName);
+    // Save the previous active theme
+    String previousActiveThemeName = currentCustomTheme.value!.themeName;
 
     // Update internal class values
     currentCustomTheme.value!.theme.value = findTheme(themeName)!;
@@ -37,6 +40,17 @@ class ThemesService {
     // Update the stored active theme in order to preserve the current theme across sessions
     await prefs.setString("activeTheme", themeName);
     log(Level.info, "Set active theme to $themeName");
+
+    // Log to firebse analytics to track what themes pepole use (also logging
+    // customThemes to allow for better tracking when they are saved in the cloud as well)
+    // Tho, they prob will not be saved in a database. Rather just as analytics to see what colors pepole use
+
+    GetIt.instance<AnalyticsService>()
+        .analyticsInstance
+        .logEvent(name: "User Switch Theme", parameters: <String, dynamic>{
+      "newTheme": themeName,
+      "oldTheme": previousActiveThemeName,
+    });
   }
 
   void _addTheme(CustomTheme customTheme) {

@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:rxdart/subjects.dart';
+import 'package:ukeplanr_template/logic/analytics/firebase_analytics.dart';
 
 class LogSession extends LogOutput {
   final BehaviorSubject<List<String>> _sessionLogs =
@@ -28,6 +29,9 @@ class LogSession extends LogOutput {
     for (String line in event.lines) {
       print(line);
       log += "$line \n";
+    }
+    if (event.level.index >= 3) {
+      // TODO add crashlytics here
     }
     GetIt.instance.get<LogSession>().addLogLineToSession(event);
     GetIt.instance.get<LogSession>().addLogToSession(log);

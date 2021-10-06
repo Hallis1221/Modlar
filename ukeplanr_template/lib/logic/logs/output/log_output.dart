@@ -1,7 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:rxdart/subjects.dart';
-import 'package:ukeplanr_template/logic/analytics/firebase_analytics.dart';
 
 class LogSession extends LogOutput {
   final BehaviorSubject<List<String>> _sessionLogs =

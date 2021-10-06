@@ -1,3 +1,4 @@
+import 'package:ukeplanr_template/logic/analytics/firebase_analytics.dart';
 import 'package:ukeplanr_template/logic/navigation/observers/navigation_watcher.dart';
 import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:ukeplanr_template/logic/navigation/routes/routes.dart';
@@ -58,6 +59,7 @@ class MyApp extends StatelessWidget {
                 initialRoute: "/",
                 navigatorObservers: <NavigatorObserver>[
                   GetIt.instance<NavigationWatcher>(),
+                  GetIt.instance<AnalyticsService>().analyticsObserver,
                 ],
                 localizationsDelegates: AppLocalizations.localizationsDelegates,
                 supportedLocales: const <Locale>[

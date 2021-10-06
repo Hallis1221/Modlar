@@ -7,17 +7,18 @@ import 'package:ukeplanr_template/start/navigation/routes/configure_routes.dart'
 import 'package:ukeplanr_template/start/widgets/configure_initialization.dart';
 import 'package:ukeplanr_template/start/navigation/configure_navigation.dart';
 import 'package:ukeplanr_template/start/theme/configure_theme.dart';
+
 import 'package:ukeplanr_template/start/logs/configer_logger.dart';
 
 Future<void> configureApp() async {
   configureLogger();
   configureInitialization();
+  await configureFirebaseCore();
   configureLocalization();
   configureNavigationWatcher();
   configureRoutes();
   configureAnimation();
   configureRunMode();
   configureAnalytics();
-  await configureFirebaseCore();
   await configureThemes();
 }

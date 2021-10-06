@@ -37,7 +37,6 @@ class PlaceholderWidget extends StatelessWidget {
                   "/test",
                   arguments: ExtractArguments(
                     title: 'Extract Arguments Screen',
-                    message: 'This message is extracted in the build method.',
                   ),
                 );
               },

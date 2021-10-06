@@ -18,8 +18,8 @@ class ExtractArgumentsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(args.title),
       ),
-      body: Center(
-        child: Text(args.message),
+      body: const Center(
+        child: Text("message"),
       ),
     );
   }

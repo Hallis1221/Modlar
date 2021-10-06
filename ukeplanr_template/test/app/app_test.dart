@@ -8,9 +8,15 @@ void main() => group("Start app:", () {
         () async => await configureApp(),
       );
       testWidgets("Build app", (WidgetTester widgetTester) async {
-        await configureApp();
-        await widgetTester.pumpWidget(
-          const MyApp(),
-        );
+        try {
+          await widgetTester.pumpWidget(
+            const MyApp(),
+          );
+        } catch (e) {
+          await configureApp();
+          await widgetTester.pumpWidget(
+            const MyApp(),
+          );
+        }
       });
     });

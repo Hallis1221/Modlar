@@ -7,10 +7,10 @@ void main() => group("Start app:", () {
         "Configure App",
         () async => await configureApp(),
       );
-      testWidgets(
-        "Build app",
-        (WidgetTester widgetTester) async => await widgetTester.pumpWidget(
+      testWidgets("Build app", (WidgetTester widgetTester) async {
+        await configureApp();
+        await widgetTester.pumpWidget(
           const MyApp(),
-        ),
-      );
+        );
+      });
     });

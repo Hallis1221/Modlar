@@ -9,10 +9,10 @@ class ExtractArgumentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ExtractArguments args;
     // Extract the arguments from the current ModalRoute
     // settings and cast them as ScreenArguments.
-    final ExtractArguments args =
-        ModalRoute.of(context)!.settings.arguments as ExtractArguments;
+    args = ModalRoute.of(context)!.settings.arguments as ExtractArguments;
 
     return Scaffold(
       appBar: AppBar(

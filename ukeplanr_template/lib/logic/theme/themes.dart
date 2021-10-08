@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ukeplanr_template/config/shared%20preferences/shared_prefs_keys.dart';
 import 'package:ukeplanr_template/extensions/map/as_theme.dart';
 import 'package:ukeplanr_template/extensions/themeData/as_map.dart';
 
@@ -35,7 +36,7 @@ class ThemesService {
     currentCustomTheme.value!.themeName = themeName;
 
     // Update the stored active theme in order to preserve the current theme across sessions
-    await prefs.setString("activeTheme", themeName);
+    await prefs.setString(SharedPrefsKeys().activeThemeKey, themeName);
     log(Level.info, "Set active theme to $themeName");
   }
 
@@ -90,11 +91,12 @@ class ThemesService {
 
     // SET.
     // Set our new list as the value saved on storage.
-    await prefs.setStringList("savedThemes", savedThemes);
+    await prefs.setStringList(SharedPrefsKeys().savedThemesKey, savedThemes);
   }
 
   Future<void> loadThemesFromStorage(SharedPreferences prefs) async {
-    List<String>? savedThemes = prefs.getStringList("savedThemes");
+    List<String>? savedThemes =
+        prefs.getStringList(SharedPrefsKeys().savedThemesKey);
 
     // If savedThemes is null (IE savedThemes did not exsist on sharedPreferences) then set it to a empty list
     savedThemes ??= <String>[];

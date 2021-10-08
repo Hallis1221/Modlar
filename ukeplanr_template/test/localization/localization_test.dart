@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ukeplanr_template/UI/screens/testing/home/hello_world.dart';
+import 'package:ukeplanr_template/config/shared%20preferences/shared_prefs_keys.dart';
 import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ukeplanr_template/start/configure_app.dart';
@@ -18,7 +19,8 @@ void main() => group(
           SharedPreferences prefs = await SharedPreferences.getInstance();
 
           // Get the last used locale if it exsits
-          String? storedLocale = prefs.getString("activeLocale");
+          String? storedLocale =
+              prefs.getString(SharedPrefsKeys().activeLocaleKey);
 
           // if storedLocale is null, set it to en_US
           storedLocale ??= "en_US";

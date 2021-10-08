@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ukeplanr_template/config/shared%20preferences/shared_prefs_keys.dart';
 import 'package:ukeplanr_template/logic/localization/state/locale.dart';
 import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
 
@@ -16,7 +17,7 @@ void configureLocalization() async {
       LocaleName(),
     );
     try {
-      String? storedLocale = prefs.getString("activeLocale");
+      String? storedLocale = prefs.getString(SharedPrefsKeys().activeLocaleKey);
       if (storedLocale != null) {
         List<String> localeStrings = storedLocale.split("_");
         GetIt.instance

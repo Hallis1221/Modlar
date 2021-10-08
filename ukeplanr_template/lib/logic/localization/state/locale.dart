@@ -1,4 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ukeplanr_template/config/shared%20preferences/shared_prefs_keys.dart';
 import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
 
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class LocaleName {
     } else {
       _log!(Level.debug, "Changed locale from ${_localeName.value} to $locale");
       _localeName.value = locale;
-      prefs.setString("activeLocale", locale.toString());
+      prefs.setString(SharedPrefsKeys().activeLocaleKey, locale.toString());
     }
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ukeplanr_template/config/shared%20preferences/shared_prefs_keys.dart';
 
 // when adding stuff here it will be overwritten by theme changers
 // such as the one in UI/screens/testing/theme/newTheme.dart
@@ -26,6 +27,6 @@ class ThemeConfig {
   };
   final Color debugColor = Colors.transparent;
   final String customThemePrefix = "customTheme_";
-  final String saveThemePrefix = "theme_";
+  final String saveThemePrefix = SharedPrefsKeys().saveThemeKeyPrefix;
   Map<String, ThemeData> get getAllThemes => themes;
 }

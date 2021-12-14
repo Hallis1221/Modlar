@@ -1,2 +1,2 @@
 # Ukeplanr
- The repo for ukeplanr, including all code
+A framework for creating user powered apps. 

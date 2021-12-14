@@ -4,7 +4,6 @@ import 'package:modlar/logic/localization/state/locale.dart';
 import 'package:modlar/logic/logs/printer/log_service.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 

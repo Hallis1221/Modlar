@@ -4,7 +4,6 @@ import 'package:modlar/config/theme/themes.dart';
 import 'package:modlar/logic/theme/custom/custom_theme.dart';
 import 'package:modlar/logic/theme/themes.dart';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:get_it/get_it.dart';

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(ukeplanr_template LANGUAGES CXX)
+project(modlar LANGUAGES CXX)
 
-set(BINARY_NAME "ukeplanr_template")
+set(BINARY_NAME "modlar")
 
 cmake_policy(SET CMP0063 NEW)
 

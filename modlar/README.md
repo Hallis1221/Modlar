@@ -1,4 +1,4 @@
-# ukeplanr_ukeplanr_template
+# ukeplanr_modlar
 
 You might need to use fvm flutter run as the project does not work 100% on flutter version 2.5
 

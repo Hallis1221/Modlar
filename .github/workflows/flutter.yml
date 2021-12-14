@@ -14,9 +14,9 @@ jobs:
         with:
           channel: 'stable'
       - run: flutter pub get
-        working-directory: ./ukeplanr_template
+        working-directory: ./modlar
       - run: flutter analyze
-        working-directory: ./ukeplanr_template
+        working-directory: ./modlar
       - run: flutter test
-        working-directory: ./ukeplanr_template
+        working-directory: ./modlar
 

@@ -2,7 +2,7 @@
 
 Date : 2021-08-04 17:37:33
 
-Directory c:\Users\halvo\OneDrive\Documents\GitHub\Ukeplanr\ukeplanr_template
+Directory c:\Users\halvo\OneDrive\Documents\GitHub\Ukeplanr\modlar
 
 Total : 71 files,  1757 codes, 268 comments, 348 blanks, all 2373 lines
 

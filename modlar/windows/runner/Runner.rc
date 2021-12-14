@@ -92,10 +92,10 @@ BEGIN
             VALUE "CompanyName", "no.vusion" "\0"
             VALUE "FileDescription", "A new Flutter project." "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "ukeplanr_template" "\0"
+            VALUE "InternalName", "modlar" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2021 no.vusion. All rights reserved." "\0"
-            VALUE "OriginalFilename", "ukeplanr_template.exe" "\0"
-            VALUE "ProductName", "ukeplanr_template" "\0"
+            VALUE "OriginalFilename", "modlar.exe" "\0"
+            VALUE "ProductName", "modlar" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

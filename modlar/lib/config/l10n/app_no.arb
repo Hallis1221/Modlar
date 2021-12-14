@@ -1,0 +1,12 @@
+{
+  "currentLocale": "no_NB",
+  "helloWorld": "Hei verden!",
+  "pageNotFound": "Dette er ikke kalenderen du ser etter...",
+  "changeBackgroundColor": "Endre bakgrunnsfarge",
+  "changeSecondaryVariantColor": "Endre andre variants farger",
+  "changeSecondaryColor": "Endre farge nummer to",
+  "changePrimaryColor": "Endre hovedfargen",
+  "clickMe": "Klikk meg!",
+  "runningMode": "Du kjører !MODE! versjonen av ukeplanr.",
+  "done": "Ferdig"
+}

@@ -58,14 +58,17 @@ class DragTest extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: const [
+      children: [
         DraggableDragtarget(
+          dragController: DragController(),
           child: Text("Drag me!"),
         ),
         DraggableDragtarget(
+          dragController: DragController(),
           child: Text("Drag here!"),
         ),
         DraggableDragtarget(
+          dragController: DragController(),
           child: Text("Drag something here!"),
         ),
       ],
@@ -73,65 +76,67 @@ class DragTest extends StatelessWidget {
   }
 }
 
-class DraggableData {
-  final Widget child;
-  final DragTargetController owner;
+class DragController {
+  final BehaviorSubject<DragData?> _subject =
+      BehaviorSubject<DragData?>.seeded(null);
 
-  DraggableData({required this.child, required this.owner});
-}
-
-class DragTargetController {
-  final BehaviorSubject<DraggableData?> _subject =
-      BehaviorSubject<DraggableData?>.seeded(null);
-
-  Stream<DraggableData?> get stream => _subject.stream;
+  Stream<DragData?> get stream => _subject.stream;
 
   // set widget
   void setWidget(Widget widget) {
-    _subject.value = DraggableData(
-      child: Draggable<Widget>(
+    if (_subject.value == null) {
+      _subject.value = DragData(widget: widget, controller: this);
+    } else {
+      _subject.value!.widget = Draggable<Widget>(
         child: widget,
         feedback: widget,
         data: widget,
-      ),
-      owner: this,
-    );
+      );
+    }
+  }
+
+  void setData(DragData data) {
+    _subject.value = data;
   }
 }
 
 class DraggableDragtarget extends StatelessWidget {
-  const DraggableDragtarget({required this.child, Key? key}) : super(key: key);
+  const DraggableDragtarget(
+      {required this.child, required this.dragController, Key? key})
+      : super(key: key);
   final Widget child;
+  final DragController dragController;
   @override
   Widget build(BuildContext context) {
-    Widget startwidget = child;
+    Widget prevWidget = child;
 
-    DragTargetController dragController = DragTargetController();
-    dragController.setWidget(startwidget);
-
-    return StreamBuilder<DraggableData?>(
+    return StreamBuilder<DragData?>(
       stream: dragController.stream,
-      builder: (_, AsyncSnapshot<DraggableData?> snapshot) {
-        return DragTarget<DraggableData>(
+      builder: (_, AsyncSnapshot<DragData?> snapshot) {
+        return DragTarget<DragData>(
           builder: (_, __, ___) {
             if (snapshot.data == null) {
-              return Draggable<Widget>(
-                child: child,
-                feedback: child,
-                data: child,
-              );
+              dragController.setWidget(prevWidget);
+              return Container();
             }
-            return snapshot.data!.child;
+            return Draggable<DragData>(
+              child: snapshot.data!.widget,
+              feedback: snapshot.data!.widget,
+              data: snapshot.data,
+            );
           },
-          onAccept: (DraggableData data) {
-            print("HERYWEWEWEWQEWQE");
-            dragController.setWidget(data.child);
-          },
-          onAcceptWithDetails: (DragTargetDetails<DraggableData> details) {
-            print("wehwqehjwqjhe");
+          onAccept: (DragData data) {
+            dragController.setData(data);
           },
         );
       },
     );
   }
+}
+
+class DragData {
+  Widget widget;
+  DragController controller;
+
+  DragData({required this.widget, required this.controller});
 }

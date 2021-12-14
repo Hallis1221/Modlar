@@ -1,5 +1,7 @@
 // TODO tidy up and implement log
 
+// TODO this could just return a list of children
+
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -22,17 +24,70 @@ Widget createWidget({
   required Type type,
   required List<Widget> widgets,
 }) {
-  Widget createColumn(List<Widget> widgets) {
-    Column nullableColumn = Column();
-    return Column();
+  Column createColumn(List<Widget> widgets) {
+    List<Widget> children = <Widget>[];
+    int index = 0;
+    if (widgets.isNotEmpty) {
+      for (Widget widget in widgets) {
+        children.add(
+          DraggableDragtarget(
+            child: widget,
+            dragController: DragController(
+              id: index,
+            ),
+          ),
+        );
+        index++;
+      }
+    }
+
+    return Column(
+      children: children,
+    );
   }
 
-  Widget createRow(List<Widget> widgets) {
-    return Row();
+  Row createRow(List<Widget> widgets) {
+    List<Widget> children = <Widget>[];
+    int index = 0;
+    if (widgets.isNotEmpty) {
+      for (Widget widget in widgets) {
+        children.add(
+          DraggableDragtarget(
+            child: widget,
+            dragController: DragController(
+              id: index,
+            ),
+          ),
+        );
+        index++;
+      }
+    }
+
+    return Row(
+      children: children,
+    );
   }
 
-  Widget createStack(List<Widget> widgets) {
-    return Stack();
+  Stack createStack(List<Widget> widgets) {
+    List<Widget> children = <Widget>[];
+    int index = 0;
+    if (widgets.isNotEmpty) {
+      for (Widget widget in widgets) {
+        children.add(
+          DraggableDragtarget(
+            child: widget,
+            dragController: DragController(
+              id: index,
+            ),
+          ),
+        );
+        index++;
+      }
+    }
+
+    return Stack(
+      children: children,
+    );
   }
 
   // switch based on type
@@ -40,6 +95,7 @@ Widget createWidget({
     case Column:
       return createColumn(widgets);
     case Row:
+      print(createRow(widgets).children);
       return createRow(widgets);
     case Stack:
       return createStack(widgets);
@@ -50,31 +106,6 @@ Widget createWidget({
         child: ErrorWidget(
             "Draggable must be given a widgetcontainer of type row, column, or stack"),
       );
-  }
-}
-
-class DragTest extends StatelessWidget {
-  const DragTest({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        DraggableDragtarget(
-          dragController: DragController(1),
-          child: Text("Drag me!"),
-        ),
-        DraggableDragtarget(
-          dragController: DragController(2),
-          child: Text("Drag here!"),
-        ),
-        DraggableDragtarget(
-          dragController: DragController(3),
-          child: Text("Drag something here!"),
-        ),
-      ],
-    );
   }
 }
 
@@ -95,7 +126,7 @@ class DragController {
     _subject.value = DragData(widget: widget, controller: this);
   }
 
-  DragController(this.id);
+  DragController({required this.id});
 }
 
 class DraggableDragtarget extends StatelessWidget {
@@ -124,8 +155,6 @@ class DraggableDragtarget extends StatelessWidget {
             );
           },
           onAccept: (DragData data) {
-            print(
-                "Previous controller: ${data.controller.id}. Current controller: ${dragController.id}");
             if (dragController.value == null) {
               print("NOOO");
             } else {

@@ -14,9 +14,9 @@ jobs:
         with:
           channel: 'stable'
       - run: flutter pub get
-        working-directory: ./modlar
+        working-directory: ./
       - run: flutter analyze
-        working-directory: ./modlar
+        working-directory: ./
       - run: flutter test
-        working-directory: ./modlar
+        working-directory: ./
 

@@ -1,10 +1,10 @@
-import 'package:ukeplanr_template/UI/components/errors/page_not_found.dart';
-import 'package:ukeplanr_template/UI/screens/testing/arguments/test_with_arguments.dart';
-import 'package:ukeplanr_template/UI/screens/testing/auth/logged_out.dart';
-import 'package:ukeplanr_template/UI/screens/testing/home/hello_world.dart';
-import 'package:ukeplanr_template/UI/screens/testing/styles/glass_background_test.dart';
-import 'package:ukeplanr_template/UI/screens/testing/theme/new_theme.dart';
-import 'package:ukeplanr_template/UI/screens/testing/debug/logs_ui.dart';
+import 'package:modlar/UI/components/errors/page_not_found.dart';
+import 'package:modlar/UI/screens/testing/arguments/test_with_arguments.dart';
+import 'package:modlar/UI/screens/testing/auth/logged_out.dart';
+import 'package:modlar/UI/screens/testing/home/hello_world.dart';
+import 'package:modlar/UI/screens/testing/styles/glass_background_test.dart';
+import 'package:modlar/UI/screens/testing/theme/new_theme.dart';
+import 'package:modlar/UI/screens/testing/debug/logs_ui.dart';
 
 import 'package:flutter/widgets.dart';
 

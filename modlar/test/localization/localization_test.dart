@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:ukeplanr_template/UI/screens/testing/home/hello_world.dart';
-import 'package:ukeplanr_template/config/shared%20preferences/shared_prefs_keys.dart';
-import 'package:ukeplanr_template/logic/localization/state/locale.dart';
+import 'package:modlar/UI/screens/testing/home/hello_world.dart';
+import 'package:modlar/config/shared%20preferences/shared_prefs_keys.dart';
+import 'package:modlar/logic/localization/state/locale.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:ukeplanr_template/start/configure_app.dart';
+import 'package:modlar/start/configure_app.dart';
 
 void main() => group(
       "App localization:",

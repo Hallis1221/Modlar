@@ -1,8 +1,8 @@
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
-import 'package:ukeplanr_template/UI/components/theme/color_picker.dart';
-import 'package:ukeplanr_template/extensions/customColorScheme/to_color_scheme.dart';
-import 'package:ukeplanr_template/logic/theme/themes.dart';
+import 'package:modlar/logic/theme/custom/custom_theme.dart';
+import 'package:modlar/UI/components/theme/color_picker.dart';
+import 'package:modlar/extensions/customColorScheme/to_color_scheme.dart';
+import 'package:modlar/logic/theme/themes.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';

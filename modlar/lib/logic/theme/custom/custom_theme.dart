@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:ukeplanr_template/logic/theme/custom/custom_color_scheme.dart';
+import 'package:modlar/logic/theme/custom/custom_color_scheme.dart';
 
 // !! Each time a new property is added to custom theme it also have to be added to
 // !! the toMap extension in extensions/themeData/asMap.dart. and extensios/map/asTheme.dart

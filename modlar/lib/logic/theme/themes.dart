@@ -3,14 +3,14 @@ import 'dart:convert';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:ukeplanr_template/config/shared%20preferences/shared_prefs_keys.dart';
-import 'package:ukeplanr_template/extensions/map/as_theme.dart';
-import 'package:ukeplanr_template/extensions/themeData/as_map.dart';
+import 'package:modlar/config/shared%20preferences/shared_prefs_keys.dart';
+import 'package:modlar/extensions/map/as_theme.dart';
+import 'package:modlar/extensions/themeData/as_map.dart';
 
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
-import 'package:ukeplanr_template/logic/theme/custom/custom_theme.dart';
+import 'package:modlar/logic/logs/printer/log_service.dart';
+import 'package:modlar/logic/theme/custom/custom_theme.dart';
 
 class ThemesService {
   Function log = GetIt.instance.get<LogsService>().logger!.log;

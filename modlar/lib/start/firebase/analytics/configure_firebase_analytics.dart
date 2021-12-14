@@ -2,15 +2,15 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
-import 'package:ukeplanr_template/logic/analytics/firebase_analytics.dart';
-import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
+import 'package:modlar/logic/analytics/firebase_analytics.dart';
+import 'package:modlar/logic/logs/printer/log_service.dart';
 
 void configureAnalytics() {
   final Function? log = GetIt.instance.get<LogsService>().logger!.log;
 
   try {
     GetIt.instance.registerSingleton<AnalyticsService>(AnalyticsService(
-      analyticsInstance: FirebaseAnalytics(),
+      analyticsInstance: FirebaseAnalytics.instance,
     ));
 
     log!(Level.info, "Configured google analytics!");

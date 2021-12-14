@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ukeplanr_template/main.dart';
-import 'package:ukeplanr_template/start/configure_app.dart';
+import 'package:modlar/main.dart';
+import 'package:modlar/start/configure_app.dart';
 
 void main() => group("Start app:", () {
       test(

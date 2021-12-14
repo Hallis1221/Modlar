@@ -1,7 +1,7 @@
-// import 'package:ukeplanr_template/generated_plugin_registrant.dart';
-import 'package:ukeplanr_template/config/dev/dev.dart';
-import 'package:ukeplanr_template/logic/dev/mode.dart';
-import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
+// import 'package:modlar/generated_plugin_registrant.dart';
+import 'package:modlar/config/dev/dev.dart';
+import 'package:modlar/logic/dev/mode.dart';
+import 'package:modlar/logic/logs/printer/log_service.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';

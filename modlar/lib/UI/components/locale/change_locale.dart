@@ -1,5 +1,5 @@
-import 'package:ukeplanr_template/logic/localization/state/locale.dart';
-import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
+import 'package:modlar/logic/localization/state/locale.dart';
+import 'package:modlar/logic/logs/printer/log_service.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ukeplanr_template/UI/screens/testing/arguments/arguments/arguments.dart';
+import 'package:modlar/UI/screens/testing/arguments/arguments/arguments.dart';
 
 // A Widget that extracts the necessary arguments from
 // the ModalRoute.

@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
-import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
+import 'package:modlar/logic/logs/printer/log_service.dart';
 
 Future<void> configureFirebaseCore() async {
   final Function? log = GetIt.instance.get<LogsService>().logger!.log;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ukeplanr_template/logic/theme/custom/custom_color_scheme.dart';
+import 'package:modlar/logic/theme/custom/custom_color_scheme.dart';
 
 extension ToColorScheme on CustomColorScheme {
   ColorScheme toColorScheme() {

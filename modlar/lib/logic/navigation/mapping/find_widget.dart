@@ -1,6 +1,6 @@
-import 'package:ukeplanr_template/UI/components/dev/run_mode_indicator.dart';
-import 'package:ukeplanr_template/logic/dev/mode.dart';
-import 'package:ukeplanr_template/logic/navigation/routes/routes.dart';
+import 'package:modlar/UI/components/dev/run_mode_indicator.dart';
+import 'package:modlar/logic/dev/mode.dart';
+import 'package:modlar/logic/navigation/routes/routes.dart';
 
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';

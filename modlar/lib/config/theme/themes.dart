@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ukeplanr_template/config/shared%20preferences/shared_prefs_keys.dart';
+import 'package:modlar/config/shared%20preferences/shared_prefs_keys.dart';
 
 // when adding stuff here it will be overwritten by theme changers
 // such as the one in UI/screens/testing/theme/newTheme.dart

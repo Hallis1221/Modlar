@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ukeplanr_template/extensions/color/as_exportable_string.dart';
+import 'package:modlar/extensions/color/as_exportable_string.dart';
 
 extension ToMap on ColorScheme {
   Map<String, String> toMap() {

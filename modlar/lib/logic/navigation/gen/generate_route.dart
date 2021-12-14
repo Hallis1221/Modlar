@@ -1,6 +1,6 @@
-import 'package:ukeplanr_template/logic/navigation/observers/navigation_watcher.dart';
-import 'package:ukeplanr_template/logic/navigation/mapping/find_widget.dart';
-import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
+import 'package:modlar/logic/navigation/observers/navigation_watcher.dart';
+import 'package:modlar/logic/navigation/mapping/find_widget.dart';
+import 'package:modlar/logic/logs/printer/log_service.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';

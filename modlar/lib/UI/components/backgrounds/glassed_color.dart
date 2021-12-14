@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ukeplanr_template/UI/components/backgrounds/glass.dart';
+import 'package:modlar/UI/components/backgrounds/glass.dart';
 
 class GlassedColor extends StatelessWidget {
   const GlassedColor({

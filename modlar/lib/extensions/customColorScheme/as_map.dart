@@ -1,5 +1,5 @@
-import 'package:ukeplanr_template/extensions/color/as_exportable_string.dart';
-import 'package:ukeplanr_template/logic/theme/custom/custom_color_scheme.dart';
+import 'package:modlar/extensions/color/as_exportable_string.dart';
+import 'package:modlar/logic/theme/custom/custom_color_scheme.dart';
 
 extension ToMap on CustomColorScheme {
   Map<String, String> toMap() {

@@ -1,7 +1,7 @@
-import 'package:ukeplanr_template/UI/components/off-center/off_center_circle.dart';
-import 'package:ukeplanr_template/UI/components/backgrounds/glassed_color.dart';
-import 'package:ukeplanr_template/UI/components/forground/card.dart';
-import 'package:ukeplanr_template/logic/animation/background.dart';
+import 'package:modlar/UI/components/off-center/off_center_circle.dart';
+import 'package:modlar/UI/components/backgrounds/glassed_color.dart';
+import 'package:modlar/UI/components/forground/card.dart';
+import 'package:modlar/logic/animation/background.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';

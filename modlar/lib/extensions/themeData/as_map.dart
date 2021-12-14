@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:ukeplanr_template/extensions/color/as_exportable_string.dart';
-import 'package:ukeplanr_template/extensions/colorScheme/as_map.dart';
+import 'package:modlar/extensions/color/as_exportable_string.dart';
+import 'package:modlar/extensions/colorScheme/as_map.dart';
 
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:ukeplanr_template/extensions/map/as_color_scheme.dart';
+import 'package:modlar/extensions/map/as_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 // This lint warning is false. You should not specify type on a extension

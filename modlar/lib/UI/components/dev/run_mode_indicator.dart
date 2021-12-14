@@ -1,5 +1,5 @@
-import 'package:ukeplanr_template/UI/components/about/about_dialog.dart';
-import 'package:ukeplanr_template/logic/theme/themes.dart';
+import 'package:modlar/UI/components/about/about_dialog.dart';
+import 'package:modlar/logic/theme/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 

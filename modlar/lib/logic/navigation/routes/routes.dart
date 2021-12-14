@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ukeplanr_template/logic/auth/auth_services.dart';
-import 'package:ukeplanr_template/logic/navigation/mapping/find_widget.dart';
+import 'package:modlar/logic/auth/auth_services.dart';
+import 'package:modlar/logic/navigation/mapping/find_widget.dart';
 
 class RoutesService {
   final Map<String, Widget> routesLoggedIn;

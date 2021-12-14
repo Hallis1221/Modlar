@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:ukeplanr_template/config/shared%20preferences/shared_prefs_keys.dart';
-import 'package:ukeplanr_template/logic/logs/printer/log_service.dart';
+import 'package:modlar/config/shared%20preferences/shared_prefs_keys.dart';
+import 'package:modlar/logic/logs/printer/log_service.dart';
 
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';

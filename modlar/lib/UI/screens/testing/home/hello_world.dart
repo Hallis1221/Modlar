@@ -1,5 +1,5 @@
-import 'package:ukeplanr_template/UI/screens/testing/arguments/arguments/arguments.dart';
-import 'package:ukeplanr_template/UI/components/locale/change_locale.dart';
+import 'package:modlar/UI/screens/testing/arguments/arguments/arguments.dart';
+import 'package:modlar/UI/components/locale/change_locale.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';

@@ -1,3 +1,4 @@
+import 'package:modlar/UI/components/modular/draggable.dart';
 import 'package:modlar/UI/screens/testing/arguments/arguments/arguments.dart';
 import 'package:modlar/UI/components/locale/change_locale.dart';
 
@@ -17,6 +18,7 @@ class PlaceholderWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            DragTest(),
             Text(
               AppLocalizations.of(context)!.currentLocale,
               style: Theme.of(context).textTheme.bodyText1,

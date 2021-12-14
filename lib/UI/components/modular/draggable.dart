@@ -1,3 +1,5 @@
+// TODO tidy up and implement log
+
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -60,15 +62,15 @@ class DragTest extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         DraggableDragtarget(
-          dragController: DragController(),
+          dragController: DragController(1),
           child: Text("Drag me!"),
         ),
         DraggableDragtarget(
-          dragController: DragController(),
+          dragController: DragController(2),
           child: Text("Drag here!"),
         ),
         DraggableDragtarget(
-          dragController: DragController(),
+          dragController: DragController(3),
           child: Text("Drag something here!"),
         ),
       ],
@@ -77,27 +79,23 @@ class DragTest extends StatelessWidget {
 }
 
 class DragController {
+  // debug purposes
+  int id;
+
   final BehaviorSubject<DragData?> _subject =
       BehaviorSubject<DragData?>.seeded(null);
 
   Stream<DragData?> get stream => _subject.stream;
 
+  // Get the latest value from the stream
+  DragData? get value => _subject.value;
+
   // set widget
   void setWidget(Widget widget) {
-    if (_subject.value == null) {
-      _subject.value = DragData(widget: widget, controller: this);
-    } else {
-      _subject.value!.widget = Draggable<Widget>(
-        child: widget,
-        feedback: widget,
-        data: widget,
-      );
-    }
+    _subject.value = DragData(widget: widget, controller: this);
   }
 
-  void setData(DragData data) {
-    _subject.value = data;
-  }
+  DragController(this.id);
 }
 
 class DraggableDragtarget extends StatelessWidget {
@@ -126,7 +124,14 @@ class DraggableDragtarget extends StatelessWidget {
             );
           },
           onAccept: (DragData data) {
-            dragController.setData(data);
+            print(
+                "Previous controller: ${data.controller.id}. Current controller: ${dragController.id}");
+            if (dragController.value == null) {
+              print("NOOO");
+            } else {
+              data.controller.setWidget(dragController.value!.widget);
+              dragController.setWidget(data.widget);
+            }
           },
         );
       },

@@ -18,8 +18,11 @@ class PlaceholderWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            DraggableWidgetList(
-                widgetList: [Text("1"), Text("2"), Text("3")], type: Row),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: createDraggableWidgetList(
+                  widgets: ["1", "2", "3"].map((e) => Text(e)).toList()),
+            ),
             Text(
               AppLocalizations.of(context)!.currentLocale,
               style: Theme.of(context).textTheme.bodyText1,

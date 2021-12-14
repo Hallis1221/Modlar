@@ -1,118 +1,15 @@
-// TODO tidy up and implement log
-
-// TODO this could just return a list of children
+// TODO tidy up and implement log and refactor
 
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
-class DraggableWidgetList extends StatelessWidget {
-  const DraggableWidgetList(
-      {required this.widgetList, required this.type, Key? key})
-      : super(key: key);
-
-  final List<Widget> widgetList;
-  final Type type;
-
-  @override
-  Widget build(BuildContext context) {
-    return createWidget(context: context, type: type, widgets: widgetList);
-  }
-}
-
-Widget createWidget({
-  required BuildContext context,
-  required Type type,
-  required List<Widget> widgets,
-}) {
-  Column createColumn(List<Widget> widgets) {
-    List<Widget> children = <Widget>[];
-    int index = 0;
-    if (widgets.isNotEmpty) {
-      for (Widget widget in widgets) {
-        children.add(
-          DraggableDragtarget(
-            child: widget,
-            dragController: DragController(
-              id: index,
-            ),
-          ),
-        );
-        index++;
-      }
-    }
-
-    return Column(
-      children: children,
-    );
-  }
-
-  Row createRow(List<Widget> widgets) {
-    List<Widget> children = <Widget>[];
-    int index = 0;
-    if (widgets.isNotEmpty) {
-      for (Widget widget in widgets) {
-        children.add(
-          DraggableDragtarget(
-            child: widget,
-            dragController: DragController(
-              id: index,
-            ),
-          ),
-        );
-        index++;
-      }
-    }
-
-    return Row(
-      children: children,
-    );
-  }
-
-  Stack createStack(List<Widget> widgets) {
-    List<Widget> children = <Widget>[];
-    int index = 0;
-    if (widgets.isNotEmpty) {
-      for (Widget widget in widgets) {
-        children.add(
-          DraggableDragtarget(
-            child: widget,
-            dragController: DragController(
-              id: index,
-            ),
-          ),
-        );
-        index++;
-      }
-    }
-
-    return Stack(
-      children: children,
-    );
-  }
-
-  // switch based on type
-  switch (type) {
-    case Column:
-      return createColumn(widgets);
-    case Row:
-      print(createRow(widgets).children);
-      return createRow(widgets);
-    case Stack:
-      return createStack(widgets);
-    default:
-      return SizedBox(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: ErrorWidget(
-            "Draggable must be given a widgetcontainer of type row, column, or stack"),
-      );
-  }
+List<Widget> createDraggableWidgetList({required List<Widget> widgets}) {
+  return widgets.map((Widget widget) {
+    return DraggableDragtarget(child: widget, dragController: DragController());
+  }).toList();
 }
 
 class DragController {
-  // debug purposes
-  int id;
-
   final BehaviorSubject<DragData?> _subject =
       BehaviorSubject<DragData?>.seeded(null);
 
@@ -125,8 +22,6 @@ class DragController {
   void setWidget(Widget widget) {
     _subject.value = DragData(widget: widget, controller: this);
   }
-
-  DragController({required this.id});
 }
 
 class DraggableDragtarget extends StatelessWidget {

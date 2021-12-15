@@ -1,9 +1,9 @@
-import 'package:modlar/UI/components/modular/draggable.dart';
 import 'package:modlar/UI/screens/testing/arguments/arguments/arguments.dart';
 import 'package:modlar/UI/components/locale/change_locale.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:modlar/draggable/drag_data.dart';
 
 class PlaceholderWidget extends StatelessWidget {
   const PlaceholderWidget({

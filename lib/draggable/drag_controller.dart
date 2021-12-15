@@ -28,5 +28,13 @@ class DragController {
   }
 
   DragController(
-      {required this.dragElement, required this.dragControllerIndex});
+      {required this.dragElement, required this.dragControllerIndex}) {
+    // Register the controller with the dragElement and log it. Only if the dragController is not already registered.
+    if (!dragElement.isDragControllerRegistered(
+        "${dragElement.elementUID}:$dragControllerIndex")) {
+      dragElement.registerDragController(this);
+      GetIt.instance.get<LogsService>().logger!.log(Level.info,
+          "Created DragController on DragELement ${dragElement.elementUID}:$dragControllerIndex");
+    }
+  }
 }

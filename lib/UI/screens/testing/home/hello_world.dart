@@ -3,7 +3,7 @@ import 'package:modlar/UI/components/locale/change_locale.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:modlar/draggable/drag_data.dart';
+import 'package:modlar/draggable/drag_element.dart';
 
 class PlaceholderWidget extends StatelessWidget {
   const PlaceholderWidget({
@@ -12,6 +12,11 @@ class PlaceholderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DragElement dragElement = DragElement(
+        nonDraggableWidgets:
+            <String>["1", "2", "3"].map((String e) => Text(e)).toList(),
+        pageID: "PlaceholderWidget",
+        elementID: "numbers:test");
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Center(
@@ -19,10 +24,8 @@ class PlaceholderWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: createDraggableWidgetList(
-                  widgets: ["1", "2", "3"].map((e) => Text(e)).toList()),
-            ),
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: dragElement.draggableWidgets),
             Text(
               AppLocalizations.of(context)!.currentLocale,
               style: Theme.of(context).textTheme.bodyText1,

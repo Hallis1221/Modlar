@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:modlar/UI/components/modular/draggable_drag_target.dart';
-
-List<Widget> createDraggableWidgetList({required List<Widget> widgets}) {
-  return widgets.map((Widget widget) {
-    return DraggableDragtarget(child: widget, dragController: DragController());
-  }).toList();
-}
+import 'package:modlar/draggable/drag_controller.dart';
+import 'package:modlar/draggable/drag_element.dart';
 
 class DragData {
+  DragElement dragElement;
   Widget widget;
   DragController controller;
 
-  DragData({required this.widget, required this.controller});
+  DragData(
+      {required this.widget,
+      required this.controller,
+      required this.dragElement});
 }

@@ -12,7 +12,26 @@ class DragElement {
   final String pageID;
   final String elementID;
 
-  late final String elementUID = "$pageID:$elementID";
+  // Replace : with . to not confuse the seperator with page/element ID
+  late final String elementUID =
+      "${pageID.replaceAll(':', '.')}:${elementID.replaceAll(':', '.')}";
+
+  // It is local beacuse the elements are not prefixed with the elementUID and
+  // thus should not be used outside the current instance of the class
+  // ignore: prefer_final_fields
+  Map<String, DragController> _dragControllers = <String, DragController>{};
+
+  // Register drag controller
+  void registerDragController(DragController dragController) =>
+      _dragControllers["${dragController.dragControllerIndex}"] =
+          dragController;
+
+  // Returns a [bool] if the given ID is registered as a drag controller.
+  // It is not registered with the elementUID beacuse that is given as every element
+  // in dragControllers could be prefixed with the elementUID
+
+  bool isDragControllerRegistered(String dragControllerID) =>
+      _dragControllers.containsKey(dragControllerID);
 
   // Convert  list of non-draggable widgets to a list of draggable widgets
   List<Widget> _createDraggableWidgetList() {
